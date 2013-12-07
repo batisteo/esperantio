@@ -1,0 +1,7 @@
+#use global syntax
+syntax:glob
+env/
+*~
+*.pyc
+*.db
+*.sqlite3
