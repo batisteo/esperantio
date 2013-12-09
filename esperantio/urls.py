@@ -10,3 +10,11 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 )
+
+
+urlpatterns += patterns('evento.views',
+
+    url(r'^evento/(?P<pk>\d+)/$',
+        view='evento_detail',
+        name='evento_detail',),
+)

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ object.nomo }}
+    {{ object.get_temo_display }} | {{ object.lat }},{{ object.long }}
+    <script src="http://geo5.org/js/geo5.js"></script>
+    <div
+        id="evento_mapo"
+        style="height:350px;width:80%;"
+        data-geo-type="map"
+        data-geo-basemap="OpenStreetMap.Mapnik"
+        data-geo-zoom=6
+        data-geo-centre="{{ object.lat }},{{ object.long }}">
+    </div>
+    <pre id="evento_mapo_data"
+        data-geo-type="featureLayer" 
+        data-geo-layer-type="csv" 
+        data-geo-map="evento_mapo">
+{{ object.lat }},{{ object.long }},{{ object.longa_nomo }}
+    </pre>
+{% endblock content %}
+    
+    
