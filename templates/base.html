@@ -5,11 +5,9 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-        <title>{% block title %}
-            
-        {% endblock %}Esperantio</title>
+        <title>{% block title %}{% endblock title %} | Esperantio</title>
         <link rel="shortcut icon" type="image/png" href="favicon.png" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="{% static 'esperantio/style.css' %}" />
     </head>
 
     <body>
