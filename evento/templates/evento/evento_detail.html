@@ -3,21 +3,22 @@
 {% block content %}
     {{ object.nomo }}
     {{ object.get_temo_display }} | {{ object.lat }},{{ object.long }}
-    <script src="http://geo5.org/js/geo5.js"></script>
-    <div
-        id="evento_mapo"
-        style="height:350px;width:80%;"
-        data-geo-type="map"
-        data-geo-basemap="OpenStreetMap.Mapnik"
-        data-geo-zoom=6
-        data-geo-centre="{{ object.lat }},{{ object.long }}">
-    </div>
-    <pre id="evento_mapo_data"
-        data-geo-type="featureLayer" 
-        data-geo-layer-type="csv" 
-        data-geo-map="evento_mapo">
-{{ object.lat }},{{ object.long }},{{ object.longa_nomo }}
-    </pre>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <div id="mapo" style="height: 380px"></div>
+    
+    <script>
+        var lat = {{ object.lat }};
+        var long = {{ object.long }};
+        var map = L.map('mapo').setView([lat, long], 13);
+        var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+        L.tileLayer(tiles, {
+            attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
+            maxZoom: 19
+        }).addTo(map);
+        var marker = L.marker([lat, long]).addTo(map);
+        var mess = "<strong>{{ object.nomo }} {{ object.jaro }}</strong><br/>{{ object.urbo }}";
+        marker.bindPopup(mess).openPopup();
+    </script>
 {% endblock content %}
-    
-    
+

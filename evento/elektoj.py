@@ -12,19 +12,28 @@ SKALO_ELEKTOJ = (
 )
 
 
-GHENERALA, STUDADA, KULTURA, FERVOJISTA = 0, 1, 2, 3
+GXENERALA, STUDADA, KULTURA, FERVOJISTA = 0, 1, 2, 3
 TEMO_ELEKTOJ = (
-    (GHENERALA, _("ĝenerala")),
+    (GXENERALA, _("gxenerala")),
     (STUDADA, _("studada")),
     (KULTURA, _("kultura")),
     (FERVOJISTA, _("fervojista")),
 )
 
 
-CHIUJ, JUNULOJ, MALJUNULOJ = 0, 1, 2
+CXIUJ, JUNULOJ, MALJUNULOJ = 0, 1, 2
 PUBLIKO_ELEKTOJ = (
-    (CHIUJ, _("ĉiuj")),
+    (CXIUJ, _("cxiuj")),
     (JUNULOJ, _("junuloj")),
     (MALJUNULOJ, _("maljunuloj")),
 )
 
+NB_PARTOPR_ELEKTOJ = (
+    (5, _("5")),
+    (20, _("20")),
+    (50, _("50")),
+    (100, _("100")),
+    (200, _("200")),
+    (500, _("500")),
+    (1000, _("1000")),
+)
