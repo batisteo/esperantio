@@ -1,0 +1,10 @@
+body, h1 { margin: 0; font-family: sans-serif;}
+h1 { background: GreenYellow; color: white; font-style: italic;}
+h1 span { opacity: .6;}
+h1 { box-shadow: 0 0 10px 5px Silver; position: relative; bottom: 6px; padding-left: 6px;}
+
+#salti { list-style: none; position: absolute; top: -1em; right: 0; opacity: .8; }
+#salti li { display: inline-block; margin-right: 1.2em; }
+#salti li a { color: white; text-decoration: none; font-weight: bold; font-size: 1.6em;}
+#salti li a:hover, #salti li a:active { text-shadow: 0 0 5px; }
+
