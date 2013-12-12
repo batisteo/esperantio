@@ -1,7 +1,7 @@
 body, h1 { margin: 0; font-family: sans-serif;}
-h1 { background: #D86843; color: white; font-style: italic;}
-h1 span { opacity: .6;}
-h1 { box-shadow: 0 0 10px 5px Silver; position: relative; bottom: 6px; padding-left: 6px;}
+#kapo h1 { background: #D86843; color: white; font-style: italic;}
+#kapo h1 span { opacity: .6;}
+#kapo h1 { box-shadow: 0 0 10px 5px Silver; position: relative; bottom: 6px; padding-left: 6px;}
 
 #salti { list-style: none; position: absolute; top: -1em; right: 0; opacity: .8; }
 #salti li { display: inline-block; margin-right: 1.2em; }

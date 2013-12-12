@@ -1,12 +1,29 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-    {{ object.nomo }}
-    {{ object.get_temo_display }} | {{ object.lat }},{{ object.long }}
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <h1>{{ object.nomo }} {{ object.jaro }}</h1>
+    
     <div id="mapo" style="height: 380px"></div>
     
+    <p style="float:right; width:20em;">({{ object.lat }}; {{ object.long }})</p>
+    <p>{{ object.komenco|date:"d M Y" }} {% trans "gxis" %} {{ object.fino|date:"d M Y" }}</p>
+    <p>{{ object.retejo }}</p>
+    <p>{{ object.retposxto }}</p>
+    <p>{{ object.organizo }}</p>
+    <p>{{ object.longa_nomo }}</p>
+    <p>{{ object.urbo }}</p>
+    <p>{{ object.posxtkodo }}</p>
+    <p>{{ object.lando }}</p>
+    <p>{{ object.nb_partopr }}</p>
+    <p>{{ object.get_skalo_display }}</p>
+    <p>{{ object.get_temo_display }}</p>
+    <p>{{ object.get_publiko_display }}</p>
+    
+    
+    
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
     <script>
         var lat = {{ object.lat }};
         var long = {{ object.long }};
