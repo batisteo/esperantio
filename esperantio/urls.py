@@ -21,4 +21,8 @@ urlpatterns += patterns('evento.views',
             view='evento_detail',
             name='evento_detail',),
 
+    url(r'^evento/(?P<pk>\d+)/redakti/$',
+            view='evento_update',
+            name='evento_update',),
+
 )
