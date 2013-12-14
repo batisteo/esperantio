@@ -7,6 +7,8 @@
 <script type="text/javascript" src="{% static 'jqueryui/js/jquery-1.9.1.js' %}"></script>
 <script type="text/javascript" src="{% static 'jqueryui/js/jquery-ui-1.10.3.custom.min.js' %}"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'jqueryui/css/pepper-grinder/jquery-ui-1.10.3.custom.min.css' %}" />
+    
+    <div id="mapo" style="height: 280px"></div>
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="{% trans 'crei' %}" />
@@ -26,4 +28,29 @@
 
             });
 </script>
+    
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script>
+        var lat = {{ object.lat }};
+        var long = {{ object.long }};
+        var map = L.map('mapo').setView([lat, long], 13);
+        var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+        L.tileLayer(tiles, {
+            attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
+            maxZoom: 19
+        }).addTo(map);
+        var marker = L.marker([lat, long]).addTo(map);
+        var message = "<strong>{{ object.nomo }} {{ object.jaro }}</strong><br/>{{ object.urbo }}";
+        marker.bindPopup(message).openPopup();
+
+        function onMapClick(e) {
+            $("#id_lat").val(e.latlng.lat);
+            $("#id_long").val(e.latlng.lng);
+            marker.setLatLng(e.latlng);
+        }
+
+        map.on('click', onMapClick);
+            </script>
+
 {% endblock content %}
