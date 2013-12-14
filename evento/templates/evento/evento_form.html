@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
+{% block title %}Eventoj{% endblock title %}
 {% block content %}
+<script type="text/javascript" src="{% static 'jqueryui/js/jquery-1.9.1.js' %}"></script>
+<script type="text/javascript" src="{% static 'jqueryui/js/jquery-ui-1.10.3.custom.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'jqueryui/css/pepper-grinder/jquery-ui-1.10.3.custom.min.css' %}" />
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="{% trans 'crei' %}" />
     </form>
+<script>
+        $(function() {
+            $( "#id_komenco" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-80:",
+                });
+            $( "#id_fino" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-80:",
+                });
+
+            });
+</script>
 {% endblock content %}
