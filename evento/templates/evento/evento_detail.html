@@ -1,11 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'evento/base_evento.html' %}
+{% load staticfiles %}
 {% load i18n %}
 
-{% block title %}Eventoj{% endblock title %}
 {% block content %}
-    <h1>{{ object.nomo }} {{ object.jaro }}</h1>
+    <h2>{{ object.nomo }} {{ object.jaro }}</h2>
+    <p class="agoj"><a href="{% url 'evento_update' object.pk %}">{% trans "Redakti" %}</a></p>
     
-    <div id="mapo" style="height: 280px"></div>
+    <div id="mapo"></div>
     
     <p style="float:right; width:20em;">({{ object.lat }}; {{ object.long }})</p>
     <p>{{ object.komenco|date:"d M Y" }} {% trans "gxis" %} {{ object.fino|date:"d M Y" }}</p>

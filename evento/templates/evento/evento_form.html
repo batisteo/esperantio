@@ -1,8 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'evento/base_evento.html' %}
 {% load i18n %}
 {% load static %}
 
-{% block title %}Eventoj{% endblock title %}
 {% block content %}
 <script type="text/javascript" src="{% static 'jqueryui/js/jquery-1.9.1.js' %}"></script>
 <script type="text/javascript" src="{% static 'jqueryui/js/jquery-ui-1.10.3.custom.min.js' %}"></script>
@@ -41,13 +40,13 @@
             maxZoom: 19
         }).addTo(map);
         var marker = L.marker([lat, long]).addTo(map);
-        var message = "<strong>{{ object.nomo }} {{ object.jaro }}</strong><br/>{{ object.urbo }}";
-        marker.bindPopup(message).openPopup();
 
         function onMapClick(e) {
             $("#id_lat").val(e.latlng.lat);
             $("#id_long").val(e.latlng.lng);
             marker.setLatLng(e.latlng);
+            var mess = "Lat: <strong> "+e.latlng.lat.toFixed(5) +"</strong><br/>Long: <strong>"+ e.latlng.lng.toFixed(5) +"</strong>";
+            marker.bindPopup(mess).openPopup();
         }
 
         map.on('click', onMapClick);

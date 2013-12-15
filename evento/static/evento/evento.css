@@ -1,0 +1,24 @@
+header { background: DarkOrange; }
+
+h2 { text-align: center; font-size: 2em; }
+
+#mapo { box-shadow: 0 0 10px 5px rgba(0,0,0,.3); height: 300px; }
+
+/***** Butono *****/
+
+.agoj { position: absolute; top: 0; right: 0; }
+.agoj a {
+    border: LightGray 1px solid;
+    border-radius: 9px 0px 0px 9px;
+    color: Silver;
+    text-shadow: -1px -1px rgba(0,0,0,.6);
+    font-weight: bold;
+    text-decoration: none;
+    padding: .2em .4em .2em .7em;
+/*
+    background: linear-gradient(to bottom, LightGray, white 60%, Silver 90%);
+*/
+}
+
+/***** Formularoj *****/
+form { margin-left: 2em; }

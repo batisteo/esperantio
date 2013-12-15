@@ -1,14 +1,29 @@
-body, h1 { margin: 0; font-family: sans-serif;}
-#kapo h1 { background: #D86843; color: white; font-style: italic;}
-#kapo h1 span { opacity: .6;}
-#kapo h1 { box-shadow: 0 0 10px 5px Silver; position: relative; bottom: 6px; padding-left: 6px;}
 
-#salti { list-style: none; position: absolute; top: -1em; right: 0; opacity: .8; }
-#salti li { display: inline-block; margin-right: 1.2em; }
-#salti li a { color: white; text-decoration: none; font-weight: bold; font-size: 1.6em;}
-#salti li a:hover, #salti li a:active { text-shadow: 0 0 5px; }
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_R.woff");
+}
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_RB.woff");
+    font-weight: bold;
+}
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_RI.woff");
+    font-style: italic;
+}
 
+body { margin: 0; font-family: Biolinum, "Trebuchet MS", serif; font-size: 1.3em; color: #333; }
+header { box-shadow: 0 0 10px 5px rgba(0,0,0,.3); padding-left: 1.5em; padding-bottom: .5em; }
+header h1 { margin: 0; color: white; font-size: 2.3em; font-weight: bold; text-shadow: 2px 2px 1px rgba(0,0,0,.3); }
+header h1 span { opacity: .7; text-shadow: 4px 4px 2px rgba(0,0,0,.2); top: 0; position: relative; }
+header h1 span { transition: opacity 1s; }
+header h1:hover span { text-shadow: 2px 2px 1px rgba(0,0,0,.3); opacity: 1; top: 1px;}
 
+#konekti { display: block; float: right; font-weight: bold; margin: .66em 1.4em; text-shadow: -1px -1px rgba(0,0,0,.3); }
+#konekti a { color: White; opacity: .6; font-size: 1.4em; text-decoration: none; transition: opacity .4s; }
+#konekti a:hover, #konekti a:focus { color: white; outline: none; opacity: .9; }
+#konekti a:active { text-shadow: 0 0 6px; }
 
-/******* Formularoj ********/
-form { margin-left: 2em; }
+main { position: relative; }
