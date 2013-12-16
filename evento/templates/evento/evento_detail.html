@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block content %}
-    <h2>{{ object.nomo }} {{ object.jaro }}</h2>
+    <h2>{{ object.nomo }}</h2>
     <p class="agoj"><a href="{% url 'evento_update' object.pk %}">{% trans "Redakti" %}</a></p>
     
     <div id="mapo"></div>
