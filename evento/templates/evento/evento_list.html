@@ -1,0 +1,29 @@
+{% extends 'evento/base_evento.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans "Eventoj" %}</h2>
+    <div id="granda_mapo"></div>
+    
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script>
+        var map = L.map('granda_mapo').setView([45.1, 3.9], 2);
+        var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+        L.tileLayer(tiles, {
+            attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
+            maxZoom: 19
+        }).addTo(map);
+        {% for object in object_list %}
+            var lat{{ forloop.counter }} = {{ object.lat }};
+            var long{{ forloop.counter }} = {{ object.long }};
+            var marker{{ forloop.counter }} = L.marker([lat{{ forloop.counter }}, long{{ forloop.counter }}]).addTo(map);
+            var mess{{ forloop.counter }} = '<strong><a href="' + '{% url "evento_detail" object.pk %}' + '">{{ object.nomo }} {{ object.jaro }}</a></strong><br/>{{ object.urbo }}';
+            marker{{ forloop.counter }}.bindPopup(mess{{ forloop.counter }});
+        {% endfor %}
+    </script>
+    {% for evento in object_list %}
+        {{ evento.nomo }}, 
+    {% endfor %}
+{% endblock content %}

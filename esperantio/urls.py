@@ -13,6 +13,10 @@ urlpatterns = patterns('',
 
 
 urlpatterns += patterns('evento.views',
+    url(r'^evento/$',
+            view='evento_list',
+            name='evento_list',),
+
     url(r'^evento/aldoni/$',
             view='evento_create',
             name='evento_create',),

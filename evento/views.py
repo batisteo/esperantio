@@ -5,6 +5,12 @@ from django.core.urlresolvers import reverse
 from .models import Evento
 
 
+class EventoListView(generic.ListView):
+    model = Evento
+
+evento_list = EventoListView.as_view()
+
+
 class EventoDetailView(generic.DetailView):
     model = Evento
 

@@ -3,6 +3,7 @@ header { background: DarkOrange; }
 h2 { text-align: center; font-size: 2em; }
 
 #mapo { box-shadow: 0 0 10px 5px rgba(0,0,0,.3); height: 300px; }
+#granda_mapo { box-shadow: 0 0 10px 5px rgba(0,0,0,.3); height: 700px; }
 
 /***** Butono *****/
 
