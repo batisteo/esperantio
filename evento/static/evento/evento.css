@@ -1,47 +1,38 @@
 header { background: #90CCCB; }
 
 h2 { text-align: center; font-size: 2em; }
+#datoloko { position: absolute; top: -2em; }
 
 #mapo, #mapo_form { box-shadow: 0 0 5px 5px rgba(0,0,0,.2); height: 300px; }
 #granda_mapo { box-shadow: 0 0 10px 5px rgba(0,0,0,.3); height: 700px; }
+
+#datumoj {
+    margin: 0 3em;
+}
+
 
 /***** Butono *****/
 
 .agoj { position: absolute; top: 0; right: 0; }
 .agoj a, input.agoj {
-    border: LightGray 1px solid;
-    border-bottom: Silver 1px solid;
-    border-right: none;
-    border-radius: 9px 0px 0px 9px;
     color: LightGray;
-    text-shadow: -1px -1px rgba(0,0,0,.4);
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
-    padding: .2em .4em .2em .7em;
-}
-.agoj a:hover, .agoj a:focus, input.agoj:hover, input.agoj:focus {
-    border: none;
-    border-bottom: LightGray 1px solid;
-    text-shadow: none;
-    position: relative; bottom: 1px; right: 1px;
-    outline: none;
-}
-.agoj a:active, input.agoj:active {
-    border: none;
-    border-top: LightGray 1px solid;
-    text-shadow: 1px 1px rgba(0,0,0,.4);
-    outline: none;
 }
 
 /***** Formularoj *****/
-form {  }
+form {
+    margin: 0 18em;
+}
 
 #mapo_form {
     margin-top: 10em; position: relative;
 }
 
-label[for="id_nomo"] { display: none; }
+form p {
+    margin: 1em auto;
+}
 
 form p input {
     border: none;
@@ -50,11 +41,8 @@ form p input {
     font-size: 1em;
     padding: .1em .3em;
     font-family: Biolinum;
-}
-
-
-#id_nomo {
-    font-size: 2em;
-    font-weight: bold;
     text-align: center;
+    float: right;
 }
+
+

@@ -4,24 +4,26 @@
 
 {% block content %}
     <h2>{{ object.nomo }}</h2>
+    <div id="datoloko">
+        <p><strong>{{ object.komenco|date:"d M Y" }}</strong> <span>{{ object.fino|date:"d M Y" }}</span></p>
+        <p>{{ object.urbo }}</p>
+    </div>
     <p class="agoj"><a href="{% url 'evento_update' object.pk %}">{% trans "Redakti" %}</a></p>
     
     <div id="mapo"></div>
     
-    <p style="float:right; width:20em;">({{ object.lat }}; {{ object.long }})</p>
-    <p>{{ object.komenco|date:"d M Y" }} {% trans "gxis" %} {{ object.fino|date:"d M Y" }}</p>
-    <p>{{ object.retejo }}</p>
-    <p>{{ object.retposxto }}</p>
-    <p>{{ object.organizo }}</p>
-    <p>{{ object.longa_nomo }}</p>
-    <p>{{ object.urbo }}</p>
-    <p>{{ object.posxtkodo }}</p>
-    <p>{{ object.lando }}</p>
-    <p>{{ object.nb_partopr }}</p>
-    <p>{{ object.get_skalo_display }}</p>
-    <p>{{ object.get_temo_display }}</p>
-    <p>{{ object.get_publiko_display }}</p>
-    
+    <div id="datumoj">
+        <p>{{ object.retejo }}</p>
+        <p>{{ object.retposxto }}</p>
+        <p>{{ object.organizo }}</p>
+        <p>{{ object.longa_nomo }}</p>
+        <p>{{ object.posxtkodo }}</p>
+        <p>{{ object.lando }}</p>
+        <p>{{ object.nb_partopr }}</p>
+        <p>{{ object.get_skalo_display }}</p>
+        <p>{{ object.get_temo_display }}</p>
+        <p>{{ object.get_publiko_display }}</p>
+    </div>
     
     
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
