@@ -5,21 +5,34 @@ from django.utils.translation import ugettext_lazy as _
 
 from .elektoj import SKALO_ELEKTOJ, TEMO_ELEKTOJ, PUBLIKO_ELEKTOJ, NB_PARTOPR_ELEKTOJ
 
-class Evento(models.Model):
+
+class Arangxo(models.Model):
     nomo = models.CharField(_("nomo"), max_length=255)
     longa_nomo = models.CharField(_("longa nomo"), max_length=255, blank=True)
     # organizo = models.ForeignKey('evento.Organizo', verbose_name=_("organizo"))
     organizo = models.CharField(_("organizo"), max_length=255, blank=True)
-    retejo = models.URLField(_("retejo"), blank=True)
-    retposxto = models.EmailField(_("retposxto"), blank=True)
-    komenco = models.DateTimeField(_("komenco"), blank=True)
-    fino = models.DateTimeField(_("fino"))
     skalo = models.PositiveSmallIntegerField(_("skalo"),
                 choices=SKALO_ELEKTOJ, max_length=1, null=True, default=0)
     temo = models.PositiveSmallIntegerField(_("temo"),
                 choices=TEMO_ELEKTOJ, max_length=1, null=True, default=0)
     publiko = models.PositiveSmallIntegerField(_("publiko"),
                 choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
+
+    class Meta:
+        verbose_name = _("arangxo")
+        verbose_name_plural = _("arangxoj")
+    
+    def __unicode__(self):
+        return self.nomo
+
+
+
+class Evento(models.Model):
+    arangxo = models.ForeignKey("evento.Arangxo", verbose_name=_(""))
+    retejo = models.URLField(_("retejo"), blank=True)
+    retposxto = models.EmailField(_("retposxto"), blank=True)
+    komenco = models.DateTimeField(_("komenco"), blank=True)
+    fino = models.DateTimeField(_("fino"))
     adreso = models.CharField(_("adreso"), max_length=255)
     adreso2 = models.CharField(_("adreso kont."), max_length=255, blank=True)
     posxtkodo = models.CharField(_("posxtkodo"), max_length=10, blank=True)

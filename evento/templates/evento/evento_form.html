@@ -7,12 +7,12 @@
     <script type="text/javascript" src="{% static 'jqueryui/js/jquery-ui-1.10.3.custom.min.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'jqueryui/css/pepper-grinder/jquery-ui-1.10.3.custom.min.css' %}" />
 
-    <h2>{{ object.nomo }}</h2>
+    <h2>{{ object.arangxo.nomo }}</h2>
     <div id="mapo_form"></div>
 
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
-        <input class="agoj" type="submit" value="{% trans 'ek' %}" />
+        <input type="submit" value="{% trans 'ek' %}" />
     </form>
 
     <script>
@@ -30,15 +30,20 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
     <script>
-        var lat = {{ object.lat }};
-        var long = {{ object.long }};
-        var map = L.map('mapo_form').setView([lat, long], 13);
+        {% if object.lat %}
+            var lat = {{ object.lat }};
+            var long = {{ object.long }};
+            var map = L.map('mapo_form').setView([lat, long], 13);
+            var marker = L.marker([lat, long]).addTo(map);
+        {% else %}
+            var map = L.map('mapo_form').setView([30,0],2);
+            var marker = L.marker([30,0]).addTo(map);
+        {% endif %}
         var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
         L.tileLayer(tiles, {
             attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
             maxZoom: 19
         }).addTo(map);
-        var marker = L.marker([lat, long]).addTo(map);
 
         function onMapClick(e) {
             $("#id_lat").val(e.latlng.lat);

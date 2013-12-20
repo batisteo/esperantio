@@ -1,0 +1,12 @@
+{% extends 'evento/base_evento.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="agoj" type="submit" value="{% trans 'ek' %}" />
+    </form>
+
+{% endblock content %}

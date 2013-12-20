@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block content %}
-    <h2>{{ object.nomo }}</h2>
+    <h2>{{ object.arangxo.nomo }}</h2>
     <div id="datoloko">
         <p><strong>{{ object.komenco|date:"d M Y" }}</strong> <span>{{ object.fino|date:"d M Y" }}</span></p>
         <p>{{ object.urbo }}</p>
@@ -15,14 +15,12 @@
     <div id="datumoj">
         <p>{{ object.retejo }}</p>
         <p>{{ object.retposxto }}</p>
-        <p>{{ object.organizo }}</p>
-        <p>{{ object.longa_nomo }}</p>
         <p>{{ object.posxtkodo }}</p>
         <p>{{ object.lando }}</p>
-        <p>{{ object.nb_partopr }}</p>
-        <p>{{ object.get_skalo_display }}</p>
-        <p>{{ object.get_temo_display }}</p>
-        <p>{{ object.get_publiko_display }}</p>
+        <p>ĉ. {{ object.nb_partopr }} partoprenantoj atenditaj</p>
+        <p>{{ object.arangxo.get_skalo_display }}</p>
+        <p>{{ object.arangxo.get_temo_display }}</p>
+        <p>{{ object.arangxo.get_publiko_display }}</p>
     </div>
     
     
