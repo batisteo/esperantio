@@ -7,8 +7,8 @@
  * @license		MIT License, see license.txt
  */
 .pickmeup {
-  background: black;
-  border-radius: 0.4em;
+  background: #eee;
+  border-radius: 0.3em;
   display: none;
   position: absolute; }
   .pickmeup * {
@@ -21,7 +21,7 @@
     text-align: center;
     width: 15em; }
     .pickmeup .pmu-instance .pmu-button {
-      color: #eeeeee;
+      color: #888;
       cursor: pointer;
       outline: none;
       text-decoration: none; }
@@ -31,7 +31,7 @@
     .pickmeup .pmu-instance .pmu-button:hover {
       color: #88c5eb; }
     .pickmeup .pmu-instance .pmu-not-in-month {
-      color: #666666; }
+      color: #ccc; }
     .pickmeup .pmu-instance .pmu-disabled,
     .pickmeup .pmu-instance .pmu-disabled:hover {
       color: #333333;
@@ -44,7 +44,7 @@
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
-      color: #eeeeee;
+      color: #888;
       line-height: 2em; }
       .pickmeup .pmu-instance nav *:first-child :hover {
         color: #88c5eb; }

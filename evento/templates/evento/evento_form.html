@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/pickmeup.css' %}" />
 
     <h2>{{ object.arangxo.nomo }}</h2>
-    <div id="mapo_form"></div>
+    <div id="mapo_formIDABLE"></div>
 
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
@@ -17,12 +17,30 @@
 
     <script>
             $(function() {
-                $( "#id_komenco" ).pickmeup({
-                    format  : 'Y-m-d',
-                    flate : true
-                    });
-
+                $("#id_komenco").pickmeup({
+                    format: 'Y-m-d',
+                    hide_on_select: true,
+                    before_show: function () {
+                        var $this = $(this);
+                        $this.pickmeup('set_date', $this.val());
+                    },
+                    change: function (formatted) {
+                        $(this).val(formatted);
+                    }
                 });
+                $("#id_fino").pickmeup({
+                    format: 'Y-m-d',
+                    hide_on_select: true,
+                    before_show: function () {
+                        var $this = $(this);
+                        $this.pickmeup('set_date', $this.val());
+                    },
+                    change: function (formatted) {
+                        $(this).val(formatted);
+                    }
+                });
+            });
+
     </script>
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
