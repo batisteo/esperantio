@@ -3,9 +3,8 @@
 {% load static %}
 
 {% block content %}
-    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery.pickmeup.min.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/pickmeup.css' %}" />
+    <script type="text/javascript" src="{% static '/js/jquery.pickmeup.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/pickmeup.min.css' %}" />
 
     <h2>{{ object.arangxo.nomo }}</h2>
     <div id="mapo_form"></div>
@@ -18,8 +17,11 @@
     <script>
             $(function() {
                 $( "#id_komenco" ).pickmeup({
-                    format  : 'Y-m-d',
-                    flate : true
+                    format  : 'Y-m-d'
+                    });
+                $( "#id_fino" ).pickmeup({
+    format  : 'Y-m-d'datepicker({
+                    changeMonth: true,
                     });
 
                 });
