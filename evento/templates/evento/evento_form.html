@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/pickmeup.css' %}" />
 
     <h2>{{ object.arangxo.nomo }}</h2>
-    <div id="mapo_formIDABLE"></div>
+    <div id="mapo_form"></div>
 
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
