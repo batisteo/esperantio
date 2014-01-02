@@ -2,6 +2,12 @@
 {% load staticfiles %}
 {% load i18n %}
 
+{% block extra-js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mapo.js' %}"></script>
+{% endblock extra-js %}
+
 {% block content %}
     <h2>{{ object.arangxo.nomo }}</h2>
     <div id="datoloko">
@@ -39,5 +45,18 @@
         var mess = "<strong>{{ object.nomo }} {{ object.jaro }}</strong><br/>{{ object.urbo }}";
         marker.bindPopup(mess).openPopup();
     </script>
+    
+    <script type="text/javascript">
+        function send_request(){
+            $.get(location.href, function(data){
+                $("#idName").html(data.nomo);
+                $("#idBirthday").html(data.lat);
+            });
+        }
+    </script>
+    
+    <input type="button" onclick="send_request();" value="Request this page with AJAX" /><br/>
+    <b>Name via AJAX:</b><span id="idName"></span><br/>
+    <b>Lat via AJAX:</b><span id="idBirthday"></span><br/>
 {% endblock content %}
 

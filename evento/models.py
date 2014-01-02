@@ -21,7 +21,7 @@ class Arangxo(models.Model):
     class Meta:
         verbose_name = _("arangxo")
         verbose_name_plural = _("arangxoj")
-    
+
     def __unicode__(self):
         return self.nomo
 
@@ -46,10 +46,16 @@ class Evento(models.Model):
     class Meta:
         verbose_name = _("evento")
         verbose_name_plural = _("eventoj")
-    
+
     def __unicode__(self):
-        return self.nomo
-    
+        return self.arangxo.nomo
+
+    def as_dict(self):
+        return {'nomo': self.arangxo.nomo,
+                'lat': self.lat,
+                'long': self.long,
+        }
+
     @property
     def jaro(self):
         return self.komenco.year

@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, include, url
 
+from evento.views import HybridDetailView
+from evento.models import Evento
+
 from django.contrib import admin
 admin.autodiscover()
 
@@ -36,6 +39,10 @@ urlpatterns += patterns('evento.views',
     url(r'^kal/arangxo/(?P<pk>\d+)/evento/aldoni/$',
             view='evento_create',
             name='evento_create',),
+
+    url(r'^kal/evento/(?P<pk>\d+)/$',
+            view=HybridDetailView.as_view(model=Evento),
+            name='evento_detail',),
 
     url(r'^kal/evento/(?P<pk>\d+)/$',
             view='evento_detail',
