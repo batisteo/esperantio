@@ -22,6 +22,8 @@ SECRET_KEY = '*o34#&h@k(&t0c9m&vip7qtkn02oml5v!n=v9s88^_-c=(xf2s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+AUTH_USER_MODEL = 'uzantoj.Uzanto'
+
 TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'), )
 STATIC_URL = '/static/'
@@ -42,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'uzantoj',
     'evento',
 )
 
