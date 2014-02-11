@@ -14,7 +14,11 @@
 
     <body>
         <header>
-            <p id="konekti"><a href="">{% trans "konekti" %}</a></p>
+            {% if user.is_authenticated %}
+                <p id="konekti"><a href="{% url 'elsaluti' %}">{{ user.salutnomo }}</a></p>
+            {% else %}
+                <p id="konekti"><a href="{% url 'konekti' %}">{% trans "konekti" %}</a></p>
+            {% endif %}
             <h1>esperant<span>io</span> {% block header-title %}{% endblock header-title %}</h1>
         </header>
 

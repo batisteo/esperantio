@@ -1,0 +1,19 @@
+{% extends 'evento/base_evento.html' %}
+{% load i18n %}
+
+
+    {% block content %}
+        <form
+            action="{% block form_action %}{% endblock %}"
+            method="{% block form_method %}post{% endblock %}"
+            {% block form_extra_attrs %}class="styled ui-autoLabelWidth"{% endblock %}>
+        ~~ {{ form }} ~~
+        
+        <button class="btn" type="submit">
+            {% block form_submit_text %}{% trans "Konekti" %}{% endblock %}</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+        
+        {% csrf_token %}
+
+        </form>
+    {% endblock content %}

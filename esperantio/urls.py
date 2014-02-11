@@ -12,6 +12,14 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^ensaluti/$',
+        view='django.contrib.auth.views.login',
+        name='konekti'),
+
+    url(r'^elsaluti/$',
+        view='django.contrib.auth.views.logout',
+        name='elsaluti'),
 )
 
 
