@@ -15,7 +15,7 @@
 }
 @font-face {
     font-family: Poetsen;
-    src: url("fonts/PoetsenOne_R.woff");
+    src: url("fonts/poetsenone-regular.woff");
 }
 
 body { margin: 0; font-family: Poetsen, Biolinum, "Trebuchet MS", serif; font-size: 1.3em; color: #333; }

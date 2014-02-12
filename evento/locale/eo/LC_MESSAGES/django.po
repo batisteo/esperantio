@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-12 19:43+0000\n"
-"PO-Revision-Date: 2013-12-12 20:49+0100\n"
-"Last-Translator: Baptiste Darthenay <traduko.batisteo@recursor.net>\n"
+"POT-Creation-Date: 2014-02-12 19:47+0000\n"
+"PO-Revision-Date: 2014-02-12 20:48+0100\n"
+"Last-Translator: Baptiste Darthenay <baptiste+ecrevisse@darthenay.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgid "kontinento"
 msgstr ""
 
 #: elektoj.py:9
-#: models.py:27
+#: models.py:40
 msgid "lando"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgid "regiono"
 msgstr ""
 
 #: elektoj.py:11
-#: models.py:26
+#: models.py:39
 msgid "urbo"
 msgstr ""
 
@@ -96,75 +96,105 @@ msgstr ""
 msgid "1000"
 msgstr ""
 
-#: models.py:9
+#: models.py:10
 msgid "nomo"
 msgstr ""
 
-#: models.py:10
+#: models.py:11
 msgid "longa nomo"
 msgstr ""
 
-#: models.py:12
+#: models.py:13
 msgid "organizo"
 msgstr ""
 
-#: models.py:13
-msgid "retejo"
-msgstr ""
-
 #: models.py:14
-msgid "retposxto"
-msgstr "retpoŝto"
-
-#: models.py:15
-msgid "komenco"
-msgstr ""
-
-#: models.py:16
-msgid "fino"
-msgstr ""
-
-#: models.py:17
 msgid "skalo"
 msgstr ""
 
-#: models.py:19
+#: models.py:16
 msgid "temo"
 msgstr ""
 
-#: models.py:21
+#: models.py:18
 msgid "publiko"
 msgstr ""
 
+#: models.py:22
+msgid "arangxo"
+msgstr "aranĝo"
+
 #: models.py:23
-msgid "adreso"
+msgid "arangxoj"
+msgstr "aranĝoj"
+
+#: models.py:32
+msgid "retejo"
 msgstr ""
 
-#: models.py:24
-msgid "adreso kont."
-msgstr ""
-
-#: models.py:25
-msgid "posxtkodo"
-msgstr "poŝtkodo"
-
-#: models.py:28
-msgid "latitudo"
-msgstr ""
-
-#: models.py:29
-msgid "longitudo"
-msgstr ""
-
-#: models.py:30
-msgid "nombro da partoprenantoj"
-msgstr ""
+#: models.py:33
+msgid "retposxto"
+msgstr "retpoŝto"
 
 #: models.py:34
-msgid "evento"
+msgid "komenco"
 msgstr ""
 
 #: models.py:35
+msgid "fino"
+msgstr ""
+
+#: models.py:36
+msgid "adreso"
+msgstr ""
+
+#: models.py:37
+msgid "adreso kont."
+msgstr ""
+
+#: models.py:38
+msgid "posxtkodo"
+msgstr "poŝtkodo"
+
+#: models.py:41
+msgid "latitudo"
+msgstr ""
+
+#: models.py:42
+msgid "longitudo"
+msgstr ""
+
+#: models.py:43
+msgid "nombro da partoprenantoj"
+msgstr ""
+
+#: models.py:47
+msgid "evento"
+msgstr ""
+
+#: models.py:48
 msgid "eventoj"
 msgstr ""
+
+#: templates/evento/arangxo_detail.html:8
+#: templates/evento/evento_detail.html:17
+msgid "Redakti"
+msgstr ""
+
+#: templates/evento/arangxo_detail.html:9
+msgid "Aldoni evento"
+msgstr ""
+
+#: templates/evento/arangxo_form.html:9
+#: templates/evento/evento_form.html:15
+msgid "ek"
+msgstr ""
+
+#: templates/evento/evento_list.html:12
+msgid "Eventoj"
+msgstr ""
+
+#: templates/evento/evento_list.html:13
+msgid "Aldoni arangxo"
+msgstr "Aldoni aranĝo"
 
