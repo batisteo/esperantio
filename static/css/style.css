@@ -14,13 +14,13 @@
     font-style: italic;
 }
 @font-face {
-    font-family: Poetsen;
-    src: url("fonts/poetsenone-regular.woff");
+    font-family: Fertigo;
+    src: url("fonts/Fertigo_PRO-webfont-eo.woff");
 }
 
-body { margin: 0; font-family: Poetsen, Biolinum, "Trebuchet MS", serif; font-size: 1.3em; color: #333; }
+body { margin: 0; font-family: Fertigo, Biolinum, "Trebuchet MS", serif; font-size: 1.3em; color: #333; }
 header { box-shadow: 0 0 5px 5px rgba(0,0,0,.2); padding-left: 1.5em; padding-bottom: .5em; }
-header h1 { margin: 0; color: white; font-size: 2em; text-shadow: 2px 2px 1px rgba(0,0,0,.3); font-family: Poetsen }
+header h1 { margin: 0; color: white; font-size: 2em; text-shadow: 2px 2px 1px rgba(0,0,0,.3);}
 header h1 span { opacity: .7; text-shadow: 4px 4px 2px rgba(0,0,0,.2); top: 0; position: relative; }
 header h1 span { transition: opacity 1s; }
 header h1:hover span { text-shadow: 2px 2px 1px rgba(0,0,0,.3); opacity: 1; top: 1px;}
