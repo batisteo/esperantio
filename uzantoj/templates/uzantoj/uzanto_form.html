@@ -1,0 +1,9 @@
+{% extends 'uzantoj/base_uzanto.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="" />
+    </form>
+{% endblock content %}

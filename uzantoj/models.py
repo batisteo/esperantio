@@ -53,8 +53,8 @@ class Uzanto(AbstractBaseUser, PermissionsMixin):
     urbo = models.CharField(_("urbo"), max_length=255, blank=True)
     lando = models.CharField(_("lando"), max_length=255, blank=True)
 
-    tel = models.CharField(_("telefono"), max_length=20)
-    tel2 = models.CharField(_("telefono2"), max_length=20)
+    tel = models.CharField(_("telefono"), max_length=20, blank=True)
+    tel2 = models.CharField(_("telefono2"), max_length=20, blank=True)
 
     is_active = models.BooleanField(_("estas aktiva"), default=False)
     is_staff = models.BooleanField(_("estas personaro"), default=False)
@@ -67,10 +67,13 @@ class Uzanto(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("uzanto")
         verbose_name_plural = _("uzantoj")
+    
+    @property
+    def nomo(self):
+        return self.get_full_name()
 
     def get_absolute_url(self):
-        return "/uzanto/{salutnomo}".format(
-                salutnomo=urlquote(self.salutnomo))
+        return "/uzanto/"
 
     def get_full_name(self):
         return " ".join((self.persona_nomo, self.familia_nomo)).strip()

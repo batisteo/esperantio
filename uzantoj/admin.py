@@ -9,7 +9,7 @@ from .forms import CustomUserChangeForm, CustomUserCreationForm
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('salutnomo', 'password')}),
-        (_('Personal info'), {'fields': ('persona_nomo', 'familia_nomo')}),
+        (_('Personal info'), {'fields': ('persona_nomo', 'familia_nomo', 'lando')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'aligxdato')}),
