@@ -4,7 +4,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-STATIC_ROOT = (os.path.join(BASE_DIR, "..", "public", "static"), )
+STATIC_ROOT = os.path.join(BASE_DIR, "..", "public", "static")
 
 ALLOWED_HOSTS = [get_env_variable("ALLOWED_HOSTS"),]
 
