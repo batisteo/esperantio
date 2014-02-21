@@ -1,6 +1,9 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from django.core.exceptions import ImproperlyConfigured
+
+
 def get_env_variable(var_name):
     """Get the environement variable or return exception."""
     try:
@@ -8,6 +11,7 @@ def get_env_variable(var_name):
     except KeyError:
         error_msg = "Set the %s environment variable." % var_name
         raise ImproperlyConfigured(error_msg)
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
