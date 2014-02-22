@@ -9,3 +9,4 @@ env/
 config_local.py
 config_staging.py
 config_production.py
+public/static
