@@ -5,40 +5,41 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Esperantio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-12 19:47+0000\n"
-"PO-Revision-Date: 2014-02-12 20:48+0100\n"
+"POT-Creation-Date: 2014-02-22 13:11+0100\n"
+"PO-Revision-Date: 2014-02-22 13:12+0100\n"
 "Last-Translator: Baptiste Darthenay <baptiste+ecrevisse@darthenay.fr>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: EO <esperantio.batisteo@recursor.net>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Esperanto\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: elektoj.py:7
 msgid "mondo"
-msgstr ""
+msgstr "mondo"
 
 #: elektoj.py:8
 msgid "kontinento"
-msgstr ""
+msgstr "kontinento"
 
 #: elektoj.py:9
 #: models.py:40
 msgid "lando"
-msgstr ""
+msgstr "lando"
 
 #: elektoj.py:10
 msgid "regiono"
-msgstr ""
+msgstr "regiono"
 
 #: elektoj.py:11
 #: models.py:39
 msgid "urbo"
-msgstr ""
+msgstr "urbo"
 
 #: elektoj.py:17
 msgid "gxenerala"
@@ -46,15 +47,15 @@ msgstr "ĝenerala"
 
 #: elektoj.py:18
 msgid "studada"
-msgstr ""
+msgstr "studada"
 
 #: elektoj.py:19
 msgid "kultura"
-msgstr ""
+msgstr "kultura"
 
 #: elektoj.py:20
 msgid "fervojista"
-msgstr ""
+msgstr "fervojista"
 
 #: elektoj.py:26
 msgid "cxiuj"
@@ -62,11 +63,11 @@ msgstr "ĉiuj"
 
 #: elektoj.py:27
 msgid "junuloj"
-msgstr ""
+msgstr "junuloj"
 
 #: elektoj.py:28
 msgid "maljunuloj"
-msgstr ""
+msgstr "maljunuloj"
 
 #: elektoj.py:32
 msgid "5"
@@ -98,27 +99,27 @@ msgstr ""
 
 #: models.py:10
 msgid "nomo"
-msgstr ""
+msgstr "nomo"
 
 #: models.py:11
 msgid "longa nomo"
-msgstr ""
+msgstr "longa nomo"
 
 #: models.py:13
 msgid "organizo"
-msgstr ""
+msgstr "organizo"
 
 #: models.py:14
 msgid "skalo"
-msgstr ""
+msgstr "skalo"
 
 #: models.py:16
 msgid "temo"
-msgstr ""
+msgstr "temo"
 
 #: models.py:18
 msgid "publiko"
-msgstr ""
+msgstr "publiko"
 
 #: models.py:22
 msgid "arangxo"
@@ -128,9 +129,13 @@ msgstr "aranĝo"
 msgid "arangxoj"
 msgstr "aranĝoj"
 
+#: models.py:31
+msgid "Arangxo"
+msgstr "Aranĝo"
+
 #: models.py:32
 msgid "retejo"
-msgstr ""
+msgstr "retejo"
 
 #: models.py:33
 msgid "retposxto"
@@ -138,19 +143,19 @@ msgstr "retpoŝto"
 
 #: models.py:34
 msgid "komenco"
-msgstr ""
+msgstr "komenco"
 
 #: models.py:35
 msgid "fino"
-msgstr ""
+msgstr "fino"
 
 #: models.py:36
 msgid "adreso"
-msgstr ""
+msgstr "adreso"
 
 #: models.py:37
 msgid "adreso kont."
-msgstr ""
+msgstr "adreso kont."
 
 #: models.py:38
 msgid "posxtkodo"
@@ -158,43 +163,43 @@ msgstr "poŝtkodo"
 
 #: models.py:41
 msgid "latitudo"
-msgstr ""
+msgstr "latitudo"
 
 #: models.py:42
 msgid "longitudo"
-msgstr ""
+msgstr "longitudo"
 
 #: models.py:43
 msgid "nombro da partoprenantoj"
-msgstr ""
+msgstr "nombro da partoprenantoj"
 
 #: models.py:47
 msgid "evento"
-msgstr ""
+msgstr "evento"
 
 #: models.py:48
 msgid "eventoj"
-msgstr ""
+msgstr "eventoj"
 
 #: templates/evento/arangxo_detail.html:8
 #: templates/evento/evento_detail.html:17
 msgid "Redakti"
-msgstr ""
+msgstr "Redakti"
 
 #: templates/evento/arangxo_detail.html:9
-msgid "Aldoni evento"
-msgstr ""
+msgid "Aldonu eventon"
+msgstr "Aldonu eventon"
 
 #: templates/evento/arangxo_form.html:9
 #: templates/evento/evento_form.html:15
 msgid "ek"
-msgstr ""
+msgstr "ek"
 
 #: templates/evento/evento_list.html:12
 msgid "Eventoj"
-msgstr ""
+msgstr "Eventoj"
 
 #: templates/evento/evento_list.html:13
-msgid "Aldoni arangxo"
-msgstr "Aldoni aranĝo"
+msgid "Aldonu arangxon"
+msgstr "Aldonu aranĝon"
 

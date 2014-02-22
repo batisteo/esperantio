@@ -28,7 +28,7 @@ class Arangxo(models.Model):
 
 
 class Evento(models.Model):
-    arangxo = models.ForeignKey("evento.Arangxo", verbose_name=_(""))
+    arangxo = models.ForeignKey("evento.Arangxo", verbose_name=_("Arangxo"))
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     komenco = models.DateTimeField(_("komenco"), blank=True)
