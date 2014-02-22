@@ -1,8 +1,5 @@
 #!/usr/bin/python
 import os, sys
-import site
-
-site.addsitedir("/home/<compte>/.local")
 
 _PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
 sys.path.insert(0, _PROJECT_DIR) 
