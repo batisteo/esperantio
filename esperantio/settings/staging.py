@@ -5,7 +5,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-STATIC_ROOT = os.path.join(BASE_DIR, "..", "public", "static")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "public", "media")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "public", "static")
 
 SECRET_KEY = c.SECRET_KEY
 
