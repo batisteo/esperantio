@@ -7,6 +7,8 @@ TEMPLATE_DEBUG = DEBUG
 
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "public", "static")
 
+SECRET_KEY = c.SECRET_KEY
+
 ALLOWED_HOSTS = [c.ALLOWED_HOSTS,]
 
 DATABASES = {
