@@ -1,6 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.utils import simplejson
+from django.utils import json
 from django.views import generic
 from django.views.generic.detail import BaseDetailView, \
     SingleObjectTemplateResponseMixin
@@ -15,7 +15,7 @@ class JSONResponseMixin(object):
     def get_json_response(self, content, **httpresponse_kwargs):
         return HttpResponse(content, content_type='application/json', **httpresponse_kwargs)
     def convert_context_to_json(self, context):
-        return simplejson.dumps(context)
+        return json.dumps(context)
 
 
 class HybridDetailView(JSONResponseMixin, SingleObjectTemplateResponseMixin, BaseDetailView):
