@@ -1,29 +1,12 @@
-@font-face {
-    font-family: Biolinum;
-    src: url("fonts/LinBiolinum_R.woff");
-}
-@font-face {
-    font-family: Biolinum;
-    src: url("fonts/LinBiolinum_RB.woff");
-    font-weight: bold;
-}
-@font-face {
-    font-family: Biolinum;
-    src: url("fonts/LinBiolinum_RI.woff");
-    font-style: italic;
-}
-@font-face {
-    font-family: Fertigo;
-    src: url("fonts/Fertigo_PRO-webfont-eo.woff");
-}
-
 
 body {
     margin: 0;
-    font-family: Fertigo, Biolinum, "Trebuchet MS", serif;
+    font-family: sans-serif;
     font-size: 15px;
-    color: #446;
     
+}
+div, h1, h2, h3, header{
+    border: solid black 1px;
 }
 header {
     box-shadow: 0 0 5px 5px rgba(0,0,0,.2);
@@ -32,7 +15,6 @@ header {
 }
 header h1 {
     margin: 0;
-    color: white;
     font-size: 2em;
     text-shadow: 2px 2px 1px rgba(0,0,0,.3);
 }
@@ -56,27 +38,11 @@ header h1:hover span {
 #konekti {
     display: block;
     float: right;
-    font-weight: bold;
     margin: .66em 1.4em;
-    text-shadow: -1px -1px rgba(0,0,0,.3);
     
 }
 #konekti a {
-    color: White;
-    opacity: .6;
     font-size: 1.4em;
-    text-decoration: none;
-    transition: opacity .4s;
-    
-}
-#konekti a:hover, #konekti a:focus {
-    color: white;
-    outline: none;
-    opacity: .9;
-    
-}
-#konekti a:active {
-    text-shadow: 0 0 6px;
     
 }
 
