@@ -12,12 +12,26 @@ h2 { text-align: center; font-size: 2em; }
 
 /***** Butono *****/
 
-.agoj { position: absolute; top: 0; right: 0; }
+.agoj {
+    position: absolute;
+    top: -.6em;
+    right: 0;
+    margin: 1em;
+}
 .agoj a, input.agoj {
-    color: LightGray;
+    color: white;
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
+    background: #90CCCB;
+    border-radius: 7px;
+    padding: .4em .8em;
+}
+.agoj a:hover,
+.agoj a:focus,
+.agoj a:active,
+input.agoj {
+    opacity: .8;
 }
 
 /***** Formularoj *****/
