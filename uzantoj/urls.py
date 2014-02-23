@@ -20,4 +20,8 @@ urlpatterns += patterns('uzantoj.views',
     url(r'^redakti/$',
             view='uzanto_update',
             name='uzanto_update',),
+    
+    url(r'^nova/$',
+            view='uzanto_create',
+            name='uzanto_create',),
 )

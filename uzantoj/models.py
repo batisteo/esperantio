@@ -27,7 +27,7 @@ class UzantoManager(BaseUserManager):
 
     def create_user(self, salutnomo, retposxto, password=None, **aliaj_kampoj):
         return self._create_user(salutnomo, retposxto, password,
-                                 False, False, False, **aliaj_kampoj)
+                                 True, False, False, **aliaj_kampoj)
 
     def create_superuser(self, salutnomo, retposxto, password=None, **aliaj_kampoj):
         return self._create_user(salutnomo, retposxto, password,
