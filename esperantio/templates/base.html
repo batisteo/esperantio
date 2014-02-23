@@ -14,17 +14,20 @@
 
     <body>
         <header>
-            {% if user.is_authenticated %}
-                <p id="konekti"><a href="{% url 'elsaluti' %}">{{ user.salutnomo }}</a></p>
+            {% if not user.is_authenticated %}
+                {% with next=request.get_full_path|urlencode %}
+                    <p id="konekti">
+                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "konekti" %}</a>
+                    </p>
+                {% endwith %}
             {% else %}
-                <p id="konekti"><a href="{% url 'konekti' %}">{% trans "konekti" %}</a></p>
+                <p id="konekti"><a href="{% url 'elsaluti' %}">{{ user.salutnomo }}</a></p>
             {% endif %}
             <h1>esperant<span>io</span> {% block header-title %}{% endblock header-title %}</h1>
         </header>
 
         <main>
             {% block content %}
-                Devus esti enhavo normale…
             {% endblock content %}
         </main>
         

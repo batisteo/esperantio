@@ -9,14 +9,6 @@ urlpatterns = patterns('',
 
     url(r'^', include('evento.urls')),
     url(r'^kal/', include('evento.urls')),
-
-    url(r'^ensaluti/$',
-        view='django.contrib.auth.views.login',
-        name='konekti'),
-
-    url(r'^elsaluti/$',
-        view='django.contrib.auth.views.logout',
-        name='elsaluti'),
 )
 
 

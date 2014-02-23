@@ -1,5 +1,6 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -14,6 +15,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 
 
 AUTH_USER_MODEL = 'uzantoj.Uzanto'
+LOGIN_URL = '/uzanto/konekti/'
+LOGIN_REDIRECT_URL = '/uzanto/'
 
 
 # Application definition
@@ -36,6 +39,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
 )
 
 ROOT_URLCONF = 'esperantio.urls'

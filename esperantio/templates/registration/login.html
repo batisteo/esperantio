@@ -4,13 +4,13 @@
 
     {% block content %}
         <form
-            action="{% block form_action %}{% endblock %}"
-            method="{% block form_method %}post{% endblock %}"
+            action="{% block form_action %}{% endblock form_action %}"
+            method="{% block form_method %}post{% endblock form_method %}"
             {% block form_extra_attrs %}class="styled ui-autoLabelWidth"{% endblock %}>
-        ~~ {{ form }} ~~
+            {{ form.as_p }}
         
-        <button class="btn" type="submit">
-            {% block form_submit_text %}{% trans "Konekti" %}{% endblock %}</button>
+        <input class="agoj" type="submit"
+            value="{% block form_submit_text %}{% trans 'Konekti' %}{% endblock %}" />
         <input type="hidden" name="next" value="{{ next }}" />
         
         {% csrf_token %}
