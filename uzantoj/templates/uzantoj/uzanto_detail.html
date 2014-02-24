@@ -1,5 +1,26 @@
 {% extends 'uzantoj/base_uzanto.html' %}
+{% load i18n %}
 
 {% block content %}
-    Object: {{ object }}
+    <p><a href="{% url 'uzanto_update' %}">{% trans "Redakti vian profilon" %}</a></p>
+    
+    <p class="label">{% trans "salutnomo" %}: {{ object.salutnomo }}</p>
+    <p class="label">{% trans "retposxto" %}: {{ object.retposxto }}</p>
+    <p class="label">{% trans "persona_nomo" %}: {{ object.persona_nomo }}</p>
+    <p class="label">{% trans "familia_nomo" %}: {{ object.familia_nomo }}</p>
+    <p class="label">{% trans "retejo" %}: {{ object.retejo }}</p>
+    <p class="label">{% trans "twitter" %}: {{ object.twitter }}</p>
+    <p class="label">{% trans "jabber" %}: {{ object.jabber }}</p>
+    <p class="label">{% trans "skype" %}: {{ object.skype }}</p>
+    <p class="label">{% trans "adreso" %}: {{ object.adreso }}</p>
+    {% if object.adreso2 %}
+        <p class="label">{% trans "adreso2" %}: {{ object.adreso2 }}</p>
+    {% endif %}
+    <p class="label">{% trans "posxtkodo" %}: {{ object.posxtkodo }}</p>
+    <p class="label">{% trans "urbo" %}: {{ object.urbo }}</p>
+    <p class="label">{% trans "lando" %}: {{ object.lando }}</p>
+    <p class="label">{% trans "tel" %}: {{ object.tel }}</p>
+    {% if object.tel2 %}
+        <p class="label">{% trans "tel2" %}: {{ object.tel2 }}</p>
+    {% endif %}
 {% endblock content %}
