@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Uzanto
-from .forms import CustomUserChangeForm, CustomUserCreationForm
+from .forms import CustomUserChangeForm, UzantoCreateForm
 
 
 class CustomUserAdmin(UserAdmin):
@@ -21,7 +21,7 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
     form = CustomUserChangeForm
-    add_form = CustomUserCreationForm
+    add_form = UzantoCreateForm
     list_display = ('salutnomo', 'retposxto', 'persona_nomo', 'familia_nomo', 'is_staff')
     search_fields = ('salutnomo', 'retposxto', 'persona_nomo', 'familia_nomo')
     ordering = ('salutnomo',)

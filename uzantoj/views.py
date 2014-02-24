@@ -1,6 +1,5 @@
 from django.views import generic
 from django.contrib.auth import login
-from django.conf.global_settings import AUTHENTICATION_BACKENDS
 
 from .models import Uzanto
 from .forms import CustomUserChangeForm, UzantoCreateForm
@@ -35,8 +34,6 @@ class UzantoCreateView(generic.CreateView):
     
     def form_valid(self, form, *args, **kwargs):
         form_valid = super(UzantoCreateView, self).form_valid(form, *args, **kwargs)
-        self.object.backend = AUTHENTICATION_BACKENDS
-        self.object.save()
         login(self.request, self.object)
         return form_valid
 
