@@ -4,7 +4,8 @@ $(function() {
     var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
     L.tileLayer(tiles, {
         attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
-        maxZoom: 19
+        maxZoom: 19,
+        minZoom: 2
     }).addTo(map);
     
     $(".evento").each(function(){
