@@ -1,9 +1,12 @@
 {% extends 'eventoj/base_evento.html' %}
 {% load staticfiles %}
 {% load i18n %}
+{% load leaflet_tags %}
 
 {% block extra-js %}
     {{ block.super }}
+    {% leaflet_js %}
+    {% leaflet_css %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mapo.js' %}"></script>
 {% endblock extra-js %}
@@ -12,10 +15,8 @@
     <h2>{% trans "Kie estas la sekva E-renkontiĝo?" %}</h2>
     <p class="agoj"><a href="{% url 'arangxo_create' %}">{% trans "Aldonu arangxon" %}</a></p>
     
-    <div id="mapo"></div>
+    {% leaflet_map "mapo" callback="window.object_list" %}
 
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
     {% for object in object_list %}
         <p id="evento_{{object.pk}}" class="evento">
             {{ object.pk }} 

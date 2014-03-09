@@ -1,21 +1,53 @@
-$(function() {
 
-    var map = L.map('mapo').setView([45.1, 3.9], 2);
-    var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-    L.tileLayer(tiles, {
-        attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
-        maxZoom: 19,
-        minZoom: 2
-    }).addTo(map);
-    
+function object_list(mapo, options) {
     $(".evento").each(function(){
        var nomo = $(this).children(".nomo").text();
+       var jaro = $(this).children(".jaro").text();
        var urbo = $(this).children(".urbo").text();
        var lat = $(this).children(".lat").text();
        var long = $(this).children(".long").text();
-       var marker = L.marker([lat, long]).addTo(map);
-       var msg = "<strong>"+ nomo +"</strong><br/>"+ urbo;
+       var marker = L.marker([lat, long]).addTo(mapo);
+       var msg = "<strong>"+ nomo +" " + jaro + "</strong><br/>"+ urbo;
        marker.bindPopup(msg);
     });
-        
-});
+};
+
+
+function object_detail(mapo, options) {
+    var o = $('#object')
+    var lat = o.attr('lat');
+    var long = o.attr('long');
+    var nomo = o.attr('nomo');
+    var jaro = o.attr('jaro');
+    var urbo = o.attr('urbo');
+
+    mapo.setView([lat, long], 13);
+    var marker = L.marker([lat, long]).addTo(mapo);
+    var msg = "<strong>" + nomo + " " + jaro + "</strong><br/>" + urbo;
+    marker.bindPopup(msg).openPopup();
+};
+
+
+function object_form(mapo, options) {
+    var o = $('#object')
+    var lat = o.attr('lat');
+    var long = o.attr('long');
+    if (lat && long) {
+        mapo.setView([lat, long], 13);
+        var marker = L.marker([lat, long]).addTo(mapo);
+    }
+    else {
+        mapo.setView([30,0],2);
+        var marker = L.marker([30,0]).addTo(mapo);
+    }
+
+    function onMapClick(e) {
+        $("#id_lat").val(e.latlng.lat);
+        $("#id_long").val(e.latlng.lng);
+        marker.setLatLng(e.latlng);
+        var msg = "Lat: <strong> "+e.latlng.lat.toFixed(5) +"</strong><br/>Long: <strong>"+ e.latlng.lng.toFixed(5) +"</strong>";
+        marker.bindPopup(msg).openPopup();
+    }
+
+    mapo.on('click', onMapClick);
+};

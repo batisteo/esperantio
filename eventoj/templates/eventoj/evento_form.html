@@ -1,75 +1,39 @@
 {% extends 'eventoj/base_evento.html' %}
 {% load i18n %}
 {% load static %}
+{% load leaflet_tags %}
 
-{% block content %}
+{% block extra-js %}
+    {{ block.super }}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.pickmeup.min.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/pickmeup.css' %}" />
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <script type="text/javascript" src="{% static 'js/mapo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+{% endblock extra-js %}
 
+{% block extra-css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pickmeup.css' %}" />
+{% endblock extra-css %}
+
+
+{% block content %}
     <h2>{{ object.arangxo.nomo }}</h2>
-    <div id="mapo_form"></div>
+
+    {% leaflet_map "mapo" callback="object_form" %}
 
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="{% trans 'ek' %}" />
     </form>
-
-    <script>
-            $(function() {
-                $("#id_komenco").pickmeup({
-                    format: 'Y-m-d',
-                    hide_on_select: true,
-                    before_show: function () {
-                        var $this = $(this);
-                        $this.pickmeup('set_date', $this.val());
-                    },
-                    change: function (formatted) {
-                        $(this).val(formatted);
-                    }
-                });
-                $("#id_fino").pickmeup({
-                    format: 'Y-m-d',
-                    hide_on_select: true,
-                    before_show: function () {
-                        var $this = $(this);
-                        $this.pickmeup('set_date', $this.val());
-                    },
-                    change: function (formatted) {
-                        $(this).val(formatted);
-                    }
-                });
-            });
-
-    </script>
-
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
-    <script>
-        {% if object.lat %}
-            var lat = {{ object.lat }};
-            var long = {{ object.long }};
-            var map = L.map('mapo_form').setView([lat, long], 13);
-            var marker = L.marker([lat, long]).addTo(map);
-        {% else %}
-            var map = L.map('mapo_form').setView([30,0],2);
-            var marker = L.marker([30,0]).addTo(map);
-        {% endif %}
-        var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-        L.tileLayer(tiles, {
-            attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
-            maxZoom: 19
-        }).addTo(map);
-
-        function onMapClick(e) {
-            $("#id_lat").val(e.latlng.lat);
-            $("#id_long").val(e.latlng.lng);
-            marker.setLatLng(e.latlng);
-            var mess = "Lat: <strong> "+e.latlng.lat.toFixed(5) +"</strong><br/>Long: <strong>"+ e.latlng.lng.toFixed(5) +"</strong>";
-            marker.bindPopup(mess).openPopup();
-        }
-
-        map.on('click', onMapClick);
-    </script>
-
+    
+    <div id="object"
+        lat="{{ object.lat }}"
+        long="{{ object.long }}"
+        nomo="{{ object.arangxo.nomo }}"
+        jaro="{{ object.jaro }}"
+        urbo="{{ object.urbo }}">
+    </div>
 {% endblock content %}

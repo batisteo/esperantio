@@ -1,23 +1,27 @@
 {% extends 'eventoj/base_evento.html' %}
 {% load staticfiles %}
 {% load i18n %}
+{% load leaflet_tags %}
 
 {% block extra-js %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    {% leaflet_js %}
+    {% leaflet_css %}
     <script type="text/javascript" src="{% static 'js/mapo.js' %}"></script>
 {% endblock extra-js %}
 
 {% block content %}
     <h2>{{ object.arangxo.nomo }}</h2>
+
     <div id="datoloko">
         <p><strong>{{ object.komenco|date:"d M Y" }}</strong> <span>{{ object.fino|date:"d M Y" }}</span></p>
         <p>{{ object.urbo }}</p>
     </div>
+
     <p class="agoj"><a href="{% url 'evento_update' object.pk %}">{% trans "Redakti" %}</a></p>
-    
-    <div id="mapo"></div>
-    
+
+    {% leaflet_map "mapo" callback="window.object_detail" %}
+
     <div id="datumoj">
         <p>{{ object.retejo }}</p>
         <p>{{ object.retposxto }}</p>
@@ -28,35 +32,13 @@
         <p>{{ object.arangxo.get_temo_display }}</p>
         <p>{{ object.arangxo.get_publiko_display }}</p>
     </div>
-    
-    
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
-    <script>
-        var lat = {{ object.lat }};
-        var long = {{ object.long }};
-        var map = L.map('mapo').setView([lat, long], 13);
-        var tiles = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-        L.tileLayer(tiles, {
-            attribution: 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
-            maxZoom: 19
-        }).addTo(map);
-        var marker = L.marker([lat, long]).addTo(map);
-        var mess = "<strong>{{ object.nomo }} {{ object.jaro }}</strong><br/>{{ object.urbo }}";
-        marker.bindPopup(mess).openPopup();
-    </script>
-    
-    <script type="text/javascript">
-        function send_request(){
-            $.get(location.href, function(data){
-                $("#idName").html(data.nomo);
-                $("#idBirthday").html(data.lat);
-            });
-        }
-    </script>
-    
-    <input type="button" onclick="send_request();" value="Request this page with AJAX" /><br/>
-    <b>Name via AJAX:</b><span id="idName"></span><br/>
-    <b>Lat via AJAX:</b><span id="idBirthday"></span><br/>
+
+    <div id="object"
+        lat="{{ object.lat }}"
+        long="{{ object.long }}"
+        nomo="{{ object.arangxo.nomo }}"
+        jaro="{{ object.jaro }}"
+        urbo="{{ object.urbo }}">
+    </div>
 {% endblock content %}
 

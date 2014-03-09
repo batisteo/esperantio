@@ -5,9 +5,6 @@ body {
     font-size: 15px;
     
 }
-div, header{
-    border: solid black 1px;
-}
 header {
     box-shadow: 0 0 5px 5px rgba(0,0,0,.2);
     padding: .3em 1.5em .5em;
