@@ -9,7 +9,7 @@ from .elektoj import SKALO_ELEKTOJ, TEMO_ELEKTOJ, PUBLIKO_ELEKTOJ, NB_PARTOPR_EL
 class Arangxo(models.Model):
     nomo = models.CharField(_("nomo"), max_length=255)
     longa_nomo = models.CharField(_("longa nomo"), max_length=255, blank=True)
-    # organizo = models.ForeignKey('evento.Organizo', verbose_name=_("organizo"))
+    # organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"))
     organizo = models.CharField(_("organizo"), max_length=255, blank=True)
     skalo = models.PositiveSmallIntegerField(_("skalo"),
                 choices=SKALO_ELEKTOJ, max_length=1, null=True, default=0)
@@ -28,7 +28,7 @@ class Arangxo(models.Model):
 
 
 class Evento(models.Model):
-    arangxo = models.ForeignKey("evento.Arangxo", verbose_name=_("Arangxo"))
+    arangxo = models.ForeignKey("eventoj.Arangxo", verbose_name=_("Arangxo"))
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     komenco = models.DateTimeField(_("komenco"), blank=True)

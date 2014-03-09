@@ -1,4 +1,5 @@
 from django.contrib import admin
-from evento import models
+from eventoj import models
 
+admin.site.register(models.Arangxo)
 admin.site.register(models.Evento)
