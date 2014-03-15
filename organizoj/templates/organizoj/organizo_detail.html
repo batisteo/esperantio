@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<h1>{{ object.nomo }}</h1>
+
+<p>{{ object.retejo }}</p>
+<p>{{ object.retposxto }}</p>
+
+<p>{% for uzanto in object.uzantoj.all %}
+    {{ uzanto.nomo }}{% if not forloop.last %}, {% endif %}
+{% endfor %}</p>
+
+<p>{{ object.get_skalo_display }}</p>
+
+{% if object.vera_nomo_bezonata %}
+<p>Vera nomo estas bezonata por esti en tiu organizo.</p>
+{% endif %}
+
+{% endblock content %}
