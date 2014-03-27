@@ -6,7 +6,7 @@ body {
     
 }
 header {
-    box-shadow: 0 0 5px 5px rgba(0,0,0,.2);
+    background-color: #123d00;
     padding: .3em 1.5em .5em;
     
 }

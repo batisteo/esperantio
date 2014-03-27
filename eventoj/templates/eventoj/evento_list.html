@@ -12,7 +12,6 @@
 {% endblock extra-js %}
 
 {% block content %}
-    <h2>{% trans "Kie estas la sekva E-renkontiĝo?" %}</h2>
     <p class="agoj"><a href="{% url 'arangxo_create' %}">{% trans "Aldonu arangxon" %}</a></p>
     
     {% leaflet_map "mapo" callback="window.object_list" %}
