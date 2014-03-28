@@ -62,11 +62,6 @@ header h1 span {
     background: rgba(0,0,0,.3);
 }
 
-main {
-    height: calc(100% - 80px);
-    position: relative;
-}
-
 footer {
     background-color: #73b037;
     height: 30px;
@@ -74,15 +69,24 @@ footer {
     width: 100%;
 }
 
-footer p {
+footer #lingvo {
     display: inline-block;
-    padding: 0; margin: 0 auto;
+    position: absolute;
+    bottom: 4px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    padding: 0 .6em ;
+    margin: 0;
 }
 
 footer ul {
     display: inline-block;
+    width: 100%;
+    font-size: 1.1em;
+    text-align: center;
     list-style: none;
-    padding: 0; margin: 0 auto;
+    padding: 3px 0 0 0; margin: 0 auto;
 }
 
 footer ul li {
@@ -92,4 +96,12 @@ footer ul li {
 
 footer ul li a {
     color: white;
+    opacity: .6;
+    text-decoration: none;
+}
+
+footer ul li a:hover,
+footer ul li a:active,
+footer ul li a:focus {
+    opacity: 1;
 }
