@@ -2,7 +2,7 @@
 h2 { text-align: center; font-size: 2em; }
 #datoloko { position: absolute; top: -2em; }
 
-#mapo, #mapo_form { height: 700px; }
+#mapo, #mapo_form { height: 100%; }
 
 #datumoj {
     margin: 0 3em;

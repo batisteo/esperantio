@@ -61,7 +61,8 @@ USE_TZ = True
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (45.1, 3.9),
     'DEFAULT_ZOOM': 4,
-    'TILES': 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+    'MIN_ZOOM': 2,
+    'TILES': 'http://api.tiles.mapbox.com/v3/batisteo.hknl8e1c/{z}/{x}/{y}.png',
     'ATTRIBUTION_PREFIX': 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
     'RESET_VIEW': False,
 }

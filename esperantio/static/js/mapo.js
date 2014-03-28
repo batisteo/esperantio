@@ -6,6 +6,7 @@ function object_list(mapo, options) {
        var urbo = $(this).children(".urbo").text();
        var lat = $(this).children(".lat").text();
        var long = $(this).children(".long").text();
+       mapo.minZoom(4);
        var marker = L.marker([lat, long]).addTo(mapo);
        var msg = "<strong>"+ nomo +" " + jaro + "</strong><br/>"+ urbo;
        marker.bindPopup(msg);

@@ -1,31 +1,60 @@
 
-body {
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_R.woff");
+}
+
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_RB.woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_RI.woff");
+    font-style: italic;
+}
+
+html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
     font-family: sans-serif;
     font-size: 15px;
-    
 }
+
 header {
-    background-color: #123d00;
-    padding: .3em 1.5em .5em;
-    
+    background-color: #73b037;
+    padding: 0;
+    height: 8%;
+    max-height: 60px;
 }
-header h1 {
+
+header p {
     margin: 0;
-    font-size: 2em;
-    text-shadow: 2px 2px 1px rgba(0,0,0,.3);
+    padding: 0;
 }
+
+header h1 {
+    display: inline-block;
+    margin: 0 0 8px 1em;
+    font-size: 3em;
+    color: white;
+    letter-spacing: -.1em;
+    font-family: Biolinum;
+    font-weight: normal;
+}
+
 header h1 span {
     opacity: .7;
-    text-shadow: 4px 4px 2px rgba(0,0,0,.2);
-    top: 0;
-    position: relative;
-    
-}
-header h1 span {
+    color: #cf0;
     transition: opacity 1s;
-    
 }
+
 header h1:hover span {
     text-shadow: 2px 2px 1px rgba(0,0,0,.3);
     opacity: 1;
@@ -33,17 +62,33 @@ header h1:hover span {
 }
 
 #konekti {
-    display: block;
-    float: right;
-    margin: .66em 1.4em;
-    
+    position: absolute;
+    right: 1em;
+    top: 1%;
 }
+
 #konekti a {
+    display: block;
     font-size: 1.4em;
-    
+    color: white;
+    text-decoration: none;
+    padding: .4em 1em;
+    background: rgba(0,0,0,.4);
+    border-radius: 7px;
+}
+
+#konekti a:hover,
+#konekti a:active,
+#konekti a:focus {
+    background: rgba(0,0,0,.2);
 }
 
 main {
     position: relative;
-    
+    height: 87%;
+}
+
+footer {
+    background-color: #73b037;
+    height: 5%;
 }
