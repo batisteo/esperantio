@@ -51,3 +51,7 @@ form p input {
 }
 
 
+.evento {
+    position: absolute;
+    z-index: 1000;
+    }

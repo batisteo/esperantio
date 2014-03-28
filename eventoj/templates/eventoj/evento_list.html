@@ -17,13 +17,12 @@
         {% leaflet_map "mapo" callback="window.object_list" %}
 
     {% for object in object_list %}
-        <p id="evento_{{object.pk}}" class="evento">
-            {{ object.pk }} 
-            <span class="nomo">{{ object.arangxo.nomo }}</span>
-            <span class="jaro">{{ object.jaro }}</span>
-            <span class="urbo">{{ object.urbo }}</span>
-            <span class="lat">{{ object.lat }}</span>
-            <span class="long">{{ object.long }}</span>
-        </p>
+        <div class="object"
+            lat="{{ object.lat }}"
+            long="{{ object.long }}"
+            nomo="{{ object.arangxo.nomo }}"
+            jaro="{{ object.jaro }}"
+            urbo="{{ object.urbo }}">
+        </div>
     {% endfor %}
 {% endblock content %}

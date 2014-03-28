@@ -1,15 +1,15 @@
 
 function object_list(mapo, options) {
-    $(".evento").each(function(){
-       var nomo = $(this).children(".nomo").text();
-       var jaro = $(this).children(".jaro").text();
-       var urbo = $(this).children(".urbo").text();
-       var lat = $(this).children(".lat").text();
-       var long = $(this).children(".long").text();
-       mapo.minZoom(4);
-       var marker = L.marker([lat, long]).addTo(mapo);
-       var msg = "<strong>"+ nomo +" " + jaro + "</strong><br/>"+ urbo;
-       marker.bindPopup(msg);
+    $(".object").each(function(){
+        var o = $(this)
+        var lat = o.attr('lat');
+        var long = o.attr('long');
+        var nomo = o.attr('nomo');
+        var jaro = o.attr('jaro');
+        var urbo = o.attr('urbo');
+        var marker = L.marker([lat, long]).addTo(mapo);
+        var msg = "<strong>"+ nomo +" " + jaro + "</strong><br/>"+ urbo;
+        marker.bindPopup(msg);
     });
 };
 
