@@ -1,0 +1,66 @@
+
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_R.woff");
+}
+
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_RB.woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Biolinum;
+    src: url("fonts/LinBiolinum_RI.woff");
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: PT;
+    src: url("fonts/PTS55F-webfont.woff");
+}
+
+@font-face {
+    font-family: PT;
+    src: url("fonts/PTS75F-webfont.woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: PT;
+    src: url("fonts/PTS56F-webfont.woff");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: PT;
+    src: url("fonts/PTS76F-webfont.woff");
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: "PT Caption";
+    src: url("fonts/PTC55F-webfont.woff");
+}
+
+@font-face {
+    font-family: "PT Caption";
+    src: url("fonts/PTC75F-webfont.woff");
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: "PT Narrow";
+    src: url("fonts/PTN57F-webfont.woff");
+}
+
+@font-face {
+    font-family: "PT Narrow";
+    src: url("fonts/PTN77F-webfont.woff");
+    font-weight: bold;
+}

@@ -5,8 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
     <head>
-        <title>esperant.io{% block head-title %}{% endblock head-title %}</title>
+        <title>esperantio{% block head-title %}{% endblock head-title %}</title>
         <link rel="shortcut icon" type="image/png" href="favicon.png" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
         {% block extra-css %}{% endblock extra-css %}
         {% block extra-js %}{% endblock extra-js %}
@@ -16,8 +17,9 @@
         <header>
             {% if not user.is_authenticated %}
                 {% with next=request.get_full_path|urlencode %}
-                    <p id="konekti">
-                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "konekti" %}</a>
+                    <p class="konekti">
+                        <a href="{% url 'uzanto_create' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "registriĝu" %}</a>
+                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "ensalutu" %}</a>
                     </p>
                 {% endwith %}
             {% else %}
@@ -33,7 +35,7 @@
         
         <footer>
             {% block footer %}
-            <div id="lingvo">eo</div>
+            <p id="lingvo">eo</p>
             <ul>
                 <li><a href="">helpo</a> |</li>
                 <li><a href="">leĝaj informoj</a> |</li>

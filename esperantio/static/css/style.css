@@ -1,20 +1,4 @@
 
-@font-face {
-    font-family: Biolinum;
-    src: url("fonts/LinBiolinum_R.woff");
-}
-
-@font-face {
-    font-family: Biolinum;
-    src: url("fonts/LinBiolinum_RB.woff");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: Biolinum;
-    src: url("fonts/LinBiolinum_RI.woff");
-    font-style: italic;
-}
 
 html, body {
     margin: 0;
@@ -23,15 +7,14 @@ html, body {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: PT, sans-serif;
     font-size: 15px;
 }
 
 header {
     background-color: #73b037;
     padding: 0;
-    height: 8%;
-    max-height: 60px;
+    height: 40px;
 }
 
 header p {
@@ -40,9 +23,10 @@ header p {
 }
 
 header h1 {
-    display: inline-block;
-    margin: 0 0 8px 1em;
-    font-size: 3em;
+    position: absolute;
+    top: -31px;
+    margin-left: 24px;
+    font-size: 37px;
     color: white;
     letter-spacing: -.1em;
     font-family: Biolinum;
@@ -50,45 +34,62 @@ header h1 {
 }
 
 header h1 span {
-    opacity: .7;
     color: #cf0;
-    transition: opacity 1s;
 }
 
-header h1:hover span {
-    text-shadow: 2px 2px 1px rgba(0,0,0,.3);
-    opacity: 1;
-    top: 1px;
-}
 
-#konekti {
+.konekti {
     position: absolute;
-    right: 1em;
-    top: 1%;
+    right: 0;
+    margin-top: 6px;
 }
 
-#konekti a {
-    display: block;
-    font-size: 1.4em;
+.konekti a {
+    display: inline-block;
+    margin-right: .3em;
+    font-size: 16px;
     color: white;
     text-decoration: none;
-    padding: .4em 1em;
-    background: rgba(0,0,0,.4);
+    padding: 4px 16px;
+    background: rgba(0,0,0,.5);
     border-radius: 7px;
+    font-family: "PT Caption";
 }
 
-#konekti a:hover,
-#konekti a:active,
-#konekti a:focus {
-    background: rgba(0,0,0,.2);
+.konekti a:hover,
+.konekti a:active,
+.konekti a:focus {
+    background: rgba(0,0,0,.3);
 }
 
 main {
+    height: calc(100% - 80px);
     position: relative;
-    height: 87%;
 }
 
 footer {
     background-color: #73b037;
-    height: 5%;
+    height: 30px;
+    position: relative;
+    width: 100%;
+}
+
+footer p {
+    display: inline-block;
+    padding: 0; margin: 0 auto;
+}
+
+footer ul {
+    display: inline-block;
+    list-style: none;
+    padding: 0; margin: 0 auto;
+}
+
+footer ul li {
+    display: inline-block;
+    color: white;
+}
+
+footer ul li a {
+    color: white;
 }
