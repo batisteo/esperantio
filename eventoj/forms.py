@@ -23,17 +23,18 @@ class EventoForm(forms.ModelForm):
     class Meta:
         model = m.Evento
         fields = (
-            "retposxto",
             "komenco",
             "fino",
             "urbo",
             "posxtkodo",
             "lando",
+            "priskribo",
             "nb_partoprenantoj",
             "lat",
             "long",
         )
         widgets = {
+            "nb_partoprenantoj": forms.HiddenInput(),
             "lat": forms.HiddenInput(),
             "long": forms.HiddenInput(),
         }

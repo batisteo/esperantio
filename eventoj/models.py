@@ -11,11 +11,13 @@ class Arangxo(models.Model):
     nomo = models.CharField(_("nomo"), max_length=255)
     longa_nomo = models.CharField(_("longa nomo"), max_length=255, blank=True)
     retejo = models.URLField(_("retejo"), blank=True)
+    retposxto = models.EmailField(_("retposxto"), blank=True)
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
         blank=True, null=True)
     publiko = models.PositiveSmallIntegerField(_("publiko"),
                 choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
-    nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"))
+    nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
+            help_text="proksimuma nombro de partoprenantoj")
     etikedoj = TaggableManager()
 
     class Meta:
@@ -29,10 +31,8 @@ class Arangxo(models.Model):
 
 class Evento(models.Model):
     arangxo = models.ForeignKey("eventoj.Arangxo", verbose_name=_("Arangxo"))
-    retejo = models.URLField(_("retejo"), blank=True)
-    retposxto = models.EmailField(_("retposxto"), blank=True)
-    komenco = models.DateTimeField(_("komenco"), blank=True)
-    fino = models.DateTimeField(_("fino"))
+    komenco = models.DateTimeField(_("komenco"))
+    fino = models.DateTimeField(_("fino"), blank=True)
     adreso = models.CharField(_("adreso"), max_length=255)
     adreso2 = models.CharField(_("adreso kont."), max_length=255, blank=True)
     posxtkodo = models.CharField(_("posxtkodo"), max_length=10, blank=True)
@@ -42,6 +42,8 @@ class Evento(models.Model):
     long = models.FloatField(_("longitudo"), null=True, blank=True)
     nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
             blank=True, null=True)
+    priskribo = models.TextField(_("priskribo"), blank=True, null=True)
+    
 
     class Meta:
         verbose_name = _("evento")
