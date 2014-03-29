@@ -1,0 +1,38 @@
+{% extends 'eventoj/base_evento.html' %}
+{% load i18n %}
+{% load static %}
+{% load leaflet_tags %}
+
+{% block extra-js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.pickmeup.min.js' %}"></script>
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <script type="text/javascript" src="{% static 'js/mapo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+{% endblock extra-js %}
+
+{% block extra-css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pickmeup.css' %}" />
+{% endblock extra-css %}
+
+{% block content %}
+
+    {% leaflet_map "mapo-form" callback="object_form" %}
+
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% trans 'ek' %}" />
+    </form>
+    
+    <div id="object"
+        lat="{{ object.lat }}"
+        long="{{ object.long }}"
+        nomo="{{ object.arangxo.nomo }}"
+        jaro="{{ object.jaro }}"
+        urbo="{{ object.urbo }}">
+    </div>
+
+{% endblock content %}

@@ -7,25 +7,33 @@ html, body {
 }
 
 body {
-    font-family: PT, sans-serif;
+    font-family: Biolinum, sans-serif;
     font-size: 15px;
+}
+
+a {
+    text-decoration: none;
 }
 
 header {
     background-color: #73b037;
     padding: 0;
+    margin: 0;
     height: 40px;
 }
 
 header p {
-    margin: 0;
-    padding: 0;
 }
 
 header h1 {
     position: absolute;
-    top: -31px;
+    top: -5px;
+    margin: 0;
+    padding: 0;
     margin-left: 24px;
+}
+
+header h1 a {
     font-size: 37px;
     color: white;
     letter-spacing: -.1em;
@@ -33,7 +41,7 @@ header h1 {
     font-weight: normal;
 }
 
-header h1 span {
+header h1 a span {
     color: #cf0;
 }
 

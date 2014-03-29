@@ -29,6 +29,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
+    'toolbox',
     'leaflet',
     'uzantoj',
     'eventoj',
@@ -62,7 +63,8 @@ USE_TZ = True
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (45.1, 3.9),
     'DEFAULT_ZOOM': 4,
-    'MIN_ZOOM': 2,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 14,
     'TILES': 'http://api.tiles.mapbox.com/v3/batisteo.hknl8e1c/{z}/{x}/{y}.png',
     'ATTRIBUTION_PREFIX': 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
     'RESET_VIEW': False,

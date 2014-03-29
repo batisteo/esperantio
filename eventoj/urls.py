@@ -25,6 +25,10 @@ urlpatterns = patterns('eventoj.views',
             view='evento_list',
             name='evento_list',),
 
+    url(r'^evento/aldoni/$',
+            view='evento_arangxo_create',
+            name='evento_arangxo_create',),
+
     url(r'^arangxo/(?P<pk>\d+)/evento/aldoni/$',
             view='evento_create',
             name='evento_create',),

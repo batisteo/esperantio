@@ -23,12 +23,14 @@
                     </p>
                 {% endwith %}
             {% else %}
-                <p id="konekti"><a href="{% url 'elsaluti' %}">{{ user.salutnomo }}</a></p>
+                <p class="konekti"><a href="{% url 'uzanto_detail' %}">{{ user.salutnomo }}</a></p>
             {% endif %}
-            <h1>esperant<span>io</span> {% block header-title %}{% endblock header-title %}</h1>
+            <h1>
+                <a href="{% url 'evento_list' %}">esperant<span>io</span></a>
+            </h1>
         </header>
 
-        <main>
+        <main{% block main-class %}{% endblock main-class %}>
             {% block content %}
             {% endblock content %}
         </main>

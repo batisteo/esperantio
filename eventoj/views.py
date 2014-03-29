@@ -1,7 +1,8 @@
 from django.core.urlresolvers import reverse
 from django.views import generic
 
-from .forms import ArangxoForm, EventoCreateForm,  EventoForm
+from .forms import (ArangxoForm, EventoCreateForm,  EventoForm,
+        EventoArangxoCreateForm)
 from .models import Arangxo, Evento
 
 
@@ -49,6 +50,16 @@ class EventoDetailView(generic.DetailView):
 evento_detail = EventoDetailView.as_view()
 
 
+class EventoArangxoCreateView(generic.CreateView):
+    form_class = EventoArangxoCreateForm
+    template_name = 'eventoj/evento_arangxo_form.html'
+
+    def get_success_url(self):
+        return reverse('evento_list')
+
+evento_arangxo_create = EventoArangxoCreateView.as_view()
+
+
 class EventoCreateView(generic.CreateView):
     model = Evento
     form_class = EventoCreateForm
@@ -63,7 +74,7 @@ class EventoCreateView(generic.CreateView):
         return kwargs
 
     def get_success_url(self):
-        return reverse('evento_detail', args=[self.object.id])
+        return reverse('evento_detail', args=[self.object.pk])
 
 evento_create = EventoCreateView.as_view()
 

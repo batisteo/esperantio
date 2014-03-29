@@ -43,8 +43,8 @@ function object_form(mapo, options) {
     }
 
     function onMapClick(e) {
-        $("#id_lat").val(e.latlng.lat);
-        $("#id_long").val(e.latlng.lng);
+        $("[id$='lat']").val(e.latlng.lat);
+        $("[id$='long']").val(e.latlng.lng);
         marker.setLatLng(e.latlng);
         var msg = "Lat: <strong> "+e.latlng.lat.toFixed(5) +"</strong><br/>Long: <strong>"+ e.latlng.lng.toFixed(5) +"</strong>";
         marker.bindPopup(msg).openPopup();

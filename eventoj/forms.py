@@ -1,4 +1,7 @@
 from django import forms
+
+from toolbox.forms import MultiForm
+
 from . import models as m
 
 
@@ -6,12 +9,13 @@ class ArangxoForm(forms.ModelForm):
     class Meta:
         model = m.Arangxo
         fields = (
+            "organizo",
             "nomo",
             "longa_nomo",
-            "organizo",
             "etikedoj",
             "publiko",
             "nb_partoprenantoj",
+            "retejo",
           )
 
 
@@ -19,16 +23,15 @@ class EventoForm(forms.ModelForm):
     class Meta:
         model = m.Evento
         fields = (
-            "lat",
-            "long",
+            "retposxto",
             "komenco",
             "fino",
-            "retejo",
-            "retposxto",
             "urbo",
             "posxtkodo",
             "lando",
             "nb_partoprenantoj",
+            "lat",
+            "long",
         )
         widgets = {
             "lat": forms.HiddenInput(),
@@ -46,4 +49,22 @@ class EventoCreateForm(EventoForm):
         evento.arangxo = self.arangxo
         if commit:
             evento.save()
+        return evento
+
+
+class EventoArangxoCreateForm(MultiForm):
+    forms = [
+        ('arangxo', ArangxoForm),
+        ('evento', EventoForm),
+    ]
+    
+    def save(self):
+        forms = dict(self.forms)
+        arangxo = forms['arangxo'].save()
+        print arangxo, arangxo.pk
+        evento = forms['evento'].save(commit=False)
+        evento.arangxo = arangxo
+        print evento.arangxo
+        evento.save()
+        print evento, evento.pk
         return evento
