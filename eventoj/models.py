@@ -2,20 +2,21 @@
 from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from taggit.managers import TaggableManager
 
-from .elektoj import SKALO_ELEKTOJ, TEMO_ELEKTOJ, PUBLIKO_ELEKTOJ, NB_PARTOPR_ELEKTOJ
+from .elektoj import PUBLIKO_ELEKTOJ
 
 
 class Arangxo(models.Model):
     nomo = models.CharField(_("nomo"), max_length=255)
     longa_nomo = models.CharField(_("longa nomo"), max_length=255, blank=True)
-    organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"))
-    skalo = models.PositiveSmallIntegerField(_("skalo"),
-                choices=SKALO_ELEKTOJ, max_length=1, null=True, default=0)
-    temo = models.PositiveSmallIntegerField(_("temo"),
-                choices=TEMO_ELEKTOJ, max_length=1, null=True, default=0)
+    retejo = models.URLField(_("retejo"), blank=True)
+    organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
+        blank=True, null=True)
     publiko = models.PositiveSmallIntegerField(_("publiko"),
                 choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
+    nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"))
+    etikedoj = TaggableManager()
 
     class Meta:
         verbose_name = _("arangxo")
@@ -39,8 +40,8 @@ class Evento(models.Model):
     lando = models.CharField(_("lando"), max_length=255, blank=True)
     lat = models.FloatField(_("latitudo"), null=True, blank=True)
     long = models.FloatField(_("longitudo"), null=True, blank=True)
-    nb_partopr = models.PositiveSmallIntegerField(_("nombro da partoprenantoj"),
-                choices=NB_PARTOPR_ELEKTOJ, null=True, blank=True)
+    nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
+            blank=True, null=True)
 
     class Meta:
         verbose_name = _("evento")

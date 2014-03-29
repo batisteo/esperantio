@@ -9,9 +9,9 @@ class ArangxoForm(forms.ModelForm):
             "nomo",
             "longa_nomo",
             "organizo",
-            "skalo",
-            "temo",
+            "etikedoj",
             "publiko",
+            "nb_partoprenantoj",
           )
 
 
@@ -28,7 +28,7 @@ class EventoForm(forms.ModelForm):
             "urbo",
             "posxtkodo",
             "lando",
-            "nb_partopr",
+            "nb_partoprenantoj",
         )
         widgets = {
             "lat": forms.HiddenInput(),
