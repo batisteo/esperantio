@@ -1,6 +1,6 @@
 
 $(function() {
-    $("#id_komenco").pickmeup({
+    $("[id$='komenco']").pickmeup({
         format: 'Y-m-d',
         hide_on_select: true,
         before_show: function () {
@@ -12,7 +12,7 @@ $(function() {
         }
     });
     
-    $("#id_fino").pickmeup({
+    $("[id$='fino']").pickmeup({
         format: 'Y-m-d',
         hide_on_select: true,
         before_show: function () {
