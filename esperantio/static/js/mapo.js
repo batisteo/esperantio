@@ -2,13 +2,15 @@
 function object_list(mapo, options) {
     $(".object").each(function(){
         var o = $(this)
+        var id = o.attr('object_id');
+        var url = o.attr('url');
         var lat = o.attr('lat');
         var long = o.attr('long');
         var nomo = o.attr('nomo');
         var jaro = o.attr('jaro');
         var urbo = o.attr('urbo');
         var marker = L.marker([lat, long]).addTo(mapo);
-        var msg = "<strong>"+ nomo +" " + jaro + "</strong><br/>"+ urbo;
+        var msg = "<strong><a href='"+ url +"'>"+ nomo +" "+ jaro + "</a></strong><br/>"+ urbo;
         marker.bindPopup(msg);
     });
 };

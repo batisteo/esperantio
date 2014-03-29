@@ -20,6 +20,8 @@
 
     {% for object in object_list %}
         <div class="object"
+            object_id="{{ object.id }}"
+            url="{% url 'evento_detail' object.id %}"
             lat="{{ object.lat }}"
             long="{{ object.long }}"
             nomo="{{ object.arangxo.nomo }}"
