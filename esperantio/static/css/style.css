@@ -83,12 +83,10 @@ main {
     padding-bottom: 30px; /* Height of footer */
 }
 
-section {
-    position: relative;
-}
 
 aside {
     width: 20%;
+    padding: 20px;
 }
 
 #maldekstra {

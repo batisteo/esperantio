@@ -13,14 +13,14 @@ main.plenekrana {
 
 #mapo-form {
     float: left;
-    margin: 20px;
     width: 300px;
     border-radius: 12px;
+    cursor: crosshair;
 }
 
 #pickmeup-range {
-    float: right;
-    margin: 20px;
+    float: left;
+    margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
 }
@@ -60,7 +60,7 @@ p.agoj a:active {
 /***** Formularoj *****/
 
 form {
-    margin: 0 auto;
+    margin: 20px auto;
     width: 20em;
 }
 
@@ -102,4 +102,13 @@ input[type="submit"] {
     color: white;
     font-weight: bold;
     background: #73b037;
+    box-shadow: none;
+    margin: 0 auto;
+    font-size: 130%;
+}
 
+input[type="submit"]:hover,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+    box-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3) inset;
+}
