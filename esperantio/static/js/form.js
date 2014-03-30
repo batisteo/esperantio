@@ -25,15 +25,14 @@ $(function() {
     });
 
     $("#pickmeup-range").pickmeup({
+        date: [$("[id$='komenco']").val(), $("[id$='fino']").val()],
+        format: 'Y-m-d',
         flat: 'true',
         mode: 'range',
-        before_show: function() {
-            var $this = $(this);
-            $this.pickmeup('set_date', $this.val());
-        },
         change: function(formatted_date) {
             $("[id$='komenco']").val(formatted_date[0]);
             $("[id$='fino']").val(formatted_date[1]);
         }
     });
+
 });

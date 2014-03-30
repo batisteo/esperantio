@@ -26,13 +26,13 @@ class EventoForm(forms.ModelForm):
     class Meta:
         model = m.Evento
         fields = (
-            "komenco",
-            "fino",
             "urbo",
             "posxtkodo",
             "lando",
             "priskribo",
             "nb_partoprenantoj",
+            "komenco",
+            "fino",
             "lat",
             "long",
         )

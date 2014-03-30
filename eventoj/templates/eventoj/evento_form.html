@@ -21,14 +21,18 @@
 
 {% block content %}
     <h2>{{ object.arangxo.nomo }}</h2>
+    <aside id="maldekstra">
+        {% leaflet_map "mapo-form" callback="object_form" %}
+        <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
+    </aside>
 
-    {% leaflet_map "mapo" callback="object_form" %}
+    <section>
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="{% trans 'ek' %}" />
+        </form>
+    </section>
 
-    <form action="" method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{% trans 'ek' %}" />
-    </form>
-    
     <div id="object"
         lat="{{ object.lat }}"
         long="{{ object.long }}"
