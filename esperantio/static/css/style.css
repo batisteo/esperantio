@@ -143,3 +143,70 @@ footer ul li a:active,
 footer ul li a:focus {
     opacity: 1;
 }
+
+footer #tistel {
+    position: absolute;
+    bottom: -20px;
+    right: 8px;
+    opacity: .5;
+}
+
+footer #tistel:hover {
+    opacity: .8;
+}
+
+/***** Formularoj *****/
+
+form {
+    margin: 20px auto;
+    width: 20em;
+}
+
+form ul li {
+    list-style: none;
+    margin-bottom: .8em;
+}
+
+label {
+    display: block;
+}
+
+[required] {
+    border: 1px solid gray;
+}
+
+select, input, textarea {
+    display: block;
+    border: 1px solid silver;
+    box-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3) inset;
+    border-radius: .2em;
+    font-size: 1em;
+    padding: .1em .3em;
+    font-family: Biolinum;
+    text-align: center;
+    background: white;
+}
+
+.helptext {
+    opacity: .6;
+    font-size: 80%;
+    margin-top: .2em;
+    padding-left: .2em;
+    
+}
+
+
+input[type="submit"] {
+    color: white;
+    font-weight: bold;
+    background: #73b037;
+    box-shadow: none;
+    margin: 0 auto;
+    font-size: 130%;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+    box-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3) inset;
+}

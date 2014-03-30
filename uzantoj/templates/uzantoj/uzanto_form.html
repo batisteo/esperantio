@@ -1,9 +1,12 @@
 {% extends 'uzantoj/base_uzanto.html' %}
+{% load i18n %}
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_ul }}
-        <input type="submit" value="" />
-    </form>
+    <section>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <input type="submit" value="{% trans 'Registrigxu!' %}" />
+        </form>
+    </section>
 {% endblock content %}

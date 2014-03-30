@@ -17,7 +17,7 @@ class Arangxo(models.Model):
     publiko = models.PositiveSmallIntegerField(_("publiko"),
                 choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
     nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
-            help_text="proksimuma nombro de partoprenantoj")
+            help_text="Proksimuma nombro de partoprenantoj.")
     etikedoj = TaggableManager()
 
     class Meta:
@@ -41,7 +41,7 @@ class Evento(models.Model):
     lat = models.FloatField(_("latitudo"), null=True, blank=True)
     long = models.FloatField(_("longitudo"), null=True, blank=True)
     nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
-            blank=True, null=True)
+            blank=True, null=True, help_text="Proksimuma nombro de partoprenantoj.")
     priskribo = models.TextField(_("priskribo"), blank=True, null=True)
     
 
