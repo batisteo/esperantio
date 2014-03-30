@@ -23,9 +23,16 @@ $(function() {
             $(this).val(formatted);
         }
     });
-
+    
+    komenco = $("[id$='komenco']").val();
+    fino = $("[id$='fino']").val();
+    
+    if (komenco == '')   date = new Date();
+    else if (fino == '') date = komenco;
+    else                 date = [komenco, fino]
+    
     $("#pickmeup-range").pickmeup({
-        date: [$("[id$='komenco']").val(), $("[id$='fino']").val()],
+        date: date,
         format: 'Y-m-d',
         flat: 'true',
         mode: 'range',
