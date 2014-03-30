@@ -3,7 +3,7 @@ h2 { text-align: center; font-size: 2em; }
 #datoloko { position: absolute; top: -2em; }
 
 
-main.plenekrano {
+main.plenekrana {
     height: calc(100% - 70px);
 }
 
@@ -12,14 +12,17 @@ main.plenekrano {
 }
 
 #mapo-form {
+    float: left;
+    margin: 20px;
     width: 300px;
     border-radius: 12px;
-    margin: 2em auto;
 }
 
-
-#datumoj {
-    margin: 0 3em;
+#pickmeup-range {
+    float: right;
+    margin: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 p.agoj {
@@ -55,33 +58,48 @@ p.agoj a:active {
 }
 
 /***** Formularoj *****/
+
 form {
-    margin: 0 35%   ;
+    margin: 0 auto;
+    width: 20em;
 }
 
-#mapo_form {
-    margin-top: 10em; position: relative;
+form ul li {
+    list-style: none;
+    margin-bottom: .8em;
 }
 
-form p {
-    margin: 1em auto;
+label {
+    display: block;
 }
 
-form p select,
-form p input {
-    border: none;
-    box-shadow: inset 0 0 .3em rgba(0,0,0,.4);
+[required] {
+    border: 1px solid gray;
+}
+
+select, input, textarea {
+    display: block;
+    border: 1px solid silver;
+    box-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3) inset;
     border-radius: .2em;
     font-size: 1em;
     padding: .1em .3em;
     font-family: Biolinum;
     text-align: center;
-    float: right;
     background: white;
 }
 
+.helptext {
+    opacity: .6;
+    font-size: 80%;
+    margin-top: .2em;
+    padding-left: .2em;
+    
+}
 
-.evento {
-    position: absolute;
-    z-index: 1000;
-    }
+
+input[type="submit"] {
+    color: white;
+    font-weight: bold;
+    background: #73b037;
+

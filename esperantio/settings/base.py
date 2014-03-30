@@ -65,7 +65,8 @@ LEAFLET_CONFIG = {
     'DEFAULT_ZOOM': 4,
     'MIN_ZOOM': 3,
     'MAX_ZOOM': 14,
-    'TILES': 'http://api.tiles.mapbox.com/v3/batisteo.hknl8e1c/{z}/{x}/{y}.png',
+    'TILES': 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+    # 'TILES': 'http://api.tiles.mapbox.com/v3/batisteo.hknl8e1c/{z}/{x}/{y}.png',
     'ATTRIBUTION_PREFIX': 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
     'RESET_VIEW': False,
 }

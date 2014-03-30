@@ -23,4 +23,17 @@ $(function() {
             $(this).val(formatted);
         }
     });
+
+    $("#pickmeup-range").pickmeup({
+        flat: 'true',
+        mode: 'range',
+        before_show: function() {
+            var $this = $(this);
+            $this.pickmeup('set_date', $this.val());
+        },
+        change: function(formatted_date) {
+            $("[id$='komenco']").val(formatted_date[0]);
+            $("[id$='fino']").val(formatted_date[1]);
+        }
+    });
 });

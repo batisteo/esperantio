@@ -1,14 +1,23 @@
 
 
+html {
+    height: 100%;
+}
+
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
 }
 
 body {
     font-family: Biolinum, sans-serif;
-    font-size: 15px;
+    font-size: 18x;
+    position: relative;
+    min-height: 100%;
+}
+
+body.plenekrana {
+    height: 100%;
 }
 
 a {
@@ -70,10 +79,33 @@ header h1 a span {
     background: rgba(0,0,0,.3);
 }
 
+main {
+    padding-bottom: 30px; /* Height of footer */
+}
+
+section {
+    position: relative;
+}
+
+aside {
+    width: 20%;
+}
+
+#maldekstra {
+    float: left;
+}
+
+#dekstra {
+    float: right;
+}
+
+
 footer {
     background-color: #73b037;
     height: 30px;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
 }
 

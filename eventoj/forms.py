@@ -4,7 +4,6 @@ from toolbox.forms import MultiForm
 
 from . import models as m
 
-
 class ArangxoForm(forms.ModelForm):
     class Meta:
         model = m.Arangxo
@@ -12,11 +11,15 @@ class ArangxoForm(forms.ModelForm):
             "organizo",
             "nomo",
             "longa_nomo",
-            "etikedoj",
             "publiko",
             "nb_partoprenantoj",
             "retejo",
+            "retposxto",
+            "etikedoj",
           )
+        widgets = {
+            'nomo': forms.TextInput(attrs={'required':''}),
+        }
 
 
 class EventoForm(forms.ModelForm):
@@ -35,6 +38,8 @@ class EventoForm(forms.ModelForm):
         )
         widgets = {
             "nb_partoprenantoj": forms.HiddenInput(),
+            "komenco": forms.HiddenInput(),
+            "fino": forms.HiddenInput(),
             "lat": forms.HiddenInput(),
             "long": forms.HiddenInput(),
         }
