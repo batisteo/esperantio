@@ -11,25 +11,27 @@
 {% endblock extra-js %}
 
 {% block content %}
-    <h2>{{ object.arangxo.nomo }}</h2>
-
-    <div id="datoloko">
-        <p><strong>{{ object.komenco|date:"d M Y" }}</strong> <span>{{ object.fino|date:"d M Y" }}</span></p>
-        <p>{{ object.urbo }}</p>
-    </div>
 
     <p class="agoj"><a href="{% url 'evento_update' object.pk %}">{% trans "Redakti" %}</a></p>
 
     {% leaflet_map "mapo" callback="window.object_detail" %}
 
+    <h2>{{ object.arangxo.nomo }}</h2>
+        <p>{{ object.arangxo.temo }}</p>
+
+    <div id="">
+        <p><strong>{{ object.komenco|date:"d M Y" }}</strong> <span>{{ object.fino|date:"d M Y" }}</span></p>
+        <p>{{ object.urbo }}</p>
+    </div>
+
     <div id="datumoj">
+        <p>{{ object.created }}</p>
+        <p>{{ object.modified }}</p>
         <p>{{ object.retejo }}</p>
         <p>{{ object.retposxto }}</p>
         <p>{{ object.posxtkodo }}</p>
-        <p>{{ object.lando }}</p>
-        <p>ĉ. {{ object.nb_partopr }} partoprenantoj atenditaj</p>
-        <p>{{ object.arangxo.get_skalo_display }}</p>
-        <p>{{ object.arangxo.get_temo_display }}</p>
+        <p>{{ object.lando.name }}</p>
+        <p>ĉ. {{ object.nb_partoprenantoj }} partoprenantoj atenditaj</p>
         <p>{{ object.arangxo.get_publiko_display }}</p>
     </div>
 

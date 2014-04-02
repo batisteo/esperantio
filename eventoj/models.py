@@ -4,12 +4,17 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
 
-from .elektoj import PUBLIKO_ELEKTOJ
+from django_countries.fields import CountryField
+from django_extensions.db.models import TimeStampedModel
+
+from .elektoj import PUBLIKO_ELEKTOJ, OFTECO_ELEKTOJ
 
 
-class Arangxo(models.Model):
-    nomo = models.CharField(_("nomo"), max_length=255)
-    longa_nomo = models.CharField(_("longa nomo"), max_length=255, blank=True)
+class Arangxo(TimeStampedModel):
+    kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
+    nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
+    mallonga_nomo = models.CharField(_("mallonga nomo"), max_length=255, blank=True,
+            help_text=_("mallonga nomo se ekzistas"), unique=True)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
@@ -18,7 +23,12 @@ class Arangxo(models.Model):
                 choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
     nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
             help_text="Proksimuma nombro de partoprenantoj.")
-    etikedoj = TaggableManager()
+    etikedoj = TaggableManager(blank=True)
+    ofteco = models.PositiveIntegerField(_("ofteco"), blank=True, null=True,
+            help_text="Gxenerala ofteco de la renkontigxo.",
+            choices=OFTECO_ELEKTOJ)
+    dauro = models.PositiveIntegerField(_("dauxro"), blank=True, null=True,
+            help_text="Gxenerala dauxro de la renkontigxo.")
 
     class Meta:
         verbose_name = _("arangxo")
@@ -29,15 +39,17 @@ class Arangxo(models.Model):
 
 
 
-class Evento(models.Model):
+class Evento(TimeStampedModel):
+    kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     arangxo = models.ForeignKey("eventoj.Arangxo", verbose_name=_("Arangxo"))
     komenco = models.DateTimeField(_("komenco"))
     fino = models.DateTimeField(_("fino"), blank=True)
+    temo = models.CharField(_("temo"), max_length=255, blank=True)
     adreso = models.CharField(_("adreso"), max_length=255)
     adreso2 = models.CharField(_("adreso kont."), max_length=255, blank=True)
-    posxtkodo = models.CharField(_("posxtkodo"), max_length=10, blank=True)
     urbo = models.CharField(_("urbo"), max_length=255, blank=True)
-    lando = models.CharField(_("lando"), max_length=255, blank=True)
+    posxtkodo = models.CharField(_("posxtkodo"), max_length=10, blank=True)
+    lando = CountryField()
     lat = models.FloatField(_("latitudo"), null=True, blank=True)
     long = models.FloatField(_("longitudo"), null=True, blank=True)
     nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),

@@ -10,7 +10,7 @@ class ArangxoForm(forms.ModelForm):
         fields = (
             "organizo",
             "nomo",
-            "longa_nomo",
+            "mallonga_nomo",
             "publiko",
             "nb_partoprenantoj",
             "retejo",
@@ -26,6 +26,7 @@ class EventoForm(forms.ModelForm):
     class Meta:
         model = m.Evento
         fields = (
+            "temo",
             "urbo",
             "posxtkodo",
             "lando",
@@ -46,13 +47,11 @@ class EventoForm(forms.ModelForm):
 
 
 class EventoCreateForm(EventoForm):
-    def __init__(self, *args, **kwargs):
-        self.arangxo = m.Arangxo.objects.get(pk=kwargs.pop('arangxo'))
-        super(EventoForm, self).__init__(*args, **kwargs)
 
     def save(self, commit=True):
-        evento = super(EventoForm, self).save(commit=False)
+        evento = super(EventoCreateForm, self).save(commit=False)
         evento.arangxo = self.arangxo
+        evento.kreanto = self.kreanto
         if commit:
             evento.save()
         return evento
@@ -64,13 +63,19 @@ class EventoArangxoCreateForm(MultiForm):
         ('evento', EventoForm),
     ]
     
-    def save(self):
+    def __init__(self, *args, **kwargs):
+        self.kreanto = kwargs.pop('kreanto')
+        super(EventoArangxoCreateForm, self).__init__(*args, **kwargs)
+
+    def save(self, commit=True):
         forms = dict(self.forms)
-        arangxo = forms['arangxo'].save()
-        print arangxo, arangxo.pk
+        arangxo = forms['arangxo'].save(commit=False)
+        arangxo.kreanto = self.kreanto
+        if commit:
+            arangxo.save()
         evento = forms['evento'].save(commit=False)
         evento.arangxo = arangxo
-        print evento.arangxo
-        evento.save()
-        print evento, evento.pk
+        evento.kreanto = self.kreanto
+        if commit:
+            evento.save()
         return evento

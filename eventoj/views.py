@@ -54,6 +54,15 @@ class EventoArangxoCreateView(generic.CreateView):
     form_class = EventoArangxoCreateForm
     template_name = 'eventoj/evento_arangxo_form.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        self.user = request.user
+        return super(EventoArangxoCreateView, self).dispatch(request, *args, **kwargs)
+
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(EventoArangxoCreateView, self).get_form_kwargs(*args, **kwargs)
+        kwargs['kreanto'] = self.user
+        return kwargs
+
     def get_success_url(self):
         return reverse('evento_list')
 
@@ -66,6 +75,7 @@ class EventoCreateView(generic.CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         self.pk = kwargs['pk']
+        self.user = request.user
         return super(EventoCreateView, self).dispatch(request, *args, **kwargs)
 
     def get_form_kwargs(self, *args, **kwargs):

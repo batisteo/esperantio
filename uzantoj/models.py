@@ -5,6 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.http import urlquote
 from django.utils import timezone
 
+from django_countries.fields import CountryField
+
 
 class UzantoManager(BaseUserManager):
     def _create_user(self, salutnomo, retposxto, password,
@@ -51,7 +53,7 @@ class Uzanto(AbstractBaseUser, PermissionsMixin):
     adreso2 = models.CharField(_("adreso kont."), max_length=255, blank=True)
     posxtkodo = models.CharField(_("posxtkodo"), max_length=10, blank=True)
     urbo = models.CharField(_("urbo"), max_length=255, blank=True)
-    lando = models.CharField(_("lando"), max_length=255, blank=True)
+    lando = CountryField()
 
     tel = models.CharField(_("telefono"), max_length=20, blank=True)
     tel2 = models.CharField(_("telefono2"), max_length=20, blank=True)
