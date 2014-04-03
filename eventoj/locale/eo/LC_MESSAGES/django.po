@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Esperantio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-29 15:28+0000\n"
-"PO-Revision-Date: 2014-03-29 16:33+0100\n"
-"Last-Translator: Baptiste Darthenay <esperantio.batisteo@recursor.net>\n"
+"POT-Creation-Date: 2014-04-03 01:51+0000\n"
+"PO-Revision-Date: 2014-04-03 03:53+0100\n"
+"Last-Translator: Baptiste Darthenay <taggit.batisteo@recursor.net>\n"
 "Language-Team: EO <esperantio.batisteo@recursor.net>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -39,108 +39,187 @@ msgstr "junuloj"
 msgid "infanoj"
 msgstr "infanoj"
 
-#: models.py:11
-msgid "nomo"
-msgstr "nomo"
+#: elektoj.py:15
+msgid "malregule"
+msgstr "malregule"
 
-#: models.py:12
-msgid "longa nomo"
-msgstr "longa nomo"
+#: elektoj.py:16
+msgid "tage"
+msgstr "tage"
 
-#: models.py:13 models.py:32
+#: elektoj.py:17
+msgid "dutage"
+msgstr "dutage"
+
+#: elektoj.py:18
+msgid "foje semajne"
+msgstr "foje semajne"
+
+#: elektoj.py:19
+msgid "semajne"
+msgstr "semajne"
+
+#: elektoj.py:20
+msgid "dusemajne"
+msgstr "dusemajne"
+
+#: elektoj.py:21
+msgid "monate"
+msgstr "monate"
+
+#: elektoj.py:22
+msgid "dumonate"
+msgstr "dumonate"
+
+#: elektoj.py:23
+msgid "sesmonate"
+msgstr "sesmonate"
+
+#: elektoj.py:24
+msgid "jare"
+msgstr "jare"
+
+#: elektoj.py:25
+msgid "malofte"
+msgstr "malofte"
+
+#: models.py:14 models.py:43
+msgid "Kreanto"
+msgstr "Kreanto"
+
+#: models.py:15
+msgid "nomo de la renkontigxo"
+msgstr "nomo de la renkontiĝo"
+
+#: models.py:16
+msgid "mallonga nomo"
+msgstr "mallonga nomo"
+
+#: models.py:17
+msgid "Mallonga nomo se ekzistas."
+msgstr "Mallonga nomo se ekzistas."
+
+#: models.py:18
 msgid "retejo"
 msgstr "retejo"
 
-#: models.py:14
-msgid "organizo"
-msgstr "organizo"
-
-#: models.py:16
-msgid "publiko"
-msgstr "publiko"
-
-#: models.py:18 models.py:43
-msgid "nombro da partoprenantoj"
-msgstr "nombro da partoprenantoj"
-
-#: models.py:22
-msgid "arangxo"
-msgstr "aranĝo"
-
-#: models.py:23
-msgid "arangxoj"
-msgstr "aranĝoj"
-
-#: models.py:31
-msgid "Arangxo"
-msgstr "Aranĝo"
-
-#: models.py:33
+#: models.py:19
 msgid "retposxto"
 msgstr "retpoŝto"
 
+#: models.py:20
+msgid "organizo"
+msgstr "organizo"
+
+#: models.py:22
+msgid "publiko"
+msgstr "publiko"
+
+#: models.py:24 models.py:55
+msgid "nombro da partoprenantoj"
+msgstr "nombro da partoprenantoj"
+
+#: models.py:27
+msgid "ofteco"
+msgstr "ofteco"
+
+#: models.py:30
+msgid "dauxro"
+msgstr "daŭro"
+
 #: models.py:34
+msgid "arangxo"
+msgstr "aranĝo"
+
+#: models.py:35
+msgid "arangxoj"
+msgstr "aranĝoj"
+
+#: models.py:44
+msgid "Arangxo"
+msgstr "Aranĝo"
+
+#: models.py:45
 msgid "komenco"
 msgstr "komenco"
 
-#: models.py:35
+#: models.py:46
 msgid "fino"
 msgstr "fino"
 
-#: models.py:36
+#: models.py:47
+msgid "temo"
+msgstr "temo"
+
+#: models.py:48
 msgid "adreso"
 msgstr "adreso"
 
-#: models.py:37
-msgid "adreso kont."
-msgstr "adreso kont."
+#: models.py:49
+msgid "adreso 2"
+msgstr "adreso 2"
 
-#: models.py:38
-msgid "posxtkodo"
-msgstr "poŝtkodo"
-
-#: models.py:39
+#: models.py:50
 msgid "urbo"
 msgstr "urbo"
 
-#: models.py:40
-msgid "lando"
-msgstr "lando"
+#: models.py:51
+msgid "posxtkodo"
+msgstr "poŝtkodo"
 
-#: models.py:41
+#: models.py:53
 msgid "latitudo"
 msgstr "latitudo"
 
-#: models.py:42
+#: models.py:54
 msgid "longitudo"
 msgstr "longitudo"
 
-#: models.py:47
+#: models.py:57
+msgid "priskribo"
+msgstr "priskribo"
+
+#: models.py:61
 msgid "evento"
 msgstr "evento"
 
-#: models.py:48
+#: models.py:62
 msgid "eventoj"
 msgstr "eventoj"
 
 #: templates/eventoj/arangxo_detail.html:8
-#: templates/eventoj/evento_detail.html:21
+#: templates/eventoj/evento_detail.html:15
 msgid "Redakti"
 msgstr "Redakti"
 
-#: templates/eventoj/arangxo_detail.html:9
+#: templates/eventoj/arangxo_detail.html:11
 msgid "Aldonu eventon"
 msgstr "Aldonu eventon"
 
 #: templates/eventoj/arangxo_form.html:9
-#: templates/eventoj/evento_arangxo_form.html:27
-#: templates/eventoj/evento_form.html:29
+msgid "ek!"
+msgstr "ek!"
+
+#: templates/eventoj/evento_arangxo_form.html:34
+msgid "Aldonu!"
+msgstr "Aldonu!"
+
+#: templates/eventoj/evento_form.html:32
 msgid "ek"
 msgstr "ek"
 
-#: templates/eventoj/evento_list.html:17
+#: templates/eventoj/evento_list.html:19
 msgid "Aldonu renkontigxon"
 msgstr "Aldonu renkontiĝon"
+
+#~ msgid "nomo"
+#~ msgstr "nomo"
+
+#~ msgid "adreso kont."
+#~ msgstr "adreso kont."
+
+#~ msgid "lando"
+#~ msgstr "lando"
 
 #~ msgid "mondo"
 #~ msgstr "mondo"
@@ -168,9 +247,6 @@ msgstr "Aldonu renkontiĝon"
 
 #~ msgid "skalo"
 #~ msgstr "skalo"
-
-#~ msgid "temo"
-#~ msgstr "temo"
 
 #~ msgid "Eventoj"
 #~ msgstr "Eventoj"

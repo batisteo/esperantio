@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: django-organizoj\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-03 01:55+0000\n"
+"PO-Revision-Date: 2014-04-03 03:58+0100\n"
+"Last-Translator: Baptiste Darthenay <taggit.batisteo@recursor.net>\n"
+"Language-Team: Esperanto <esperantio.batisteo@recursor.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: eo\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: elektoj.py:7
+msgid "mondo"
+msgstr "mondo"
+
+#: elektoj.py:8
+msgid "kontinento"
+msgstr "kontinento"
+
+#: elektoj.py:9
+msgid "lando"
+msgstr "lando"
+
+#: elektoj.py:10
+msgid "regiono"
+msgstr "regiono"
+
+#: elektoj.py:11 models.py:22
+msgid "urbo"
+msgstr "urbo"
+
+#: models.py:11
+msgid "nomo"
+msgstr "nomo"
+
+#: models.py:12
+msgid "retejo"
+msgstr "retejo"
+
+#: models.py:13
+msgid "retposxto"
+msgstr "retpoŝto"
+
+#: models.py:14
+msgid "twitter"
+msgstr "twitter"
+
+#: models.py:15
+msgid "vera nomo bezonata"
+msgstr "vera nomo bezonata"
+
+#: models.py:16
+msgid "skalo"
+msgstr "skalo"
+
+#: models.py:19
+msgid "adreso"
+msgstr "adreso"
+
+#: models.py:20
+msgid "adreso kont."
+msgstr "adreso kont."
+
+#: models.py:21
+msgid "posxtkodo"
+msgstr "poŝtkodo"
+
+#: models.py:25
+msgid "uzantoj"
+msgstr "uzantoj"
+
+#: models.py:28
+msgid "organizo"
+msgstr "organizo"
+
+#: models.py:29
+msgid "organizoj"
+msgstr "organizoj"
+
+#: templates/organizoj/organizo_form.html:9
+msgid "ek"
+msgstr "ek"

@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: django-uzantoj\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-03 01:58+0000\n"
+"PO-Revision-Date: 2014-04-03 04:02+0100\n"
+"Last-Translator: Baptiste Darthenay <taggit.batisteo@recursor.net>\n"
+"Language-Team: Esperanto <esperantio.batisteo@recursor.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: eo\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: admin.py:12
+msgid "Personal info"
+msgstr "Personaj informoj"
+
+#: admin.py:13
+msgid "Permissions"
+msgstr "Permesoj"
+
+#: admin.py:15
+msgid "Important dates"
+msgstr "gravaj datoj"
+
+#: forms.py:11
+msgid "A user with that username already exists."
+msgstr "Uzanto kun tiu nomo jam ekzistas."
+
+#: forms.py:12
+msgid "The two password fields didn't match."
+msgstr "La du pasvortaj kampoj ne kongruas."
+
+#: forms.py:14
+msgid "Username"
+msgstr "Uzantnomo"
+
+#: forms.py:16
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: forms.py:19
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: forms.py:21
+msgid "Password"
+msgstr ""
+
+#: forms.py:23
+msgid "Password confirmation"
+msgstr ""
+
+#: forms.py:25
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: models.py:16
+msgid "Retposxto deviga"
+msgstr ""
+
+#: models.py:40 templates/uzantoj/uzanto_detail.html:7
+msgid "salutnomo"
+msgstr ""
+
+#: models.py:41 templates/uzantoj/uzanto_detail.html:8
+msgid "retposxto"
+msgstr "retpoŝto"
+
+#: models.py:42
+msgid "aligxdato"
+msgstr "aliĝdato"
+
+#: models.py:44
+msgid "persona nomo"
+msgstr ""
+
+#: models.py:45
+msgid "familia nomo"
+msgstr ""
+
+#: models.py:47 templates/uzantoj/uzanto_detail.html:13
+msgid "jabber"
+msgstr ""
+
+#: models.py:48 templates/uzantoj/uzanto_detail.html:14
+msgid "skype"
+msgstr ""
+
+#: models.py:49 templates/uzantoj/uzanto_detail.html:12
+msgid "twitter"
+msgstr ""
+
+#: models.py:50 templates/uzantoj/uzanto_detail.html:11
+msgid "retejo"
+msgstr ""
+
+#: models.py:52 templates/uzantoj/uzanto_detail.html:15
+msgid "adreso"
+msgstr ""
+
+#: models.py:53
+msgid "adreso kont."
+msgstr ""
+
+#: models.py:54 templates/uzantoj/uzanto_detail.html:19
+msgid "posxtkodo"
+msgstr "poŝtkodo"
+
+#: models.py:55 templates/uzantoj/uzanto_detail.html:20
+msgid "urbo"
+msgstr ""
+
+#: models.py:58
+msgid "telefono"
+msgstr ""
+
+#: models.py:59
+msgid "telefono2"
+msgstr ""
+
+#: models.py:61
+msgid "estas aktiva"
+msgstr ""
+
+#: models.py:62
+msgid "estas personaro"
+msgstr ""
+
+#: models.py:70
+msgid "uzanto"
+msgstr ""
+
+#: models.py:71
+msgid "uzantoj"
+msgstr ""
+
+#: templates/uzantoj/uzanto_detail.html:5
+msgid "Redakti vian profilon"
+msgstr ""
+
+#: templates/uzantoj/uzanto_detail.html:9
+msgid "persona_nomo"
+msgstr "persona nomo"
+
+#: templates/uzantoj/uzanto_detail.html:10
+msgid "familia_nomo"
+msgstr "familia nomo"
+
+#: templates/uzantoj/uzanto_detail.html:17
+msgid "adreso2"
+msgstr ""
+
+#: templates/uzantoj/uzanto_detail.html:21
+msgid "lando"
+msgstr ""
+
+#: templates/uzantoj/uzanto_detail.html:22
+msgid "tel"
+msgstr ""
+
+#: templates/uzantoj/uzanto_detail.html:24
+msgid "tel2"
+msgstr ""
+
+#: templates/uzantoj/uzanto_form.html:9
+msgid "Registrigxu!"
+msgstr "Registriĝu!"
