@@ -58,19 +58,19 @@ header h1 a span {
 .konekti {
     position: absolute;
     right: 0;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 .konekti a {
     display: inline-block;
     margin-right: .3em;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
     color: white;
     text-decoration: none;
     padding: 4px 16px;
     background: rgba(0,0,0,.5);
     border-radius: 7px;
-    font-family: "PT Caption";
 }
 
 .konekti a:hover,

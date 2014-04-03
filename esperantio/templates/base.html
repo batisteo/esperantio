@@ -18,8 +18,7 @@
             {% if not user.is_authenticated %}
                 {% with next=request.get_full_path|urlencode %}
                     <p class="konekti">
-                        <a href="{% url 'uzanto_create' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "registriĝu" %}</a>
-                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "ensalutu" %}</a>
+                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "Ensalutu" %}</a>
                     </p>
                 {% endwith %}
             {% else %}

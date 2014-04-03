@@ -14,7 +14,7 @@ class Arangxo(TimeStampedModel):
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
     mallonga_nomo = models.CharField(_("mallonga nomo"), max_length=255, blank=True,
-            help_text=_("mallonga nomo se ekzistas"), unique=True)
+            help_text=_("Mallonga nomo se ekzistas."), unique=True)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
@@ -45,8 +45,8 @@ class Evento(TimeStampedModel):
     komenco = models.DateTimeField(_("komenco"))
     fino = models.DateTimeField(_("fino"), blank=True)
     temo = models.CharField(_("temo"), max_length=255, blank=True)
-    adreso = models.CharField(_("adreso"), max_length=255)
-    adreso2 = models.CharField(_("adreso kont."), max_length=255, blank=True)
+    adreso = models.CharField(_("adreso"), max_length=255, blank=True)
+    adreso2 = models.CharField(_("adreso 2"), max_length=255, blank=True)
     urbo = models.CharField(_("urbo"), max_length=255, blank=True)
     posxtkodo = models.CharField(_("posxtkodo"), max_length=10, blank=True)
     lando = CountryField()

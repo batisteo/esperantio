@@ -15,7 +15,9 @@
 {% block main-class %} class="plenekrana"{% endblock main-class %}
 
 {% block content %}
-    <p class="agoj"><a href="{% url 'evento_arangxo_create' %}">{% trans "Aldonu renkontigxon" %}</a></p>
+    <aside class="agoj">
+        <p><a href="{% url 'evento_arangxo_create' %}">{% trans "Aldonu renkontigxon" %}</a></p>
+    </aside>
 
         {% leaflet_map "mapo" callback="window.object_list" %}
 
@@ -25,7 +27,7 @@
             url="{% url 'evento_detail' object.id %}"
             lat="{{ object.lat }}"
             long="{{ object.long }}"
-            nomo="{{ object.arangxo.nomo }}"
+            nomo="{% firstof object.arangxo.mallonga_nomo object.arangxo.nomo %}"
             jaro="{{ object.jaro }}"
             urbo="{{ object.urbo }}">
         </div>

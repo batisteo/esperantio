@@ -3,17 +3,41 @@
 {% load i18n %}
 
 {% block content %}
-    <h2>{{ object.nomo }}</h2>
-    <h3>{{ object.longa_nomo }}</h3>
-    <p class="agoj"><a href="{% url 'arangxo_update' object.pk %}">{% trans "Redakti" %}</a>
-        <br/><a href="{% url 'evento_create' object.pk %}">{% trans "Aldonu eventon" %}</a>
-    </p>
+    <aside class="agoj">
+        <p>
+            <a href="{% url 'arangxo_update' object.pk %}">{% trans "Redakti" %}</a>
+        </p>
+        <p>
+            <a href="{% url 'evento_create' object.pk %}">{% trans "Aldonu eventon" %}</a>
+        </p>
+    </aside>
+    <h2>{{ object.mallonga_nomo }}</h2>
+    <h3>{{ object.nomo }}</h3>
     
     
     <div id="datumoj">
-        <p>{{ object.get_skalo_display }}</p>
-        <p>{{ object.get_temo_display }}</p>
+        <p>{{ object.nb_partoprenantoj }}</p>
         <p>{{ object.get_publiko_display }}</p>
+        <p>{{ object.retejo|urlize }}</p>
+        <p>{{ object.retposxto|urlize }}</p>
+        <p>
+            {% for organizo in object.organizo_set.all %}
+                <a href="{% url 'organizo_detail' organizo.pk %}">organizo.nomo</a>{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        </p>
+        <p>{% firstof object.ofteco '-' %}</p>
+        <p>{% firstof object.dauro '-' %}</p>
+        <p>
+            {% for etikedo in object.etikedoj.all %}
+                {{ etikedo }}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        </p>
     </div>
+
+    <ul>
+        {% for evento in object.evento_set.all %}
+            <li><a href="{% url 'evento_detail' evento.pk %}">{{ evento.urbo }}, {{ evento.komenco }} — {{ evento.fino }}</a></li>
+        {% endfor %}
+    </ul>
 
 {% endblock content %}

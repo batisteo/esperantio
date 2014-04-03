@@ -9,12 +9,12 @@
             {% block form_extra_attrs %}class="styled ui-autoLabelWidth"{% endblock %}>
             {{ form.as_p }}
         
-        <input class="agoj" type="submit"
+        <input type="submit"
             value="{% block form_submit_text %}{% trans 'Konekti' %}{% endblock %}" />
         <input type="hidden" name="next" value="{{ next }}" />
         
         {% csrf_token %}
 
         </form>
-        <p><a href="{% url 'uzanto_create' %}">{% trans "Nova sur Esperant.io?" %}</a></p>
+        <h3><a href="{% url 'uzanto_create' %}">{% trans "Nova sur Esperant.io?" %}</a></h3>
     {% endblock content %}

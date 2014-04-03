@@ -25,15 +25,19 @@ main.plenekrana {
     font-weight: bold;
 }
 
-p.agoj {
+.agoj {
     position: absolute;
     top: 4em;
     right: 2em;
     z-index: 4;
 }
 
-p.agoj a,
-p.agoj a:hover {
+.agoj p {
+    text-align: right;
+}
+
+.agoj p a,
+.agoj p a:hover {
     color: black;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
@@ -44,13 +48,13 @@ p.agoj a:hover {
     text-decoration: none;
 }
 
-p.agoj a:hover,
-p.agoj a:focus {
+.agoj p a:hover,
+.agoj p a:focus {
     background-color: #f4f4f4;
     outline: none;
 }
 
-p.agoj a:active {
+.agoj p a:active {
     box-shadow: 0 1px 2px rgba(0,0,0,0.45);
     outline: none;
     position: relative;

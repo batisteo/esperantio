@@ -6,7 +6,7 @@
 
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
-        <input class="agoj" type="submit" value="{% trans 'ek' %}" />
+        <input type="submit" value="{% trans 'ek' %}" />
     </form>
 
 {% endblock content %}
