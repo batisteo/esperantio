@@ -5,7 +5,7 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+SITE_ID = 1
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'), )
 
 MEDIA_URL = '/media/'
@@ -28,6 +28,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'django_extensions',
     'taggit',
     'toolbox',
@@ -44,6 +46,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (

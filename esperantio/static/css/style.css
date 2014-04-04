@@ -213,3 +213,9 @@ input[type="submit"]:active,
 input[type="submit"]:focus {
     box-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3) inset;
 }
+
+/*** flatpages ***/
+.flatpage {
+    margin: 2em auto;
+    max-width: 600px;
+}
