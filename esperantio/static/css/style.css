@@ -25,7 +25,7 @@ a {
 }
 
 header {
-    background-color: #6f9e38;
+    background-color: #5d7e33;
     padding: 0;
     margin: 0;
     height: 40px;
@@ -99,7 +99,7 @@ aside {
 
 
 footer {
-    background-color: #6f9e38;
+    background-color: #5d7e33;
     height: 30px;
     position: absolute;
     bottom: 0;
@@ -118,10 +118,13 @@ footer #lingvo {
     margin: 0;
 }
 
+footer #lingvo::after {
+    content: " ▴";
+    font-size: 1em;
+}
 footer ul {
     display: inline-block;
     width: 100%;
-    font-size: 1.1em;
     text-align: center;
     list-style: none;
     padding: 3px 0 0 0; margin: 0 auto;
@@ -134,13 +137,13 @@ footer ul li {
 
 footer ul li a {
     color: white;
-    opacity: .6;
     text-decoration: none;
 }
 
 footer ul li a:hover,
 footer ul li a:active,
 footer ul li a:focus {
+    color: #cf0;
     opacity: 1;
 }
 
