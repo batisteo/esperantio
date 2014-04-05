@@ -1,6 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django_markdown import flatpages
+
 admin.autodiscover()
+flatpages.register()
 
 urlpatterns = patterns('',
     url(r'^', include('eventoj.urls')),
@@ -8,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^uzanto/', include('uzantoj.urls')),
     url(r'^organizo/', include('organizoj.urls')),
+    url('^markdown/', include( 'django_markdown.urls')),
 )
 
 urlpatterns += patterns('django.contrib.flatpages.views',

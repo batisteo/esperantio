@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load i18n %}
 {% load leaflet_tags %}
+{% load django_markdown %}
 
 {% block extra-js %}
     {{ block.super }}
@@ -39,7 +40,7 @@
         <p>{{ object.lando.name }}</p>
         <p>ĉ. {{ object.nb_partoprenantoj }} partoprenantoj atenditaj</p>
         <p>{{ object.arangxo.get_publiko_display }}</p>
-        {{ object.priskribo|linebreaks }}
+        {{ object.priskribo|markdown|linebreaks }}
     </div>
 
     <div id="object"
