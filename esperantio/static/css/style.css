@@ -52,6 +52,11 @@ header h1 a {
 
 header h1 a span {
     color: #cf0;
+    transition: margin-left .2s;
+}
+
+header h1:hover a span {
+    margin-left: 7px;
 }
 
 
