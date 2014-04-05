@@ -1,6 +1,8 @@
 from django.core.urlresolvers import reverse
 from django.views import generic
 
+from braces.views import LoginRequiredMixin
+
 from .forms import OrganizoForm
 from .models import Organizo
 
@@ -17,7 +19,7 @@ class OrganizoDetailView(generic.DetailView):
 organizo_detail = OrganizoDetailView.as_view()
 
 
-class OrganizoCreateView(generic.CreateView):
+class OrganizoCreateView(LoginRequiredMixin, generic.CreateView):
     model = Organizo
     form_class = OrganizoForm
 
@@ -27,7 +29,7 @@ class OrganizoCreateView(generic.CreateView):
 organizo_create = OrganizoCreateView.as_view()
 
 
-class OrganizoUpdateView(generic.UpdateView):
+class OrganizoUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Organizo
     form_class = OrganizoForm
 

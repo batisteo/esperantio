@@ -1,6 +1,8 @@
 from django.core.urlresolvers import reverse
 from django.views import generic
 
+from braces.views import LoginRequiredMixin
+
 from .forms import (ArangxoForm, EventoCreateForm,  EventoForm,
         EventoArangxoCreateForm)
 from .models import Arangxo, Evento
@@ -18,7 +20,7 @@ class ArangxoDetailView(generic.DetailView):
 arangxo_detail = ArangxoDetailView.as_view()
 
 
-class ArangxoCreateView(generic.CreateView):
+class ArangxoCreateView(LoginRequiredMixin, generic.CreateView):
     model = Arangxo
     form_class = ArangxoForm
 
@@ -28,7 +30,7 @@ class ArangxoCreateView(generic.CreateView):
 arangxo_create = ArangxoCreateView.as_view()
 
 
-class ArangxoUpdateView(generic.UpdateView):
+class ArangxoUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Arangxo
     form_class = ArangxoForm
 
@@ -50,7 +52,7 @@ class EventoDetailView(generic.DetailView):
 evento_detail = EventoDetailView.as_view()
 
 
-class EventoArangxoCreateView(generic.CreateView):
+class EventoArangxoCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = EventoArangxoCreateForm
     template_name = 'eventoj/evento_arangxo_form.html'
 
@@ -69,7 +71,7 @@ class EventoArangxoCreateView(generic.CreateView):
 evento_arangxo_create = EventoArangxoCreateView.as_view()
 
 
-class EventoCreateView(generic.CreateView):
+class EventoCreateView(LoginRequiredMixin, generic.CreateView):
     model = Evento
     form_class = EventoCreateForm
 
@@ -89,7 +91,7 @@ class EventoCreateView(generic.CreateView):
 evento_create = EventoCreateView.as_view()
 
 
-class EventoUpdateView(generic.UpdateView):
+class EventoUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Evento
     form_class = EventoForm
 

@@ -1,11 +1,13 @@
 from django.views import generic
 from django.contrib.auth import login
 
+from braces.views import LoginRequiredMixin
+
 from .models import Uzanto
 from .forms import CustomUserChangeForm, UzantoCreateForm
 
 
-class UzantoDetailView(generic.DetailView):
+class UzantoDetailView(LoginRequiredMixin, generic.DetailView):
     model = Uzanto
     
     def get_object (self):
@@ -14,7 +16,7 @@ class UzantoDetailView(generic.DetailView):
 uzanto_detail = UzantoDetailView.as_view()
 
 
-class UzantoUpdateView(generic.UpdateView):
+class UzantoUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Uzanto
     form_class = CustomUserChangeForm
     

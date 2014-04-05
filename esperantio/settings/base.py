@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django_markdown',
     'django_extensions',
+    'braces',
     'taggit',
     'toolbox',
     'leaflet',
