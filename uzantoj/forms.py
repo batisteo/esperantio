@@ -75,3 +75,20 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = Uzanto
+        fields = [
+                "salutnomo",
+                "retposxto",
+                "persona_nomo",
+                "familia_nomo",
+                "jabber",
+                "skype",
+                "twitter",
+                "retejo",
+                "adreso",
+                "adreso2",
+                "posxtkodo",
+                "urbo",
+                "lando",
+                "tel",
+                "tel2",
+        ]

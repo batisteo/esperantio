@@ -12,7 +12,7 @@ class Organizo(TimeStampedModel):
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     twitter = models.CharField(_("twitter"), max_length=255, blank=True)
-    vera_nomo_bezonata = models.BooleanField(_("vera nomo bezonata"))
+    vera_nomo_bezonata = models.BooleanField(_("vera nomo bezonata"), default=False)
     skalo = models.PositiveSmallIntegerField(_("skalo"),
                 choices=SKALO_ELEKTOJ, max_length=1, null=True, default=0)
 
