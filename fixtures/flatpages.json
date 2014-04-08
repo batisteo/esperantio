@@ -1,0 +1,77 @@
+[
+{
+    "fields": {
+        "registration_required": false,
+        "title": "Pri ni",
+        "url": "/pri-ni/",
+        "template_name": "",
+        "sites": [
+            1
+        ],
+        "content": "## Pri ni\r\n\r\n### Historio / Komencoj\r\n\r\n### Celoj\r\n\r\n### Evoluoj / Nun",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 1
+},
+{
+    "fields": {
+        "registration_required": false,
+        "title": "Helpo",
+        "url": "/helpo/",
+        "template_name": "",
+        "sites": [
+            1
+        ],
+        "content": "## Helpo",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 2
+},
+{
+    "fields": {
+        "registration_required": false,
+        "title": "Kontribui",
+        "url": "/kontribui/",
+        "template_name": "",
+        "sites": [
+            1
+        ],
+        "content": "## Kontribui\r\n\r\n### Uzanto\r\n\r\n\r\n\r\n### Gikoj",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 3
+},
+{
+    "fields": {
+        "registration_required": false,
+        "title": "API",
+        "url": "/api/",
+        "template_name": "",
+        "sites": [
+            1
+        ],
+        "content": "## API",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 4
+},
+{
+    "fields": {
+        "registration_required": false,
+        "title": "Kontakto",
+        "url": "/kontakto/",
+        "template_name": "",
+        "sites": [
+            1
+        ],
+        "content": "## Kontakto\r\n\r\n[**Twitter**](https://www.twitter.com/esperant_io)\r\n\r\n[**Retpo\u015dto**](mailto:bonvenon@esperant.io)",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 5
+}
+]
