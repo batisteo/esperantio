@@ -27,20 +27,14 @@ a {
 }
 
 header {
-    padding: 0;
-    margin: 0;
-    height: 40px;
+    height: 42px;
 }
 
-header p {
-}
 
 header h1 {
+    margin-left: 2%;
     position: absolute;
     top: -2px;
-    margin: 0;
-    padding: 0;
-    margin-left: 24px;
 }
 
 header h1 a {
@@ -90,25 +84,57 @@ header h1:hover a span {
     right: 0;
 }
 
+.uzanto p {
+    float: right;
+}
+
 .uzanto .uzanto-nomo {
-    margin-top: 4px;
-    margin-right: .3em;
-    font-size: 20px;
+    padding-bottom: .3rem;
+    margin-right: 1rem;
+    margin-top: .5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
-header menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 40px; /* Height of header */
-}
-
-header menu li {
-    
-}
-
-header menu li a {
+.uzanto-nomo a {
     color: white;
+}
+
+.uzanto-nomo a::before {
+    content: "▾ ";
+}
+
+.dinamika-menuo {
+    z-index: 100;
+    position: absolute;
+    display: none;
+}
+
+.dinamika-menuo a {
+    padding: 0 1.4rem;
+    font-size: 1.1rem;
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    width: 100%;
+    height: 2rem;
+}
+
+.dinamika-menuo li a:hover,
+.dinamika-menuo li a:focus,
+.dinamika-menuo li a:active {
+    background: rgba(0,0,0,.2);
+    color: #cf0;
+}
+
+#uzanto-menuo {
+    right: 42px;  /* Weight of avatar */
+    top: 42px;  /* Height of header */
+}
+
+#lingvo-menuo {
+    left: 0;  /* Weight of avatar */
+    bottom: 30px;  /* Height of header */
 }
 
 main {
@@ -141,19 +167,17 @@ footer {
 footer #lingvo {
     display: inline-block;
     position: absolute;
-    bottom: .4rem;
+    bottom: .3rem;
+    margin-left: 1%;
     font-weight: bold;
     font-size: 1.2rem;
     color: white;
-    padding: 0 .6em ;
-    margin: 0;
 }
 
 footer #lingvo::after {
     content: " ▴";
-    font-size: 1em;
 }
-footer menu {
+#piedo-menuo {
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -161,19 +185,19 @@ footer menu {
     padding-top: .4rem;
 }
 
-footer menu li {
+#piedo-menuo li {
     display: inline-block;
     color: white;
 }
 
-footer menu li a {
+#piedo-menuo li a {
     color: white;
     text-decoration: none;
 }
 
-footer menu li a:hover,
-footer menu li a:active,
-footer menu li a:focus {
+#piedo-menuo li a:hover,
+#piedo-menuo li a:active,
+#piedo-menuo li a:focus {
     color: #cf0;
     opacity: 1;
 }
