@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 {% load staticfiles %}
 {% load i18n %}
+{% load gravatar %}
 <html lang="eo">
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
@@ -22,7 +23,16 @@
                     </p>
                 {% endwith %}
             {% else %}
-                <p class="konekti"><a href="{% url 'uzanto_detail' %}">{{ user.salutnomo }}</a></p>
+                <p class="konekti">
+                    <a href="{% url 'uzanto_detail' %}">{{ user.salutnomo }}</a>
+                    <a href="{% gravatar_profile_url user.email %}" target="_blank">{% gravatar user.retposxto 32 %}</a>
+                    <menu class="uzanto-menuo">
+                        <li><a href="{% url 'uzanto_detail' %}">Profilo</a></li>
+                        <li><a href="{% url 'uzanto_update' %}">Agordoj</a></li>
+                        <li><a href="">Miaj eventoj</a></li>
+                        <li><a href="{% url 'elsaluti' %}"></a>Elsaluti</li>
+                    </menu>
+                </p>
             {% endif %}
             <h1>
                 <a href="{% url 'evento_list' %}">esperant<span>io</span></a>

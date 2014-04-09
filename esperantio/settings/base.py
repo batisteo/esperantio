@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django_markdown',
     'django_extensions',
+    'django_gravatar',
     'braces',
     'taggit',
     'toolbox',
@@ -76,3 +77,6 @@ LEAFLET_CONFIG = {
     'ATTRIBUTION_PREFIX': 'Mapaj datumoj &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> kontribuantoj',
     'RESET_VIEW': False,
 }
+
+GRAVATAR_SECURE = True
+GRAVATAR_DEFAULT_IMAGE = "mm"
