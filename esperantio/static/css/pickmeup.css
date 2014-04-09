@@ -26,8 +26,7 @@
       outline: none;
       text-decoration: none; }
     .pickmeup .pmu-instance .pmu-today {
-      border: 1px solid #73b037;
-      border-radius: 100%;}
+      border: 1px solid #5d7e33; }
     .pickmeup .pmu-instance .pmu-button:hover {
       color: #39581b; }
     .pickmeup .pmu-instance .pmu-not-in-month {
@@ -38,7 +37,7 @@
       cursor: default; }
     .pickmeup .pmu-instance .pmu-selected {
       color: white;
-      background: #73b037; }
+      background: #5d7e33; }
     .pickmeup .pmu-instance .pmu-selected:hover {
       color: #cf0; }
     .pickmeup .pmu-instance .pmu-not-in-month.pmu-selected {

@@ -1,4 +1,6 @@
-
+.baza-fondo {
+    background-color: #5d7e33;
+}
 
 html {
     height: 100%;
@@ -25,7 +27,6 @@ a {
 }
 
 header {
-    background-color: #5d7e33;
     padding: 0;
     margin: 0;
     height: 40px;
@@ -36,7 +37,7 @@ header p {
 
 header h1 {
     position: absolute;
-    top: -5px;
+    top: -2px;
     margin: 0;
     padding: 0;
     margin-left: 24px;
@@ -84,6 +85,32 @@ header h1:hover a span {
     background: rgba(0,0,0,.3);
 }
 
+.uzanto {
+    position: absolute;
+    right: 0;
+}
+
+.uzanto .uzanto-nomo {
+    margin-top: 4px;
+    margin-right: .3em;
+    font-size: 20px;
+}
+
+header menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px; /* Height of header */
+}
+
+header menu li {
+    
+}
+
+header menu li a {
+    color: white;
+}
+
 main {
     padding-bottom: 30px; /* Height of footer */
 }
@@ -104,7 +131,6 @@ aside {
 
 
 footer {
-    background-color: #5d7e33;
     height: 30px;
     position: absolute;
     bottom: 0;
@@ -115,9 +141,9 @@ footer {
 footer #lingvo {
     display: inline-block;
     position: absolute;
-    bottom: 4px;
+    bottom: .4rem;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     color: white;
     padding: 0 .6em ;
     margin: 0;
@@ -127,34 +153,34 @@ footer #lingvo::after {
     content: " ▴";
     font-size: 1em;
 }
-footer ul {
+footer menu {
     display: inline-block;
     width: 100%;
     text-align: center;
     list-style: none;
-    padding: 3px 0 0 0; margin: 0 auto;
+    padding-top: .4rem;
 }
 
-footer ul li {
+footer menu li {
     display: inline-block;
     color: white;
 }
 
-footer ul li a {
+footer menu li a {
     color: white;
     text-decoration: none;
 }
 
-footer ul li a:hover,
-footer ul li a:active,
-footer ul li a:focus {
+footer menu li a:hover,
+footer menu li a:active,
+footer menu li a:focus {
     color: #cf0;
     opacity: 1;
 }
 
 footer #tistel {
     position: absolute;
-    bottom: -20px;
+    bottom: 2px;
     right: 8px;
     opacity: .5;
 }
@@ -206,7 +232,6 @@ select, input, textarea {
 input[type="submit"] {
     color: white;
     font-weight: bold;
-    background: #73b037;
     box-shadow: none;
     margin: 0 auto;
     font-size: 130%;

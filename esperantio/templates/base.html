@@ -8,14 +8,17 @@
     <head>
         <title>esperantio{% block head-title %}{% endblock head-title %}</title>
         <link rel="shortcut icon" type="image/png" href="favicon.png" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
         {% block extra-css %}{% endblock extra-css %}
         {% block extra-js %}{% endblock extra-js %}
     </head>
 
     <body{% block body-class %}{% endblock body-class %}>
-        <header>
+        <header class="baza-fondo">
             {% if not user.is_authenticated %}
                 {% with next=request.get_full_path|urlencode %}
                     <p class="konekti">
@@ -23,14 +26,14 @@
                     </p>
                 {% endwith %}
             {% else %}
-                <p class="konekti">
-                    <a href="{% url 'uzanto_detail' %}">{{ user.salutnomo }}</a>
+                <p class="uzanto">
+                    <a href="{% url 'uzanto_detail' %}" class="uzanto-nomo">{{ user.salutnomo }}</a>
                     <a href="{% gravatar_profile_url user.email %}" target="_blank">{% gravatar user.retposxto 32 %}</a>
-                    <menu class="uzanto-menuo">
+                    <menu class="uzanto-menuo baza-fondo">
                         <li><a href="{% url 'uzanto_detail' %}">Profilo</a></li>
                         <li><a href="{% url 'uzanto_update' %}">Agordoj</a></li>
                         <li><a href="">Miaj eventoj</a></li>
-                        <li><a href="{% url 'elsaluti' %}"></a>Elsaluti</li>
+                        <li><a href="{% url 'elsaluti' %}">Elsaluti</a></li>
                     </menu>
                 </p>
             {% endif %}
@@ -44,16 +47,16 @@
             {% endblock content %}
         </main>
         
-        <footer>
+        <footer class="baza-fondo">
             {% block footer %}
             <p id="lingvo">eo</p>
-            <ul>
+            <menu>
                 <li><a href="{% url 'helpo' %}">helpo</a> |</li>
                 <li><a href="{% url 'kontribui' %}">kontribui</a> |</li>
                 <li><a href="{% url 'api' %}">API</a> |</li>
                 <li><a href="{% url 'kontakto' %}">kontakto</a> |</li>
                 <li><a href="{% url 'pri-ni' %}">pri ni</a></li>
-            </ul>
+            </menu>
             <p id="tistel"><img src="{% static 'img/tistel.png' %}" alt="logo" title="tistel" /></p>
             {% endblock footer %}
         </footer>
