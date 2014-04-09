@@ -10,6 +10,7 @@
         <link rel="shortcut icon" type="image/png" href="favicon.png" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
         <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
@@ -22,7 +23,10 @@
             {% if not user.is_authenticated %}
                 {% with next=request.get_full_path|urlencode %}
                     <p class="konekti">
-                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">{% trans "Ensalutu" %}</a>
+                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">
+                            <i class="fa fa-sign-in"></i>
+                            {% trans "Ensalutu" %}
+                        </a>
                     </p>
                 {% endwith %}
             {% else %}
@@ -31,14 +35,25 @@
                         {% gravatar user.retposxto 42 %}
                     </a></p>
                     <p class="uzanto-nomo"><a href="{% url 'uzanto_detail' %}">
+                        <i class="fa fa-caret-down"></i>
                         {{ user.salutnomo }}
                     </a></p>
                 </div>
                 <menu id="uzanto-menuo" class="dinamika-menuo baza-fondo">
-                    <li><a href="{% url 'uzanto_detail' %}">Profilo</a></li>
-                    <li><a href="{% url 'uzanto_update' %}">Agordoj</a></li>
-                    <li><a href="">Miaj eventoj</a></li>
-                    <li><a href="{% url 'elsaluti' %}">Elsaluti</a></li>
+                    <li><a href="{% url 'uzanto_detail' %}">
+                        <i class="fa fa-user"></i>
+                    Profilo</a></li>
+                    <li><a href="{% url 'uzanto_update' %}">
+                        <i class="fa fa-cog"></i>
+                        Agordoj</a>
+                    </li>
+                    <li><a href="">
+                        <i class="fa fa-check-square"></i>
+                        Miaj eventoj</a>
+                    </li>
+                    <li><a href="{% url 'elsaluti' %}">
+                        <i class="fa fa-sign-out"></i>
+                        Elsalutu</a></li>
                 </menu>
             {% endif %}
             <h1>
@@ -53,7 +68,11 @@
         
         <footer class="baza-fondo">
             {% block footer %}
-            <p id="lingvo" title="esperanto">eo</p>
+            <p id="lingvo" title="esperanto">
+                <i class="fa fa-globe"></i>
+                <a href="#">eo</a>
+                <i class="fa fa-caret-up"></i>
+            </p>
             <menu id="lingvo-menuo" class="dinamika-menuo baza-fondo">
                 <li><a href="">esperanto</a></li>
             </menu>

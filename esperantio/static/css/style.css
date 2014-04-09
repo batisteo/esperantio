@@ -54,17 +54,21 @@ header h1:hover a span {
     margin-left: 7px;
 }
 
+header .fa {
+    margin-right: .4rem;
+}
+
 
 .konekti {
     position: absolute;
     right: 0;
-    margin-top: 4px;
+    margin-top: .4rem;
 }
 
 .konekti a {
     display: inline-block;
     margin-right: .3em;
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -100,10 +104,6 @@ header h1:hover a span {
     color: white;
 }
 
-.uzanto-nomo a::before {
-    content: "▾ ";
-}
-
 .dinamika-menuo {
     z-index: 100;
     position: absolute;
@@ -116,7 +116,7 @@ header h1:hover a span {
     display: table-cell;
     vertical-align: middle;
     color: white;
-    width: 100%;
+    min-width: 8em;
     height: 2rem;
 }
 
@@ -174,9 +174,16 @@ footer #lingvo {
     color: white;
 }
 
-footer #lingvo::after {
-    content: " ▴";
+footer #lingvo a {
+    color: white;
 }
+
+
+footer .fa {
+    position: relative;
+    top: .12rem;
+}
+
 #piedo-menuo {
     display: inline-block;
     width: 100%;
