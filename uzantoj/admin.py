@@ -8,7 +8,7 @@ from .forms import CustomUserChangeForm, UzantoCreateForm
 
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
-        (None, {'fields': ('salutnomo', 'password')}),
+        (None, {'fields': ('salutnomo', 'retposxto', 'password')}),
         (_('Personal info'), {'fields': ('persona_nomo', 'familia_nomo', 'lando')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
