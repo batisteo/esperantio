@@ -20,21 +20,26 @@
 
 {% block content %}
 
-    <aside id="maldekstra">
-        {% leaflet_map "mapo-form" callback="object_form" %}
-        <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
-    </aside>
+    <form action="" method="post">{% csrf_token %}
 
-    <aside id="dekstra">
-    </aside>
-
-    <section>
-        <form action="" method="post">{% csrf_token %}
-            <ul>{{ form.as_ul }}</ul>
-            <input type="submit" value="{% trans 'Aldonu!' %}" class="baza-fondo" />
-        </form>
-    </section>
+        <section id="kiam" class="kadro">
+            <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
+        </section>
+        
+        <section id="kio" class="kadro">
+            <ul>{{ form.arangxo.as_ul }} </ul>
+        </section>
+        
+        <section id="kie">
+            {% leaflet_map "mapo-form" callback="object_form" %}
+        </section>
+        
+        <section id="kia" class="kadro">
+            <ul>{{ form.evento.as_ul }} </ul>
+        </section>
     
+        <input type="submit" value="{% trans 'Aldonu!' %}" class="baza-fondo" />
+    </form>
     <div id="object"
         lat="{{ object.lat }}"
         long="{{ object.long }}"
