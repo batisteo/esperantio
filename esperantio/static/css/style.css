@@ -34,7 +34,7 @@ header {
 header h1 {
     margin-left: 2%;
     position: absolute;
-    top: -2px;
+    top: -1px;
 }
 
 header h1 a {
@@ -105,7 +105,7 @@ header .fa {
 }
 
 .dinamika-menuo {
-    z-index: 100;
+    z-index: 1000;
     position: absolute;
     display: none;
 }
@@ -139,12 +139,6 @@ header .fa {
 
 main {
     padding-bottom: 30px; /* Height of footer */
-}
-
-
-aside {
-    width: 20%;
-    padding: 20px;
 }
 
 #maldekstra {
@@ -211,7 +205,7 @@ footer .fa {
 
 footer #tistel {
     position: absolute;
-    bottom: 2px;
+    bottom: 0;
     right: 8px;
     opacity: .5;
 }
