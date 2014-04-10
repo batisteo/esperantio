@@ -45,17 +45,16 @@ function object_form(mapo, options) {
                     draggable:true,
                     opacity:0
             }).addTo(mapo);
-        
     }
 
-    function onMapClick(e) {
-        $("[id$='lat']").val(e.latlng.lat);
-        $("[id$='long']").val(e.latlng.lng);
-        marker.setLatLng(e.latlng).setOpacity(1);
-        mapo.setView(e.latlng, mapo.getZoom()+2);
+    function setPositionFields(latlng) {
+        $("[id$='lat']").val(latlng.lat);
+        $("[id$='long']").val(latlng.lng);
+    }
 
+    function setAddressFields(latlng) {
         var baseURL = 'http://nominatim.openstreetmap.org/reverse?format=json&accept-language=eo'
-        $.getJSON(baseURL+'&lat='+e.latlng.lat+'&lon='+e.latlng.lng,
+        $.getJSON(baseURL+'&lat='+latlng.lat+'&lon='+latlng.lng,
             function(data){
                 var d = data['address'];
                 if ('county' in d) {var urbo = d['county'];}
@@ -65,11 +64,24 @@ function object_form(mapo, options) {
                 if ('town' in d) {var urbo = d['town'];}
                 if ('city' in d) {var urbo = d['city'];}
 
-                $('#id_evento-urbo').val(urbo);
-                $('#id_evento-posxtkodo').val(d['postcode']);
-                $('#id_evento-lando').val(d['country_code'].toUpperCase());
+                $("[id$='urbo']").val(urbo);
+                $("[id$='posxtkodo']").val(d['postcode']);
+                $("[id$='lando']").val(d['country_code'].toUpperCase());
             });
     }
 
+    function onMapClick(e) {
+        setPositionFields(e.latlng);
+        setAddressFields(e.latlng);
+        marker.setLatLng(e.latlng).setOpacity(1);
+        mapo.setView(e.latlng, mapo.getZoom()+2);  /* Center and Zoom x2 */
+    }
+
+    function onMarkerDrag(e) {
+        setPositionFields(e.target.getLatLng());
+        setAddressFields(e.target.getLatLng());
+    }
+
+    marker.on('dragend', onMarkerDrag);
     mapo.on('click', onMapClick);
 };
