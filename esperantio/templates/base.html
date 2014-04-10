@@ -34,10 +34,12 @@
                     <p class="avatar"><a href="{% gravatar_profile_url user.email %}" target="_blank">
                         {% gravatar user.retposxto 42 %}
                     </a></p>
-                    <p class="uzanto-nomo"><a href="{% url 'uzanto_detail' %}">
-                        <i class="fa fa-caret-down"></i>
-                        {{ user.salutnomo }}
-                    </a></p>
+                    <p class="uzanto-nomo">
+                        <a href="{% url 'uzanto_detail' %}" target="#uzanto-menuo" class="menua-sxaltilo">
+                            <i class="fa fa-caret-down"></i>
+                            {{ user.salutnomo }}
+                        </a>
+                    </p>
                 </div>
                 <menu id="uzanto-menuo" class="dinamika-menuo baza-fondo">
                     <li><a href="{% url 'uzanto_detail' %}">
@@ -47,7 +49,7 @@
                         <i class="fa fa-cog"></i>
                         Agordoj</a>
                     </li>
-                    <li><a href="">
+                    <li><a href="#">
                         <i class="fa fa-check-square"></i>
                         Miaj eventoj</a>
                     </li>
@@ -70,11 +72,13 @@
             {% block footer %}
             <p id="lingvo" title="esperanto">
                 <i class="fa fa-globe"></i>
-                <a href="#">eo</a>
+                <a href="#" target="#lingvo-menuo" class="menua-sxaltilo">
+                    eo
+                </a>
                 <i class="fa fa-caret-up"></i>
             </p>
             <menu id="lingvo-menuo" class="dinamika-menuo baza-fondo">
-                <li><a href="">esperanto</a></li>
+                <li><a href="#">esperanto</a></li>
             </menu>
             <menu id="piedo-menuo">
                 <li><a href="{% url 'helpo' %}">helpo</a> |</li>

@@ -1,11 +1,7 @@
 $(function() {
-    $(".uzanto").click(function(e) {
-        $("#uzanto-menuo").toggle();
-        e.preventDefault();
-        e.stopPropagation(); // for click outside
-    });
-    $("#lingvo").click(function(e) {
-        $("#lingvo-menuo").toggle();
+    $(".menua-sxaltilo").click(function(e) {
+        var menu_id = $(this).attr('target');
+        $(menu_id).toggle();
         e.preventDefault();
         e.stopPropagation(); // for click outside
     });
