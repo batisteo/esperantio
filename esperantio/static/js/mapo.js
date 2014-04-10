@@ -37,19 +37,22 @@ function object_form(mapo, options) {
     var long = o.attr('long');
     if (lat && long) {
         mapo.setView([lat, long], 13);
-        var marker = L.marker([lat, long]).addTo(mapo);
+        var marker = L.marker([lat, long], {draggable:true}).addTo(mapo);
     }
     else {
-        mapo.setView([30,0],2);
-        var marker = L.marker([30,0]).addTo(mapo);
+        mapo.setView([40,0],2);
+            var marker = L.marker([40,0], {
+                    draggable:true,
+                    opacity:0
+            }).addTo(mapo);
+        
     }
 
     function onMapClick(e) {
         $("[id$='lat']").val(e.latlng.lat);
         $("[id$='long']").val(e.latlng.lng);
-        marker.setLatLng(e.latlng);
-        var msg = "Lat: <strong> "+e.latlng.lat.toFixed(5) +"</strong><br/>Long: <strong>"+ e.latlng.lng.toFixed(5) +"</strong>";
-        marker.bindPopup(msg).openPopup();
+        marker.setLatLng(e.latlng).setOpacity(1);
+        mapo.setView(e.latlng, mapo.getZoom()+2);
     }
 
     mapo.on('click', onMapClick);

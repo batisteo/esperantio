@@ -23,18 +23,22 @@
     <form action="" method="post">{% csrf_token %}
 
         <section id="kiam" class="kadro">
+            <h2>Kiam?</h2>
             <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
         </section>
         
         <section id="kio" class="kadro">
+            <h2>Kio?</h2>
             <ul>{{ form.arangxo.as_ul }} </ul>
         </section>
         
-        <section id="kie">
+        <section id="kie" class="kadro">
+            <h2>Kie?</h2>
             {% leaflet_map "mapo-form" callback="object_form" %}
         </section>
         
         <section id="kia" class="kadro">
+            <h2>Kia?</h2>
             <ul>{{ form.evento.as_ul }} </ul>
         </section>
     

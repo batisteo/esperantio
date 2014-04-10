@@ -12,18 +12,17 @@ main.plenekrana {
 }
 
 #mapo-form {
-    float: left;
-    width: 300px;
     border-radius: 12px;
-    cursor: crosshair;
+    cursor: pointer;
 }
 
 #pickmeup-range {
-    float: left;
-    margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
+    margin: 0 auto;
+    width: 300px;
 }
+
 
 .agoj {
     position: absolute;
@@ -61,4 +60,20 @@ main.plenekrana {
     bottom: -1;
 }
 
-/
+/* Formularego */
+
+.kadro {
+    width: 48%;
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 2%;
+    float: left;
+}
+
+.kadro h2 {
+    margin-bottom: .6rem;
+}
+
+input[type="submit"] {
+    clear: both;
+}

@@ -217,8 +217,7 @@ footer #tistel:hover {
 /***** Formularoj *****/
 
 form {
-    margin: 20px auto;
-    width: 20em;
+    margin: 2rem auto;
 }
 
 form ul li {
@@ -243,6 +242,13 @@ select, input, textarea {
     padding: .1em .3em;
     font-family: Biolinum;
     background: white;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    text-indent: 0.01px;  /* Firefox hack */
+    text-overflow: '';  /* Firefox hack */
 }
 
 .helptext {

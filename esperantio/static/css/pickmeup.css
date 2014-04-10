@@ -7,7 +7,7 @@
  * @license		MIT License, see license.txt
  */
 .pickmeup {
-  background: #f8f8f8;
+  background: none;
   border-radius: 0.3em;
   display: none;
   position: absolute; }
@@ -26,11 +26,11 @@
       outline: none;
       text-decoration: none; }
     .pickmeup .pmu-instance .pmu-today {
-      border: 1px solid #5d7e33; }
+      color: #39581b; }
     .pickmeup .pmu-instance .pmu-button:hover {
       color: #39581b; }
     .pickmeup .pmu-instance .pmu-not-in-month {
-      color: #ccc; }
+      color: #aaa; }
     .pickmeup .pmu-instance .pmu-disabled,
     .pickmeup .pmu-instance .pmu-disabled:hover {
       color: #333333;
@@ -38,11 +38,11 @@
     .pickmeup .pmu-instance .pmu-selected {
       color: white;
       background: #5d7e33; }
+    .pickmeup .pmu-instance .pmu-not-in-month.pmu-selected {
+      color: white;
+      background: #6D8B48; }
     .pickmeup .pmu-instance .pmu-selected:hover {
       color: #cf0; }
-    .pickmeup .pmu-instance .pmu-not-in-month.pmu-selected {
-      color: #c6cac2;
-      background: #9dad8e; }
     .pickmeup .pmu-instance nav {
       display: -ms-flexbox;
       display: -webkit-flex;
