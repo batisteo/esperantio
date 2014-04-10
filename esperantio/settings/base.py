@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'django_markdown',
     'django_extensions',
     'django_gravatar',
+    'django_countries',
     'braces',
     'taggit',
     'toolbox',

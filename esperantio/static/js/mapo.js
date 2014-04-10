@@ -53,6 +53,22 @@ function object_form(mapo, options) {
         $("[id$='long']").val(e.latlng.lng);
         marker.setLatLng(e.latlng).setOpacity(1);
         mapo.setView(e.latlng, mapo.getZoom()+2);
+
+        var baseURL = 'http://nominatim.openstreetmap.org/reverse?format=json&accept-language=eo'
+        $.getJSON(baseURL+'&lat='+e.latlng.lat+'&lon='+e.latlng.lng,
+            function(data){
+                var d = data['address'];
+                if ('county' in d) {var urbo = d['county'];}
+                if ('neighbourhood' in d) {var urbo = d['neighbourhood'];}
+                if ('hamlet' in d) {var urbo = d['hamlet'];}
+                if ('village' in d) {var urbo = d['village'];}
+                if ('town' in d) {var urbo = d['town'];}
+                if ('city' in d) {var urbo = d['city'];}
+
+                $('#id_evento-urbo').val(urbo);
+                $('#id_evento-posxtkodo').val(d['postcode']);
+                $('#id_evento-lando').val(d['country_code'].toUpperCase());
+            });
     }
 
     mapo.on('click', onMapClick);
