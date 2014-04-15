@@ -1,0 +1,74 @@
+{% extends 'eventoj/base_evento.html' %}
+{% load i18n %}
+{% load static %}
+{% load leaflet_tags %}
+
+{% block extra-js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.pickmeup.min.js' %}"></script>
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <script type="text/javascript" src="{% static 'js/mapo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+{% endblock extra-js %}
+
+{% block extra-css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pickmeup.css' %}" />
+{% endblock extra-css %}
+
+{% block content %}
+
+    <form action="" method="post">{% csrf_token %}
+        {{ form.non_field_errors }}
+        <section id="kiam" class="kadro">
+            <h2>Kiam?</h2>
+            <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
+                {{ form.komenco }}
+                {{ form.fino }}
+        </section>
+        
+        <section id="kio" class="kadro">
+            <h2>Kio?</h2>
+            <ul>
+                <li>{{ form.nomo.errors }}<label>{{ form.nomo.label }}</label> {{ form.nomo }}</li>
+                <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label }}</label> {{ form.mallonga_nomo }}</li>
+                <li>{{ form.publiko.errors }}<label>{{ form.publiko.label }}</label> {{ form.publiko }}</li>
+                <li>{{ form.retejo.errors }}<label>{{ form.retejo.label }}</label> {{ form.retejo }}</li>
+                <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label }}</label> {{ form.nb_partoprenantoj }}</li>
+            </ul>
+        </section>
+        
+        <section id="kie" class="kadro">
+            <h2>Kie?</h2>
+            {% leaflet_map "mapo-form" callback="object_form" %}
+            <ul>
+                <li>{{ form.urbo.errors }}<label>{{ form.urbo.label }}</label> {{ form.urbo }}</li>
+                <li>{{ form.posxtkodo.errors }}<label>{{ form.posxtkodo.label }}</label> {{ form.posxtkodo }}</li>
+                <li>{{ form.lando.errors }}<label>{{ form.lando.label }}</label> {{ form.lando }}</li>
+                {{ form.lat }}
+                {{ form.long }}
+            </ul>
+        </section>
+        
+        <section id="kia" class="kadro">
+            <h2>Kia?</h2>
+            <ul>
+                <li>{{ form.temo.errors }}<label>{{ form.temo.label }}</label> {{ form.temo }}</li>
+                <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label }}</label> {{ form.etikedoj }}</li>
+                <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label }}</label> {{ form.priskribo }}</li>
+            </ul>
+        </section>
+    
+        <input type="submit" value="{% trans 'Aldonu!' %}" class="baza-fondo" />
+    </form>
+    <div id="object"
+        lat="{{ object.lat }}"
+        long="{{ object.long }}"
+        nomo="{{ object.arangxo.nomo }}"
+        jaro="{{ object.jaro }}"
+        urbo="{{ object.urbo }}">
+    </div>
+
+{% endblock content %}

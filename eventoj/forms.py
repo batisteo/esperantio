@@ -1,10 +1,56 @@
-from django import forms
-
-from toolbox.forms import MultiForm
-
 from datetime import date, datetime
 
+from django import forms
+from django.forms.widgets import HiddenInput, Textarea
+
+from django_countries.data import COUNTRIES
+from taggit.forms import TagField
 from . import models as m
+from .elektoj import PUBLIKO_ELEKTOJ
+
+class RenkontigxoForm(forms.Form):
+    nomo = forms.CharField()
+    mallonga_nomo = forms.CharField()
+    publiko = forms.ChoiceField(choices=PUBLIKO_ELEKTOJ)
+    retejo = forms.URLField()
+    etikedoj = TagField()
+    temo = forms.CharField()
+    urbo = forms.CharField()
+    posxtkodo = forms.CharField()
+    lando = forms.ChoiceField(choices=COUNTRIES)
+    priskribo = forms.CharField(widget=Textarea)
+    nb_partoprenantoj = forms.IntegerField()
+    komenco = forms.DateTimeField(widget=HiddenInput)
+    fino = forms.DateTimeField(widget=HiddenInput)
+    lat = forms.FloatField(widget=HiddenInput)
+    long = forms.FloatField(widget=HiddenInput)
+
+    def save(self, user):
+        arangxo = m.Arangxo(
+                kreanto=user,
+                nomo=nomo,
+                mallonga_nomo=mallonga_nomo,
+                nb_partoprenantoj=nb_partoprenantoj,
+                etikedoj=etikedoj,
+                publiko=publiko,
+        )
+        evento = m.Evento(
+                arangxo=arangxo,
+                komenco=komenco,
+                fino=fino,
+                lat=lat,
+                long=long,
+                temo=temo,
+                urbo=urbo,
+                posxtkodo=posxtkodo,
+                lando=lando,
+                priskribo=priskribo,
+        )
+        arangxo.save()
+        evento.save()
+        print arangxo
+        print evento
+        return evento
 
 class ArangxoForm(forms.ModelForm):
     class Meta:
@@ -19,23 +65,6 @@ class ArangxoForm(forms.ModelForm):
             "retposxto",
             "ofteco",
             "dauro",
-            "etikedoj",
-          )
-        widgets = {
-            'nomo': forms.TextInput(attrs={'required':''}),
-        }
-
-class ArangxoEtaForm(ArangxoForm):
-    class Meta:
-        model = m.Arangxo
-        fields = (
-            "organizo",
-            "nomo",
-            "mallonga_nomo",
-            "publiko",
-            "nb_partoprenantoj",
-            "retejo",
-            "retposxto",
             "etikedoj",
           )
         widgets = {
@@ -69,30 +98,6 @@ class EventoForm(forms.ModelForm):
         }
 
 
-class EventoEtaForm(EventoForm):
-    class Meta:
-        model = m.Evento
-        fields = (
-            "temo",
-            "urbo",
-            "posxtkodo",
-            "lando",
-            "priskribo",
-            "nb_partoprenantoj",
-            "komenco",
-            "fino",
-            "lat",
-            "long",
-        )
-        widgets = {
-            "nb_partoprenantoj": forms.HiddenInput(),
-            "komenco": forms.HiddenInput(),
-            "fino": forms.HiddenInput(),
-            "lat": forms.HiddenInput(),
-            "long": forms.HiddenInput(),
-        }
-
-
 class EventoCreateForm(EventoForm):
 
     def save(self, commit=True):
@@ -103,39 +108,3 @@ class EventoCreateForm(EventoForm):
             evento.save()
         return evento
 
-
-class EventoArangxoCreateForm(MultiForm):
-    forms = [
-        ('arangxo', ArangxoEtaForm),
-        ('evento', EventoEtaForm),
-    ]
-    
-    def __init__(self, *args, **kwargs):
-        self.kreanto = kwargs.pop('kreanto')
-        super(EventoArangxoCreateForm, self).__init__(*args, **kwargs)
-
-    def save(self, commit=True):
-        forms = dict(self.forms)
-        nomo = forms['arangxo'].cleaned_data['nomo']
-        mallonga_nomo = forms['arangxo'].cleaned_data['mallonga_nomo']
-        arangxo1 = m.Arangxo.objects.filter(nomo__iexact=nomo)
-        arangxo2 = m.Arangxo.objects.filter(nomo__iexact=mallonga_nomo)
-        if arangxo1:
-            arangxo = arangxo1[0]
-        elif arangxo2:
-            arangxo = arangxo2[0]
-        else:
-            arangxo = forms['arangxo'].save(commit=False)
-            arangxo.kreanto = self.kreanto
-            fino = forms['evento'].cleaned_data['fino']
-            komenco= forms['evento'].cleaned_data['komenco']
-            arangxo.dauro = (fino-komenco).days + 1
-            if commit:
-                arangxo.save()
-        evento = forms['evento'].save(commit=False)
-        evento.arangxo = arangxo
-        evento.kreanto = self.kreanto
-        evento.nb_partoprenantoj = arangxo.nb_partoprenantoj
-        if commit:
-            evento.save()
-        return evento
