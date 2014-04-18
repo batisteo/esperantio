@@ -1,6 +1,6 @@
 {% extends 'eventoj/base_evento.html' %}
 {% load staticfiles %}
-{% load i18n %}
+{% load i18n l10n %}
 {% load firstof from future %}
 {% load leaflet_tags %}
 
@@ -26,8 +26,8 @@
         <div class="object"
             object_id="{{ object.id }}"
             url="{% url 'evento_detail' object.id %}"
-            lat="{{ object.lat }}"
-            long="{{ object.long }}"
+            lat="{{ object.lat|unlocalize }}"
+            long="{{ object.long|unlocalize }}"
             nomo="{% firstof object.arangxo.mallonga_nomo object.arangxo.nomo %}"
             jaro="{{ object.jaro }}"
             urbo="{{ object.urbo }}">

@@ -1,5 +1,5 @@
 {% extends 'eventoj/base_evento.html' %}
-{% load i18n %}
+{% load i18n l10n %}
 {% load static %}
 {% load leaflet_tags %}
 
@@ -34,8 +34,8 @@
     </section>
 
     <div id="object"
-        lat="{{ object.lat }}"
-        long="{{ object.long }}"
+        lat="{{ object.lat|unlocalize }}"
+        long="{{ object.long|unlocalize }}"
         nomo="{{ object.arangxo.nomo }}"
         jaro="{{ object.jaro }}"
         urbo="{{ object.urbo }}">

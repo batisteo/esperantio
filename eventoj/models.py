@@ -14,7 +14,7 @@ class Arangxo(TimeStampedModel):
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
     mallonga_nomo = models.CharField(_("mallonga nomo"), max_length=255, blank=True,
-            help_text=_("Mallonga nomo se ekzistas."), unique=True)
+            help_text=_("Mallonga nomo se ekzistas."), unique=True, default=None)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
@@ -22,7 +22,7 @@ class Arangxo(TimeStampedModel):
     publiko = models.PositiveSmallIntegerField(_("publiko"),
                 choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
     nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
-            help_text="Proksimuma nombro de partoprenantoj.")
+            help_text="Proksimuma nombro da partoprenantoj.")
     etikedoj = TaggableManager(blank=True)
     ofteco = models.PositiveIntegerField(_("ofteco"), blank=True, null=True,
             help_text="Gxenerala ofteco de la renkontigxo.",

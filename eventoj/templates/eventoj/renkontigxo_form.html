@@ -1,5 +1,5 @@
 {% extends 'eventoj/base_evento.html' %}
-{% load i18n %}
+{% load i18n l10n %}
 {% load static %}
 {% load leaflet_tags %}
 
@@ -20,11 +20,12 @@
 
 {% block content %}
 
-    <form action="" method="post">{% csrf_token %}
+    <form action="" method="post" class="custom">{% csrf_token %}
         {{ form.non_field_errors }}
         <section id="kiam" class="kadro">
             <h2>Kiam?</h2>
             <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
+            <p class="errors">{{ form.komenco.errors }}</p>
                 {{ form.komenco }}
                 {{ form.fino }}
         </section>
@@ -32,21 +33,29 @@
         <section id="kio" class="kadro">
             <h2>Kio?</h2>
             <ul>
-                <li>{{ form.nomo.errors }}<label>{{ form.nomo.label }}</label> {{ form.nomo }}</li>
-                <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label }}</label> {{ form.mallonga_nomo }}</li>
-                <li>{{ form.publiko.errors }}<label>{{ form.publiko.label }}</label> {{ form.publiko }}</li>
-                <li>{{ form.retejo.errors }}<label>{{ form.retejo.label }}</label> {{ form.retejo }}</li>
-                <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label }}</label> {{ form.nb_partoprenantoj }}</li>
+                <li>{{ form.nomo.errors }}<label>{{ form.nomo.label|capfirst }}</label> {{ form.nomo }}</li>
+                <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label|capfirst }}</label> {{ form.mallonga_nomo }}</li>
+                <li>{{ form.publiko.errors }}<label>{{ form.publiko.label|capfirst }}</label> {{ form.publiko }}</li>
+                <li>{{ form.retejo.errors }}<label>{{ form.retejo.label|capfirst }}</label> {{ form.retejo }}</li>
+                <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label|capfirst }}</label> {{ form.nb_partoprenantoj }}<i class="helptext">{{ form.nb_partoprenantoj.help_text }}</i></li>
             </ul>
         </section>
         
-        <section id="kie" class="kadro">
+        <section id="kie" class="kadro clear-left">
             <h2>Kie?</h2>
             {% leaflet_map "mapo-form" callback="object_form" %}
+            <br />
+            <p class="errorlist">
+                {% if form.lat.errors %}
+                    {% blocktrans trimmed %}
+                        Bonvelu klaki sur la mapon por lokigi la eventon!
+                    {% endblocktrans %}
+                {% endif %}
+            </p>
             <ul>
-                <li>{{ form.urbo.errors }}<label>{{ form.urbo.label }}</label> {{ form.urbo }}</li>
-                <li>{{ form.posxtkodo.errors }}<label>{{ form.posxtkodo.label }}</label> {{ form.posxtkodo }}</li>
-                <li>{{ form.lando.errors }}<label>{{ form.lando.label }}</label> {{ form.lando }}</li>
+                <li>{{ form.urbo.errors }}<label>{{ form.urbo.label|capfirst }}</label> {{ form.urbo }}</li>
+                <li>{{ form.posxtkodo.errors }}<label>{{ form.posxtkodo.label|capfirst }}</label> {{ form.posxtkodo }}</li>
+                <li>{{ form.lando.errors }}<label>{{ form.lando.label|capfirst }}</label> {{ form.lando }}</li>
                 {{ form.lat }}
                 {{ form.long }}
             </ul>
@@ -55,17 +64,17 @@
         <section id="kia" class="kadro">
             <h2>Kia?</h2>
             <ul>
-                <li>{{ form.temo.errors }}<label>{{ form.temo.label }}</label> {{ form.temo }}</li>
-                <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label }}</label> {{ form.etikedoj }}</li>
-                <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label }}</label> {{ form.priskribo }}</li>
+                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
+                <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}</li>
+                <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label|capfirst }}</label> {{ form.priskribo }}</li>
             </ul>
         </section>
     
         <input type="submit" value="{% trans 'Aldonu!' %}" class="baza-fondo" />
     </form>
     <div id="object"
-        lat="{{ object.lat }}"
-        long="{{ object.long }}"
+        lat="{{ object.lat|unlocalize }}"
+        long="{{ object.long|unlocalize }}"
         nomo="{{ object.arangxo.nomo }}"
         jaro="{{ object.jaro }}"
         urbo="{{ object.urbo }}">

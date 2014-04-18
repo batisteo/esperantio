@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views import generic
+from django.db import transaction
 
 from braces.views import LoginRequiredMixin
 
@@ -19,31 +20,33 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
         return super(RenkontigxoCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        arangxo = Arangxo.objects.create(
-                kreanto = self.user,
-                nomo = form.cleaned_data['nomo'],
-                mallonga_nomo = form.cleaned_data['mallonga_nomo'],
-                nb_partoprenantoj = form.cleaned_data['nb_partoprenantoj'],
-                publiko = form.cleaned_data['publiko'],
-        )
-        evento = Evento.objects.create(
-                arangxo = arangxo,
-                kreanto = self.user,
-                komenco = form.cleaned_data['komenco'],
-                fino = form.cleaned_data['fino'],
-                lat = form.cleaned_data['lat'],
-                long = form.cleaned_data['long'],
-                temo = form.cleaned_data['temo'],
-                urbo = form.cleaned_data['urbo'],
-                posxtkodo = form.cleaned_data['posxtkodo'],
-                lando = form.cleaned_data['lando'],
-                priskribo = form.cleaned_data['priskribo'],
-        )
-        arangxo.etikedoj.add(*form.cleaned_data['etikedoj'])
-        return super(RenkontigxoCreateView, self).form_valid(form)
+        with transaction.atomic():
+            self.arangxo = Arangxo.objects.create(
+                    kreanto = self.user,
+                    nomo = form.cleaned_data['nomo'],
+                    mallonga_nomo = form.cleaned_data['mallonga_nomo'],
+                    nb_partoprenantoj = form.cleaned_data['nb_partoprenantoj'],
+                    publiko = form.cleaned_data['publiko'],
+            )
+            self.evento = Evento.objects.create(
+                    arangxo = self.arangxo,
+                    kreanto = self.user,
+                    nb_partoprenantoj = form.cleaned_data['nb_partoprenantoj'],
+                    komenco = form.cleaned_data['komenco'],
+                    fino = form.cleaned_data['fino'],
+                    lat = form.cleaned_data['lat'],
+                    long = form.cleaned_data['long'],
+                    temo = form.cleaned_data['temo'],
+                    urbo = form.cleaned_data['urbo'],
+                    posxtkodo = form.cleaned_data['posxtkodo'],
+                    lando = form.cleaned_data['lando'],
+                    priskribo = form.cleaned_data['priskribo'],
+            )
+            self.arangxo.etikedoj.add(*form.cleaned_data['etikedoj'])
+            return super(RenkontigxoCreateView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('evento_list')
+        return reverse('evento_detail', kwargs={'pk': self.evento.pk})
 
 evento_arangxo_create = RenkontigxoCreateView.as_view()
 

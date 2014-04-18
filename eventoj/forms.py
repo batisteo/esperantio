@@ -10,21 +10,45 @@ from . import models as m
 from .elektoj import PUBLIKO_ELEKTOJ
 
 class RenkontigxoForm(forms.Form):
-    nomo = forms.CharField(required=False, label=_("nomo"))
-    mallonga_nomo = forms.CharField(required=False, label=_("mallonga_nomo"))
-    publiko = forms.ChoiceField(required=False, label=_("publiko"), choices=PUBLIKO_ELEKTOJ)
-    retejo = forms.URLField(required=False, label=_("retejo"))
-    etikedoj = TagField(required=False, label=_("etikedoj"))
-    temo = forms.CharField(required=False, label=_("temo"))
-    urbo = forms.CharField(required=False, label=_("urbo"))
-    posxtkodo = forms.CharField(required=False, label=_("posxtkodo"))
-    lando = forms.ChoiceField(required=False, label=_("lando"), choices=countries)
-    priskribo = forms.CharField(required=False, label=_("priskribo"), widget=Textarea)
-    nb_partoprenantoj = forms.IntegerField(required=False, label=_("nb_partoprenantoj"))
-    komenco = forms.DateTimeField(required=False, label=_("komenco"), widget=HiddenInput)
-    fino = forms.DateTimeField(required=False, label=_("fino"), widget=HiddenInput)
-    lat = forms.FloatField(required=False, label=_("lat"), widget=HiddenInput)
-    long = forms.FloatField(required=False, label=_("long"), widget=HiddenInput)
+    nomo = forms.CharField(widget=forms.TextInput(attrs={'required': ''}),
+            label=_("nomo"))
+    mallonga_nomo = forms.CharField(required=False,
+            label=_("mallonga nomo"))
+    publiko = forms.ChoiceField(required=False,
+            label=_("publiko"), choices=PUBLIKO_ELEKTOJ)
+    retejo = forms.URLField(required=False,
+            widget=forms.URLInput(attrs={'placeholder': 'http://'}),
+            label=_("retejo"))
+    nb_partoprenantoj = forms.IntegerField(
+            widget=forms.NumberInput(attrs={
+                'required': '',
+                'pattern': '[1-9]{4}',
+                'maxlength': '4'}),
+            label=_("nombro da partoprenantoj"),
+            help_text=_("Averagxa aux estimata nombro da partoprenantoj."))
+
+    etikedoj = TagField(required=False,
+            label=_("etikedoj"))
+    temo = forms.CharField(required=False,
+            label=_("temo"))
+    urbo = forms.CharField(widget=forms.TextInput(attrs={'required': ''}),
+            label=_("urbo"))
+    posxtkodo = forms.CharField(required=False,
+            label=_("posxtkodo"))
+    lando = forms.ChoiceField(widget=forms.Select(attrs={'required': ''}),
+            choices=countries,
+            label=_("lando"))
+    priskribo = forms.CharField(required=False, widget=Textarea,
+            label=_("priskribo"))
+    komenco = forms.DateTimeField( widget=HiddenInput,
+            label=_("komenco"))
+    fino = forms.DateTimeField(required=False, widget=HiddenInput,
+            label=_("fino"))
+    lat = forms.FloatField( widget=HiddenInput,
+            label=_("lat"))
+    long = forms.FloatField( widget=HiddenInput,
+            label=_("long"))
+
 
 class ArangxoForm(forms.ModelForm):
     class Meta:
