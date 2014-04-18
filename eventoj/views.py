@@ -15,11 +15,32 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
 
     def dispatch(self, request, *args, **kwargs):
         self.user = request.user
+        print self.user
         return super(RenkontigxoCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        form.save(self.user)
-        return HttpResponseRedirect(self.get_success_url())
+        arangxo = Arangxo.objects.create(
+                kreanto = self.user,
+                nomo = form.cleaned_data['nomo'],
+                mallonga_nomo = form.cleaned_data['mallonga_nomo'],
+                nb_partoprenantoj = form.cleaned_data['nb_partoprenantoj'],
+                publiko = form.cleaned_data['publiko'],
+        )
+        evento = Evento.objects.create(
+                arangxo = arangxo,
+                kreanto = self.user,
+                komenco = form.cleaned_data['komenco'],
+                fino = form.cleaned_data['fino'],
+                lat = form.cleaned_data['lat'],
+                long = form.cleaned_data['long'],
+                temo = form.cleaned_data['temo'],
+                urbo = form.cleaned_data['urbo'],
+                posxtkodo = form.cleaned_data['posxtkodo'],
+                lando = form.cleaned_data['lando'],
+                priskribo = form.cleaned_data['priskribo'],
+        )
+        arangxo.etikedoj.add(*form.cleaned_data['etikedoj'])
+        return super(RenkontigxoCreateView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('evento_list')

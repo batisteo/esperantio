@@ -1,56 +1,30 @@
 from datetime import date, datetime
 
+from django.utils.translation import ugettext_lazy as _
 from django import forms
 from django.forms.widgets import HiddenInput, Textarea
 
-from django_countries.data import COUNTRIES
+from django_countries import countries
 from taggit.forms import TagField
 from . import models as m
 from .elektoj import PUBLIKO_ELEKTOJ
 
 class RenkontigxoForm(forms.Form):
-    nomo = forms.CharField()
-    mallonga_nomo = forms.CharField()
-    publiko = forms.ChoiceField(choices=PUBLIKO_ELEKTOJ)
-    retejo = forms.URLField()
-    etikedoj = TagField()
-    temo = forms.CharField()
-    urbo = forms.CharField()
-    posxtkodo = forms.CharField()
-    lando = forms.ChoiceField(choices=COUNTRIES)
-    priskribo = forms.CharField(widget=Textarea)
-    nb_partoprenantoj = forms.IntegerField()
-    komenco = forms.DateTimeField(widget=HiddenInput)
-    fino = forms.DateTimeField(widget=HiddenInput)
-    lat = forms.FloatField(widget=HiddenInput)
-    long = forms.FloatField(widget=HiddenInput)
-
-    def save(self, user):
-        arangxo = m.Arangxo(
-                kreanto=user,
-                nomo=nomo,
-                mallonga_nomo=mallonga_nomo,
-                nb_partoprenantoj=nb_partoprenantoj,
-                etikedoj=etikedoj,
-                publiko=publiko,
-        )
-        evento = m.Evento(
-                arangxo=arangxo,
-                komenco=komenco,
-                fino=fino,
-                lat=lat,
-                long=long,
-                temo=temo,
-                urbo=urbo,
-                posxtkodo=posxtkodo,
-                lando=lando,
-                priskribo=priskribo,
-        )
-        arangxo.save()
-        evento.save()
-        print arangxo
-        print evento
-        return evento
+    nomo = forms.CharField(required=False, label=_("nomo"))
+    mallonga_nomo = forms.CharField(required=False, label=_("mallonga_nomo"))
+    publiko = forms.ChoiceField(required=False, label=_("publiko"), choices=PUBLIKO_ELEKTOJ)
+    retejo = forms.URLField(required=False, label=_("retejo"))
+    etikedoj = TagField(required=False, label=_("etikedoj"))
+    temo = forms.CharField(required=False, label=_("temo"))
+    urbo = forms.CharField(required=False, label=_("urbo"))
+    posxtkodo = forms.CharField(required=False, label=_("posxtkodo"))
+    lando = forms.ChoiceField(required=False, label=_("lando"), choices=countries)
+    priskribo = forms.CharField(required=False, label=_("priskribo"), widget=Textarea)
+    nb_partoprenantoj = forms.IntegerField(required=False, label=_("nb_partoprenantoj"))
+    komenco = forms.DateTimeField(required=False, label=_("komenco"), widget=HiddenInput)
+    fino = forms.DateTimeField(required=False, label=_("fino"), widget=HiddenInput)
+    lat = forms.FloatField(required=False, label=_("lat"), widget=HiddenInput)
+    long = forms.FloatField(required=False, label=_("long"), widget=HiddenInput)
 
 class ArangxoForm(forms.ModelForm):
     class Meta:

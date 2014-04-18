@@ -55,6 +55,10 @@ class Evento(TimeStampedModel):
     nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
             blank=True, null=True, help_text="Proksimuma nombro de partoprenantoj.")
     priskribo = models.TextField(_("priskribo"), blank=True, null=True)
+
+    @property
+    def jaro(self):
+        return self.komenco.year
     
 
     class Meta:
@@ -62,14 +66,10 @@ class Evento(TimeStampedModel):
         verbose_name_plural = _("eventoj")
 
     def __unicode__(self):
-        return self.arangxo.nomo
+        return self.arangxo.nomo + ' ' + str(self.jaro)
 
     def as_dict(self):
         return {'nomo': self.arangxo.nomo,
                 'lat': self.lat,
                 'long': self.long,
         }
-
-    @property
-    def jaro(self):
-        return self.komenco.year
