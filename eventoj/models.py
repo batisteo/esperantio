@@ -13,8 +13,8 @@ from .elektoj import PUBLIKO_ELEKTOJ, OFTECO_ELEKTOJ
 class Arangxo(TimeStampedModel):
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
-    mallonga_nomo = models.CharField(_("mallonga nomo"), max_length=255, blank=True,
-            help_text=_("Mallonga nomo se ekzistas."), unique=True, default=None)
+    mallonga_nomo = models.CharField(_("mallonga nomo"), blank=True,
+            help_text=_("Mallonga nomo se ekzistas."), max_length=255)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),

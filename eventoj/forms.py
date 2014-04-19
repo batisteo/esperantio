@@ -10,9 +10,14 @@ from . import models as m
 from .elektoj import PUBLIKO_ELEKTOJ
 
 class RenkontigxoForm(forms.Form):
-    nomo = forms.CharField(widget=forms.TextInput(attrs={'required': ''}),
+    nomo = forms.CharField(
+            widget=forms.TextInput(attrs={
+                'required': '',
+                'list': 'nomo_list'}),
             label=_("nomo"))
-    mallonga_nomo = forms.CharField(required=False,
+    mallonga_nomo = forms.CharField(
+            widget=forms.TextInput(attrs={'list': 'mallonga_nomo_list'}),
+            required=False,
             label=_("mallonga nomo"))
     publiko = forms.ChoiceField(required=False,
             label=_("publiko"), choices=PUBLIKO_ELEKTOJ)
