@@ -27,13 +27,14 @@ class RenkontigxoForm(forms.Form):
     nb_partoprenantoj = forms.IntegerField(
             widget=forms.NumberInput(attrs={
                 'required': '',
-                'pattern': '[1-9]{4}',
+                'pattern': '[0-9]{1,4}',
                 'maxlength': '4'}),
             label=_("nombro da partoprenantoj"),
             help_text=_("Averagxa aux estimata nombro da partoprenantoj."))
 
     etikedoj = TagField(required=False,
-            label=_("etikedoj"))
+            label=_("etikedoj"),
+            help_text=_("Ekzemple: prelegoj, ekskursoj, koncertoj"))
     temo = forms.CharField(required=False,
             label=_("temo"))
     urbo = forms.CharField(widget=forms.TextInput(attrs={'required': ''}),

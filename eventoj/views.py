@@ -19,14 +19,22 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
         print self.user
         return super(RenkontigxoCreateView, self).dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super(RenkontigxoCreateView, self).get_context_data(**kwargs)
+        context['object_list'] = Arangxo.objects.all()
+        return context
+
     def form_valid(self, form):
         with transaction.atomic():
-            arangxo_nomo = m.Arangxo.objects.filter(nomo__iexact=nomo)
-            arangxo_mallonga_nomo = m.Arangxo.objects.filter(nomo__iexact=mallonga_nomo)
+            nomo = form.cleaned_data['nomo']
+            mallonga_nomo = form.cleaned_data['mallonga_nomo']
+            arangxo_nomo = Arangxo.objects.filter(nomo__iexact=nomo)
+            arangxo_mallonga_nomo = Arangxo.objects.filter(mallonga_nomo__iexact=mallonga_nomo)
+            print arangxo_nomo, arangxo_mallonga_nomo
             if arangxo_nomo:
-                arangxo = arangxo_nomo[0]
+                self.arangxo = arangxo_nomo[0]
             elif arangxo_mallonga_nomo:
-                arangxo = arangxo_mallonga_nomo[0]
+                self.arangxo = arangxo_mallonga_nomo[0]
             else:
                 self.arangxo = Arangxo.objects.create(
                         kreanto = self.user,

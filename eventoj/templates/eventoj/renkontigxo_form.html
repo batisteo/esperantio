@@ -33,8 +33,20 @@
         <section id="kio" class="kadro">
             <h2>Kio?</h2>
             <ul>
-                <li>{{ form.nomo.errors }}<label>{{ form.nomo.label|capfirst }}</label> {{ form.nomo }}</li>
-                <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label|capfirst }}</label> {{ form.mallonga_nomo }}</li>
+                <li>{{ form.nomo.errors }}<label>{{ form.nomo.label|capfirst }}</label> {{ form.nomo }}
+                    <datalist id="nomo_list">
+                        {% for arangxo in object_list %}
+                            <option value="{{ arangxo.nomo }}">
+                        {% endfor %}
+                    </datalist>
+                </li>
+                <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label|capfirst }}</label> {{ form.mallonga_nomo }}
+                    <datalist id="nomo_list">
+                        {% for arangxo in object_list %}
+                            <option value="{{ arangxo.mallonga_nomo }}">
+                        {% endfor %}
+                    </datalist>
+                </li>
                 <li>{{ form.publiko.errors }}<label>{{ form.publiko.label|capfirst }}</label> {{ form.publiko }}</li>
                 <li>{{ form.retejo.errors }}<label>{{ form.retejo.label|capfirst }}</label> {{ form.retejo }}</li>
                 <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label|capfirst }}</label> {{ form.nb_partoprenantoj }}<i class="helptext">{{ form.nb_partoprenantoj.help_text }}</i></li>
@@ -65,7 +77,7 @@
             <h2>Kia?</h2>
             <ul>
                 <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
-                <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}</li>
+                <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}<i class="helptext">{{ form.etikedoj.help_text }}</i></li>
                 <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label|capfirst }}</label> {{ form.priskribo }}</li>
             </ul>
         </section>
