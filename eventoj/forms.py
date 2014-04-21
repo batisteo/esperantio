@@ -39,14 +39,14 @@ class RenkontigxoForm(forms.Form):
             label=_("temo"))
     urbo = forms.CharField(widget=forms.TextInput(attrs={'required': ''}),
             label=_("urbo"))
-    posxtkodo = forms.CharField(required=False,
+    posxtkodo = forms.CharField(required=False, widget=HiddenInput,
             label=_("posxtkodo"))
     lando = forms.ChoiceField(widget=forms.Select(attrs={'required': ''}),
             choices=countries,
             label=_("lando"))
     priskribo = forms.CharField(required=False, widget=Textarea,
             label=_("priskribo"))
-    komenco = forms.DateTimeField( widget=HiddenInput,
+    komenco = forms.DateTimeField(widget=HiddenInput,
             label=_("komenco"))
     fino = forms.DateTimeField(required=False, widget=HiddenInput,
             label=_("fino"))
