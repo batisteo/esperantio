@@ -32,55 +32,56 @@ function object_detail(mapo, options) {
 
 
 function object_form(mapo, options) {
-    var o = $('#object')
-    var lat = o.attr('lat');
-    var long = o.attr('long');
-    if (lat && long) {
-        mapo.setView([lat, long], 13);
-        var marker = L.marker([lat, long], {draggable:true}).addTo(mapo);
+    var lat = $("[id$='lat']").val();
+    var long = $("[id$='long']").val();
+    if (lat || long) {
+        mapo.setView([lat, long]);
+        var marker = L.marker([lat, long], {
+                draggable:true
+        }).addTo(mapo);
     }
     else {
         mapo.setView([40,0],2);
-            var marker = L.marker([40,0], {
-                    draggable:true,
-                    opacity:0
-            }).addTo(mapo);
+        var marker = L.marker([40,0], {
+                draggable:true,
+                opacity:0
+        }).addTo(mapo);
     }
 
     function setPositionFields(latlng) {
         $("[id$='lat']").val(latlng.lat);
         $("[id$='long']").val(latlng.lng);
-    }
+    };
 
     function setAddressFields(latlng) {
         var baseURL = 'http://nominatim.openstreetmap.org/reverse?format=json&accept-language=eo'
         $.getJSON(baseURL+'&lat='+latlng.lat+'&lon='+latlng.lng,
             function(data){
                 var d = data['address'];
-                if ('county' in d) {var urbo = d['county'];}
+                if ('county' in d)        {var urbo = d['county'];}
                 if ('neighbourhood' in d) {var urbo = d['neighbourhood'];}
-                if ('hamlet' in d) {var urbo = d['hamlet'];}
-                if ('village' in d) {var urbo = d['village'];}
-                if ('town' in d) {var urbo = d['town'];}
-                if ('city' in d) {var urbo = d['city'];}
+                if ('hamlet' in d)        {var urbo = d['hamlet'];}
+                if ('village' in d)       {var urbo = d['village'];}
+                if ('town' in d)          {var urbo = d['town'];}
+                if ('city' in d)          {var urbo = d['city'];}
 
                 $("[id$='urbo']").val(urbo);
                 $("[id$='posxtkodo']").val(d['postcode']);
                 $("[id$='lando']").val(d['country_code'].toUpperCase());
             });
-    }
+    };
 
     function onMapClick(e) {
         setPositionFields(e.latlng);
         setAddressFields(e.latlng);
         marker.setLatLng(e.latlng).setOpacity(1);
         mapo.setView(e.latlng, mapo.getZoom()+2);  /* Center and Zoom x2 */
-    }
+    };
 
     function onMarkerDrag(e) {
         setPositionFields(e.target.getLatLng());
         setAddressFields(e.target.getLatLng());
-    }
+    };
 
     marker.on('dragend', onMarkerDrag);
     mapo.on('click', onMapClick);
