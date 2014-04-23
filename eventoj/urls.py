@@ -1,10 +1,6 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('eventoj.views',
-    url(r'^$',
-            view='evento_list',
-            name='evento_list',),
-
     url(r'^arangxo/$',
             view='arangxo_list',
             name='arangxo_list',),

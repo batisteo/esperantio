@@ -19,76 +19,80 @@
     </head>
 
     <body{% block body-class %}{% endblock body-class %}>
-        <header class="baza-fondo">
-            {% if not user.is_authenticated %}
-                {% with next=request.get_full_path|urlencode %}
-                    <p class="konekti">
-                        <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">
-                            <i class="fa fa-sign-in"></i>
-                            {% trans "Ensalutu" %}
-                        </a>
-                    </p>
-                {% endwith %}
-            {% else %}
-                <div class="uzanto">
-                    <p class="avatar"><a href="{% gravatar_profile_url user.email %}" target="_blank">
-                        {% gravatar user.retposxto 42 %}
-                    </a></p>
-                    <p class="uzanto-nomo">
-                        <a href="{% url 'uzanto_detail' %}" target="#uzanto-menuo" class="menua-sxaltilo">
-                            <i class="fa fa-caret-down"></i>
-                            {{ user.salutnomo }}
-                        </a>
-                    </p>
-                </div>
-                <menu id="uzanto-menuo" class="dinamika-menuo baza-fondo">
-                    <li><a href="{% url 'uzanto_detail' %}">
-                        <i class="fa fa-user"></i>
-                    Profilo</a></li>
-                    <li><a href="{% url 'uzanto_update' %}">
-                        <i class="fa fa-cog"></i>
-                        Agordoj</a>
-                    </li>
-                    <li><a href="#">
-                        <i class="fa fa-check-square"></i>
-                        Miaj eventoj</a>
-                    </li>
-                    <li><a href="{% url 'elsaluti' %}">
-                        <i class="fa fa-sign-out"></i>
-                        Elsalutu</a></li>
-                </menu>
-            {% endif %}
-            <h1>
-                <a href="{% url 'evento_list' %}">esperant<span>io</span></a>
-            </h1>
-        </header>
+        {% block header %}
+            <header class="baza-fondo">
+                {% if not user.is_authenticated %}
+                    {% with next=request.get_full_path|urlencode %}
+                        <p class="konekti">
+                            <a href="{% url 'konekti' %}{% if next != '/' %}?next={{ next }}{% endif %}">
+                                <i class="fa fa-sign-in"></i>
+                                {% trans "Ensalutu" %}
+                            </a>
+                        </p>
+                    {% endwith %}
+                {% else %}
+                    <div class="uzanto">
+                        <p class="avatar"><a href="{% gravatar_profile_url user.email %}" target="_blank">
+                            {% gravatar user.retposxto 42 %}
+                        </a></p>
+                        <p class="uzanto-nomo">
+                            <a href="{% url 'uzanto_detail' %}" target="#uzanto-menuo" class="menua-sxaltilo">
+                                <i class="fa fa-caret-down"></i>
+                                {{ user.salutnomo }}
+                            </a>
+                        </p>
+                    </div>
+                    <menu id="uzanto-menuo" class="dinamika-menuo baza-fondo">
+                        <li><a href="{% url 'uzanto_detail' %}">
+                            <i class="fa fa-user"></i>
+                        Profilo</a></li>
+                        <li><a href="{% url 'uzanto_update' %}">
+                            <i class="fa fa-cog"></i>
+                            Agordoj</a>
+                        </li>
+                        <li><a href="#">
+                            <i class="fa fa-check-square"></i>
+                            Miaj eventoj</a>
+                        </li>
+                        <li><a href="{% url 'elsaluti' %}">
+                            <i class="fa fa-sign-out"></i>
+                            Elsalutu</a></li>
+                    </menu>
+                {% endif %}
+                <h1 class="logo" id="logo">
+                    <a href="{% url 'hejmo' %}">esperant<span>io</span></a>
+                </h1>
+            </header>
+        {% endblock header %}
 
-        <main{% block main-class %}{% endblock main-class %}>
-            {% block content %}
-            {% endblock content %}
-        </main>
-        
-        <footer class="baza-fondo">
-            {% block footer %}
-            <p id="lingvo" title="esperanto">
-                <i class="fa fa-globe"></i>
-                <a href="#" target="#lingvo-menuo" class="menua-sxaltilo">
-                    eo
-                </a>
-                <i class="fa fa-caret-up"></i>
-            </p>
-            <menu id="lingvo-menuo" class="dinamika-menuo baza-fondo">
-                <li><a href="#">esperanto</a></li>
-            </menu>
-            <menu id="piedo-menuo">
-                <li><a href="{% url 'helpo' %}">helpo</a> |</li>
-                <li><a href="{% url 'kontribui' %}">kontribui</a> |</li>
-                <li><a href="{% url 'api' %}">API</a> |</li>
-                <li><a href="{% url 'kontakto' %}">kontakto</a> |</li>
-                <li><a href="{% url 'pri-ni' %}">pri ni</a></li>
-            </menu>
-            <p id="tistel"><img src="{% static 'img/tistel.png' %}" alt="logo" title="tistel" /></p>
-            {% endblock footer %}
-        </footer>
+        {% block main %}
+            <main{% block main-class %}{% endblock main-class %}>
+                {% block content %}
+                {% endblock content %}
+            </main>
+        {% endblock main %}
+
+        {% block footer %}
+            <footer class="baza-fondo">
+                <p id="lingvo" title="esperanto">
+                    <i class="fa fa-globe"></i>
+                    <a href="#" target="#lingvo-menuo" class="menua-sxaltilo">
+                        eo
+                    </a>
+                    <i class="fa fa-caret-up"></i>
+                </p>
+                <menu id="lingvo-menuo" class="dinamika-menuo baza-fondo">
+                    <li><a href="#">esperanto</a></li>
+                </menu>
+                <menu id="piedo-menuo">
+                    <li><a href="{% url 'helpo' %}">helpo</a> |</li>
+                    <li><a href="{% url 'kontribui' %}">kontribui</a> |</li>
+                    <li><a href="{% url 'api' %}">API</a> |</li>
+                    <li><a href="{% url 'kontakto' %}">kontakto</a> |</li>
+                    <li><a href="{% url 'pri-ni' %}">pri ni</a></li>
+                </menu>
+                <p id="tistel"><img src="{% static 'img/tistel.png' %}" alt="logo" title="tistel" /></p>
+            </footer>
+        {% endblock footer %}
     </body>
 </html>

@@ -1,12 +1,40 @@
-{% extends 'uzantoj/base_uzanto.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 
-{% block content %}
-    <section>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_ul }}
-            <input type="submit" value="{% trans 'Registrigxu!' %}" />
-        </form>
-    </section>
-{% endblock content %}
+{% block body-class %} class="registrado"{% endblock body-class %}
+
+{% block header %}
+{% endblock header %}
+
+{% block main %}
+    <main>
+        <section class="registrado">
+                <h1 class="logo" id="logo">
+                    <a href="{% url 'hejmo' %}">esperant<span>io</span></a>
+                </h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <p>
+                    <input id="id_salutnomo" type="text" name="salutnomo" maxlength="30"
+                           placeholder="{% trans 'salutnomo' %}" autofocus></input>
+                </p>
+                <p>
+                    <input id="id_pasvorto1" type="password" name="pasvorto1"
+                           placeholder="{% trans 'pasvorto' %}"></input>
+                </p>
+                <p>
+                    <input id="id_pasvorto2" type="password" name="pasvorto2"
+                           placeholder="{% trans 'pasvorto denove' %}"></input>
+                </p>
+                <p>
+                    <input id="id_retposxto" type="email" name="retposxto" maxlength="254"
+                           placeholder="{% trans 'retposxto' %}"></input>
+                </p>
+                <input type="submit" class="baza-fondo" value="{% trans 'Registrigxu!' %}" />
+            </form>
+        </section>
+    </main>
+{% endblock main %}
+
+{% block footer %}
+{% endblock footer %}

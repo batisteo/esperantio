@@ -1,20 +1,41 @@
-{% extends 'eventoj/base_evento.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 
+{% block body-class %} class="registrado"{% endblock body-class %}
 
-    {% block content %}
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <section class="registrado">
+        <h1 class="logo" id="logo">
+            <a href="{% url 'hejmo' %}">esperant<span>io</span></a>
+        </h1>
         <form
             action="{% block form_action %}{% endblock form_action %}"
             method="{% block form_method %}post{% endblock form_method %}"
-            {% block form_extra_attrs %}class="styled ui-autoLabelWidth"{% endblock %}>
-            {{ form.as_p }}
+            class="ensaluti" />
+            <p>
+                <input id="id_username" type="text" name="username" maxlength="254"
+                       placeholder="{% trans 'salutnomo' %}" autofocus></input>
+            </p>
+            <p>
+                <input id="id_password" type="password" name="password"
+                       placeholder="{% trans 'pasvorto' %}"></input>
+            </p>
+            <input type="hidden" name="next" value="{{ next }}" />
         
-        <input type="submit"
-            value="{% block form_submit_text %}{% trans 'Konekti' %}{% endblock %}" />
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="submit" class="baza-fondo"
+            value="{% block form_submit_text %}{% trans 'Konekti!' %}{% endblock %}" />
         
         {% csrf_token %}
-
         </form>
-        <h3><a href="{% url 'uzanto_create' %}">{% trans "Nova sur Esperant.io?" %}</a></h3>
-    {% endblock content %}
+        
+        <p class="nova-uzanto">
+            <a href="{% url 'uzanto_create' %}">{% trans "Nova sur esperant.io?" %}</a>
+        </p>
+    </section>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

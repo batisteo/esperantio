@@ -1,7 +1,3 @@
-.baza-fondo {
-    background-color: #5d7e33;
-}
-
 html {
     height: 100%;
 }
@@ -16,10 +12,15 @@ body {
     font-size: 18x;
     position: relative;
     min-height: 100%;
+    color: #222;
 }
 
 body.plenekrana {
     height: 100%;
+}
+
+body.registrado {
+    min-height: inherit;
 }
 
 a {
@@ -30,17 +31,21 @@ a {
     clear: left;
 }
 
+.baza-fondo {
+    background-color: #5d7e33;
+}
+
 header {
     height: 42px;
 }
 
-header h1 {
+.logo {
     margin-left: 2%;
     position: absolute;
     top: -1px;
 }
 
-header h1 a {
+.logo a {
     font-size: 37px;
     color: white;
     letter-spacing: -.1em;
@@ -48,17 +53,60 @@ header h1 a {
     font-weight: normal;
 }
 
-header h1 a span {
+.logo a span {
     color: #cf0;
-    transition: margin-left .2s;
+    transition: margin-left .3s;
+    text-shadow: 0 0 7px #5d7e33;
 }
 
-header h1:hover a span {
+.logo:hover a span {
     margin-left: .1rem;
 }
 
-header h1:hover a span::before {
+.logo:hover a span::before {
     content: '.';
+}
+
+.registrado .logo {
+    text-align: center;
+    position: relative;
+    top: 0;
+    margin-top: 10rem;
+}
+
+.registrado .logo a {
+    color: #5d7e33;
+    font-size: 5em;
+}
+
+.registrado {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.registrado input[type="text"],
+.registrado input[type="email"],
+.registrado input[type="password"] {
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 1em;
+}
+
+.nova-uzanto {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.nova-uzanto a {
+    font-weight: bold;
+    color: #5d7e33;
+}
+
+.nova-uzanto a:hover,
+.nova-uzanto a:focus,
+.nova-uzanto a:active {
+    text-decoration: underline;
+    opacity: .8;
 }
 
 header .fa {
@@ -247,10 +295,10 @@ label {
 select, input, textarea {
     display: block;
     border: 1px solid silver;
-    box-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3) inset;
+    box-shadow: 1px 1px 0.2rem rgba(0, 0, 0, 0.3) inset;
     border-radius: .2em;
     font-size: 1em;
-    padding: .1em .3em;
+    padding: .1rem .3rem .2rem;
     font-family: Biolinum;
     background: white;
 }
@@ -293,7 +341,15 @@ input[type="submit"]:focus {
     color: darkRed;
     font-weight: bold;
     text-align: center;
+    
 }
+
+::-webkit-input-placeholder {
+   color: gray; }
+::-moz-placeholder {
+   color: gray; }
+:-ms-input-placeholder {
+   color: gray; }
 
 /*** flatpages ***/
 .flatpage {
