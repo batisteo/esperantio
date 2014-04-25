@@ -17,11 +17,11 @@
             class="ensaluti" />
             <p>
                 <input id="id_username" type="text" name="username" maxlength="254"
-                       placeholder="{% trans 'salutnomo' %}" autofocus></input>
+                       placeholder="{% trans 'salutnomo' %}" required autofocus></input>
             </p>
             <p>
                 <input id="id_password" type="password" name="password"
-                       placeholder="{% trans 'pasvorto' %}"></input>
+                       placeholder="{% trans 'pasvorto' %}" required ></input>
             </p>
             <input type="hidden" name="next" value="{{ next }}" />
         

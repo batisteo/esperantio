@@ -16,19 +16,19 @@
                 {% csrf_token %}
                 <p>
                     <input id="id_salutnomo" type="text" name="salutnomo" maxlength="30"
-                           placeholder="{% trans 'salutnomo' %}" autofocus></input>
+                           placeholder="{% trans 'salutnomo' %}" required autofocus></input>
                 </p>
                 <p>
                     <input id="id_pasvorto1" type="password" name="pasvorto1"
-                           placeholder="{% trans 'pasvorto' %}"></input>
+                           placeholder="{% trans 'pasvorto' %}" required></input>
                 </p>
                 <p>
                     <input id="id_pasvorto2" type="password" name="pasvorto2"
-                           placeholder="{% trans 'pasvorto denove' %}"></input>
+                           placeholder="{% trans 'pasvorto denove' %}" required></input>
                 </p>
                 <p>
                     <input id="id_retposxto" type="email" name="retposxto" maxlength="254"
-                           placeholder="{% trans 'retposxto' %}"></input>
+                           placeholder="{% trans 'retposxto' %}" required></input>
                 </p>
                 <input type="submit" class="baza-fondo" value="{% trans 'Registrigxu!' %}" />
             </form>
