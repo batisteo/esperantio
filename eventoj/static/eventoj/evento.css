@@ -79,6 +79,15 @@ main.plenekrana {
     margin: .7rem auto;
 }
 
+#id_urbo {
+    display: inline-block;
+}
+
+#urbo-sercxo {
+    text-decoration: underline;
+    color: #5d7e33;
+}
+
 input[type="submit"] {
     clear: both;
 }

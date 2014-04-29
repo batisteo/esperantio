@@ -58,7 +58,7 @@ function object_form(mapo, options) {
     };
 
     function setAddressFields(latlng) {
-        var baseURL = 'http://nominatim.openstreetmap.org/reverse?format=json&accept-language=eo'
+        var baseURL = 'http://nominatim.openstreetmap.org/reverse?format=json&accept-language=eo';
         $.getJSON(baseURL+'&lat='+latlng.lat+'&lon='+latlng.lng,
             function(data){
                 var d = data['address'];
@@ -76,6 +76,20 @@ function object_form(mapo, options) {
         $("#loko").show();
     };
 
+    function setCityOnMap(city, country) {
+        var baseURL = 'http://nominatim.openstreetmap.org/search?format=json&q=';
+        $.getJSON(baseURL+city+','+country,
+            function(data){
+                var d = data[0]  // Nur uzas la unua rezulto
+                var NE = [d.boundingbox[0], d.boundingbox[2]];
+                var SW = [d.boundingbox[1], d.boundingbox[3]];
+                console.log(data);
+                mapo.fitBounds([NE, SW]);
+                marker.setLatLng([d.lat, d.lon]).setOpacity(1);
+            }
+        );
+    };
+
     function onMapClick(e) {
         setPositionFields(e.latlng);
         setAddressFields(e.latlng);
@@ -90,4 +104,11 @@ function object_form(mapo, options) {
 
     marker.on('dragend', onMarkerDrag);
     mapo.on('click', onMapClick);
+    $("#urbo-sercxo").click(function(e) {
+        setCityOnMap(
+            $("[id$='urbo']").val(),
+            $("[id$='lando'] option:selected").text()
+        );
+        e.preventDefault();
+    });
 };
