@@ -79,19 +79,6 @@ header {
     font-size: 5em;
 }
 
-.registrado {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.registrado input[type="text"],
-.registrado input[type="email"],
-.registrado input[type="password"] {
-    width: 100%;
-    font-size: 2rem;
-    margin-bottom: 1em;
-}
-
 .nova-uzanto {
     text-align: center;
     font-size: 1.2rem;
@@ -203,6 +190,12 @@ main {
     float: right;
 }
 
+.atendilo {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url('../img/atendilo.gif') no-repeat;
+}
 
 footer {
     height: 30px;
@@ -303,6 +296,9 @@ select, input, textarea {
     background: white;
 }
 
+input:not([type=submit]):not([type=file]) {
+    width: 22rem;
+}
 
 input[type="number"] {
     width: 2rem;
@@ -343,10 +339,34 @@ select {
     text-align: center;
 }
 
+.eraro {
+    color: darkRed;
+    font-weight: bold;
+}
+
+.atento {
+    display: none;
+    color: darkOrange;
+    font-weight: bold;
+}
+
 .centrita {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.registrado {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.registrado input[type="text"],
+.registrado input[type="email"],
+.registrado input[type="password"] {
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 1em;
 }
 
 ::-webkit-input-placeholder {

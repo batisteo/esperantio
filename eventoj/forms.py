@@ -37,7 +37,7 @@ class RenkontigxoForm(forms.Form):
             help_text=_("Ekzemple: prelegoj, ekskursoj, koncertoj"))
     temo = forms.CharField(required=False,
             label=_("temo"))
-    urbo = forms.CharField(widget=forms.TextInput(attrs={'required': ''}),
+    urbo = forms.CharField(
             label=_("urbo"))
     posxtkodo = forms.CharField(required=False, widget=HiddenInput,
             label=_("posxtkodo"))

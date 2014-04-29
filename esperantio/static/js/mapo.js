@@ -72,22 +72,35 @@ function object_form(mapo, options) {
                 $("[id$='urbo']").val(urbo);
                 $("[id$='posxtkodo']").val(d['postcode']);
                 $("[id$='lando']").val(d['country_code'].toUpperCase());
+                
+                $("#loko").show();
             });
-        $("#loko").show();
+    };
+
+    function zoomToCity(data) {
+        var NE = [data.boundingbox[0], data.boundingbox[2]];
+        var SW = [data.boundingbox[1], data.boundingbox[3]];
+        mapo.fitBounds([NE, SW]);
+        // marker.setLatLng([data.lat, data.lon]).setOpacity(1);
     };
 
     function setCityOnMap(city, country) {
+        $(".atendilo").show();
         var baseURL = 'http://nominatim.openstreetmap.org/search?format=json&q=';
-        $.getJSON(baseURL+city+','+country,
-            function(data){
-                var d = data[0]  // Nur uzas la unua rezulto
-                var NE = [d.boundingbox[0], d.boundingbox[2]];
-                var SW = [d.boundingbox[1], d.boundingbox[3]];
-                console.log(data);
-                mapo.fitBounds([NE, SW]);
-                marker.setLatLng([d.lat, d.lon]).setOpacity(1);
+        $.getJSON(baseURL+city+', '+country)
+        .done(function(data){
+            if (data.length > 0) {
+                var d = data[0];  // Nur uzas la unua rezulto
+                zoomToCity(d);
             }
-        );
+            if (data.length == 0 && country != '') {
+                setCityOnMap(city, '');
+            }
+            if (data.length == 0 && country == '') {
+                $("#urbo-ne-trovita").show();
+            }
+            $(".atendilo").hide();
+        });
     };
 
     function onMapClick(e) {
@@ -105,10 +118,11 @@ function object_form(mapo, options) {
     marker.on('dragend', onMarkerDrag);
     mapo.on('click', onMapClick);
     $("#urbo-sercxo").click(function(e) {
+        e.preventDefault();
+        $("#urbo-ne-trovita").hide();
         setCityOnMap(
             $("[id$='urbo']").val(),
             $("[id$='lando'] option:selected").text()
         );
-        e.preventDefault();
     });
 };

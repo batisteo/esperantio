@@ -41,7 +41,7 @@
                         {% endfor %}
                     </datalist>
                 </li>
-                <li>{{ form.publiko.errors }}<label>{{ form.publiko.label|capfirst }}</label> {{ form.publiko }}</li>
+                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
                 <li>{{ form.retejo.errors }}<label>{{ form.retejo.label|capfirst }}</label> {{ form.retejo }}</li>
             </ul>
         </section>
@@ -65,7 +65,7 @@
             <h2>Kia?</h2>
             <ul>
                 <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label|capfirst }}</label> {{ form.nb_partoprenantoj }}<i class="helptext">{{ form.nb_partoprenantoj.help_text }}</i></li>
-                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
+                <li>{{ form.publiko.errors }}<label>{{ form.publiko.label|capfirst }}</label> {{ form.publiko }}</li>
                 <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}<i class="helptext">{{ form.etikedoj.help_text }}</i></li>
                 <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label|capfirst }}</label> {{ form.priskribo }}</li>
             </ul>
@@ -82,11 +82,12 @@
                     {% endblocktrans %}
                 </p>
             {% endif %}
-            <p class="helptext centrita">{% trans "Klaku sur la mapon por defini lokon!" %}</p>
+            <p class="helptext centrita">{% trans "Klaku sur la mapon por elekti lokon!" %}</p>
             <ul id="loko">
                 <li>
                     {{ form.urbo.errors }}<label>{{ form.urbo.label|capfirst }}</label> {{ form.urbo }}
-                    <a href="#" id="urbo-sercxo">{% trans "Serĉi" %}</a>
+                    <a href="#" id="urbo-sercxo">{% trans "Montru!" %}</a> <b class="atendilo"></b>
+                    <p id="urbo-ne-trovita" class="atento">{% trans "Ooh, mi ne trovis tiun urbon…" %}</p>
                 </li>
                 <li>
                     {{ form.lando.errors }}<label>{{ form.lando.label|capfirst }}</label> {{ form.lando }}

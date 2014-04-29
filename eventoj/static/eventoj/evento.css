@@ -16,6 +16,10 @@ main.plenekrana {
     cursor: pointer;
 }
 
+.leaflet-marker-icon:hover {
+    cursor: move;
+}
+
 #pickmeup-range {
     font-size: 20px;
     font-weight: bold;
@@ -72,6 +76,7 @@ main.plenekrana {
 
 .kadro h2 {
     margin-bottom: .6rem;
+    color: #5d7e33;
 }
 
 .kadro li {
@@ -90,4 +95,8 @@ main.plenekrana {
 
 input[type="submit"] {
     clear: both;
+}
+
+#id_mallonga_nomo {
+    width: 5rem;
 }

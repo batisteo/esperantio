@@ -1,4 +1,6 @@
 $(function() {
+    $(".atendilo").hide();
+    
     $(".menua-sxaltilo").click(function(e) {
         var menu_id = $(this).attr('target');
         $(menu_id).toggle();
