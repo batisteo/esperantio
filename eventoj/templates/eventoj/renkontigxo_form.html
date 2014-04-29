@@ -24,20 +24,6 @@
     
         {{ form.non_field_errors }}
         
-        <section id="kiam" class="kadro">
-            <h2>Kiam?</h2>
-            <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
-            {% if form.komenco.errors %}
-                <p class="errorlist">
-                    {% blocktrans trimmed %}
-                        Kiam komencos la renkontiĝo?
-                    {% endblocktrans %}
-                </p>
-            {% endif %}
-                {{ form.komenco }}
-                {{ form.fino }}
-        </section>
-        
         <section id="kio" class="kadro">
             <h2>Kio?</h2>
             <ul>
@@ -60,7 +46,32 @@
             </ul>
         </section>
         
-        <section id="kie" class="kadro clear-left">
+        <section id="kiam" class="kadro">
+            <h2>Kiam?</h2>
+            <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
+            {% if form.komenco.errors %}
+                <p class="errorlist">
+                    {% blocktrans trimmed %}
+                        Kiam komencos la renkontiĝo?
+                    {% endblocktrans %}
+                </p>
+            {% endif %}
+            <p class="helptext centrita">{% trans "Klaku sur la kalendaron por elekti komencdaton kaj findaton!" %}</p>
+                {{ form.komenco }}
+                {{ form.fino }}
+        </section>
+        
+        <section id="kia" class="kadro clear-left">
+            <h2>Kia?</h2>
+            <ul>
+                <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label|capfirst }}</label> {{ form.nb_partoprenantoj }}<i class="helptext">{{ form.nb_partoprenantoj.help_text }}</i></li>
+                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
+                <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}<i class="helptext">{{ form.etikedoj.help_text }}</i></li>
+                <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label|capfirst }}</label> {{ form.priskribo }}</li>
+            </ul>
+        </section>
+        
+        <section id="kie" class="kadro">
             <h2>Kie?</h2>
             {% leaflet_map "mapo-form" callback="object_form" %}
             <br />
@@ -71,7 +82,8 @@
                     {% endblocktrans %}
                 </p>
             {% endif %}
-            <ul>
+            <p class="helptext centrita">{% trans "Klaku sur la mapon por defini lokon!" %}</p>
+            <ul id="loko">
                 <li>
                     {{ form.urbo.errors }}<label>{{ form.urbo.label|capfirst }}</label> {{ form.urbo }}
                 </li>
@@ -81,16 +93,6 @@
                 {{ form.posxtkodo }}
                 {{ form.lat }}
                 {{ form.long }}
-            </ul>
-        </section>
-        
-        <section id="kia" class="kadro">
-            <h2>Kia?</h2>
-            <ul>
-                <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label|capfirst }}</label> {{ form.nb_partoprenantoj }}<i class="helptext">{{ form.nb_partoprenantoj.help_text }}</i></li>
-                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
-                <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}<i class="helptext">{{ form.etikedoj.help_text }}</i></li>
-                <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label|capfirst }}</label> {{ form.priskribo }}</li>
             </ul>
         </section>
     

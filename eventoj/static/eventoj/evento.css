@@ -66,12 +66,17 @@ main.plenekrana {
     width: 48%;
     border-radius: 5px;
     margin-top: 2%;
-    margin-left: 2%;
+    margin-right: 2%;
     float: left;
 }
 
 .kadro h2 {
     margin-bottom: .6rem;
+}
+
+.kadro li {
+    width: 25rem;
+    margin: .7rem auto;
 }
 
 input[type="submit"] {

@@ -39,7 +39,7 @@
         <p>{{ object.retposxto }}</p>
         <p>{{ object.posxtkodo }}</p>
         <p>{{ object.lando.name }}</p>
-        <p>ĉ. {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj }} partoprenantoj atenditaj</p>
+        <p>ĉ. {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %} partoprenantoj atenditaj</p>
         <p>{{ object.arangxo.get_publiko_display }}</p>
         {{ object.priskribo|markdown|linebreaks }}
     </div>

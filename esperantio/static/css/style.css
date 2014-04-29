@@ -303,21 +303,6 @@ select, input, textarea {
     background: white;
 }
 
-select {
-    -webkit-appearance: none;
-    appearance: none;
-    text-indent: 0.01px;  /* Firefox hack */
-    text-overflow: '';  /* Firefox hack */
-    background: url('img/trianglo.png') no-repeat right content-box;
-}
-
-.helptext {
-    opacity: .6;
-    font-size: 80%;
-    margin-top: .2em;
-    padding-left: .2em;
-    
-}
 
 input[type="number"] {
     width: 2rem;
@@ -337,11 +322,31 @@ input[type="submit"]:focus {
     box-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3) inset;
 }
 
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    text-indent: 0.01px;  /* Firefox hack */
+    text-overflow: '';  /* Firefox hack */
+    background: url('img/trianglo.png') white no-repeat right content-box;
+}
+
+.helptext {
+    opacity: .6;
+    font-size: 80%;
+    margin-top: .2em;
+    padding-left: .2em;
+}
+
 .errorlist {
     color: darkRed;
     font-weight: bold;
     text-align: center;
-    
+}
+
+.centrita {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ::-webkit-input-placeholder {

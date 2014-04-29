@@ -32,6 +32,9 @@ function object_detail(mapo, options) {
 
 
 function object_form(mapo, options) {
+
+    $("#loko").hide();
+
     var lat = $("[id$='lat']").val();
     var long = $("[id$='long']").val();
     if (lat || long) {
@@ -39,6 +42,7 @@ function object_form(mapo, options) {
         var marker = L.marker([lat, long], {
                 draggable:true
         }).addTo(mapo);
+        $("#loko").show();
     }
     else {
         mapo.setView([40,0],2);
@@ -69,6 +73,7 @@ function object_form(mapo, options) {
                 $("[id$='posxtkodo']").val(d['postcode']);
                 $("[id$='lando']").val(d['country_code'].toUpperCase());
             });
+        $("#loko").show();
     };
 
     function onMapClick(e) {
