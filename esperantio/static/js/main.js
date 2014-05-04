@@ -8,7 +8,11 @@ $(function() {
         e.stopPropagation(); // for click outside
     });
     // Close menu if clicked outside opener
-    $(document).click(function(){
+    $(document).click(function(e) {
         $(".dinamika-menuo").hide();
+    });
+
+    $("a.malaktiva").click(function(e) {
+        e.preventDefault();
     });
 });

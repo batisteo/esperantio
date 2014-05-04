@@ -161,11 +161,22 @@ header .fa {
     height: 2rem;
 }
 
+.dinamika-menuo a.malaktiva {
+    color: darkGray;
+}
+
 .dinamika-menuo li a:hover,
 .dinamika-menuo li a:focus,
 .dinamika-menuo li a:active {
     background: rgba(0,0,0,.2);
     color: #cf0;
+}
+
+.dinamika-menuo li a.malaktiva:hover,
+.dinamika-menuo li a.malaktiva:focus,
+.dinamika-menuo li a.malaktiva:active {
+    background: rgba(0,0,0,0);
+    color: darkGray;
 }
 
 #uzanto-menuo {
@@ -260,6 +271,7 @@ footer #tistel {
 footer #tistel:hover {
     opacity: .8;
 }
+
 
 /***** Formularoj *****/
 

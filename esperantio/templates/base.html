@@ -43,14 +43,14 @@
                         </p>
                     </div>
                     <menu id="uzanto-menuo" class="dinamika-menuo baza-fondo">
-                        <li><a href="{% url 'uzanto_detail' %}">
+                        <li><a class="malaktiva" href="{% url 'uzanto_detail' %}">
                             <i class="fa fa-user"></i>
                         Profilo</a></li>
-                        <li><a href="{% url 'uzanto_update' %}">
+                        <li><a class="malaktiva" href="{% url 'uzanto_update' %}">
                             <i class="fa fa-cog"></i>
                             Agordoj</a>
                         </li>
-                        <li><a href="#">
+                        <li><a class="malaktiva" href="#">
                             <i class="fa fa-check-square"></i>
                             Miaj eventoj</a>
                         </li>
@@ -82,7 +82,7 @@
                     <i class="fa fa-caret-up"></i>
                 </p>
                 <menu id="lingvo-menuo" class="dinamika-menuo baza-fondo">
-                    <li><a href="#">esperanto</a></li>
+                    <li><a class="malaktiva" href="#">esperanto</a></li>
                 </menu>
                 <menu id="piedo-menuo">
                     <li><a href="{% url 'helpo' %}">helpo</a> |</li>
