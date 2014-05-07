@@ -1,5 +1,12 @@
 
 function object_list(mapo, options) {
+    function onLocationFound(e) {
+        console.log(e);
+    };
+
+    mapo.on('locationfound', onLocationFound);
+    mapo.locate({setView: true, maxZoom: 10});
+
     $(".object").each(function(){
         var o = $(this)
         var id = o.attr('object_id');
@@ -16,6 +23,7 @@ function object_list(mapo, options) {
 };
 
 
+
 function object_detail(mapo, options) {
     var o = $('#object')
     var lat = o.attr('lat');
@@ -23,7 +31,6 @@ function object_detail(mapo, options) {
     var nomo = o.attr('nomo');
     var jaro = o.attr('jaro');
     var urbo = o.attr('urbo');
-
     mapo.setView([lat, long], 13);
     var marker = L.marker([lat, long]).addTo(mapo);
     var msg = "<strong>" + nomo + " " + jaro + "</strong><br/>" + urbo;
@@ -32,6 +39,7 @@ function object_detail(mapo, options) {
 
 
 function object_form(mapo, options) {
+    mapo.locate({setView: true, maxZoom: 6});
 
     $("#loko").hide();
 
