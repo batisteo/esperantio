@@ -1,5 +1,4 @@
 
-h2 { text-align: center; font-size: 2em; }
 #datoloko { position: absolute; top: -2em; }
 
 
@@ -99,4 +98,47 @@ input[type="submit"] {
 
 #id_mallonga_nomo {
     width: 5rem;
+}
+
+
+.enhavo {
+    width: 80%;
+    max-width: 1350px;
+    margin: 2rem auto;
+}
+
+.arangxo {
+    display: inline-block;
+    width: 30%;
+    background-color: whiteSmoke;
+    border-radius: .5rem;
+    padding: 1rem;
+    vertical-align: top;
+    margin-top: 4rem;
+    margin-left: 2%;
+}
+
+.evento {
+    display: inline-block;
+    width: 62%;
+}
+
+.arangxo-nomo {
+    font-size: 1.7em;
+    margin: 1rem auto;
+}
+
+.evento-temo {
+    font-size: 1.4em;
+    margin: 1.6rem 0 2.4rem;
+    font-weight: bold;
+}
+
+.komenco-fino {
+    width: 100%;
+}
+.komenco {
+}
+.fino {
+    float: right;
 }

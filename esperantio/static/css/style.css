@@ -25,6 +25,22 @@ body.registrado {
 
 a {
     text-decoration: none;
+    color: #5d7e33;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #cf0;
+}
+
+em,
+.kursiva {
+    font-style: italic;
+}
+strong,
+.dika {
+    font-weight: bold;
 }
 
 .clear-left {
@@ -272,7 +288,6 @@ footer #tistel:hover {
     opacity: .8;
 }
 
-
 /***** Formularoj *****/
 
 form {
@@ -308,15 +323,15 @@ select, input, textarea {
     background: white;
 }
 
-input:not([type=submit]):not([type=file]) {
+form input:not([type=submit]):not([type=file]) {
     width: 22rem;
 }
 
-input[type="number"] {
+form input[type="number"] {
     width: 2rem;
 }
 
-input[type="submit"] {
+form input[type="submit"] {
     color: white;
     font-weight: bold;
     box-shadow: none;

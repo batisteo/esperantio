@@ -18,31 +18,60 @@
     </aside>
 
     {% leaflet_map "mapo" callback="window.object_detail" %}
+    <section class="enhavo">
+        <article class="evento">
+            <p class="komenco-fino">
+                <i class="komenco">{{ object.komenco|date:"l d F Y"|lower }}</i>
+                <i class="fino">{{ object.fino|date:"l d F Y"|lower }}</i>
+            </p>
+            <p class="centrita dika">{{ object.urbo }}, {{ object.lando.name }}</p>
+            <h2 class="evento-temo centrita" id="evento-temo">
+                {{ object.temo }}
+            </h2>
+            <p>{{ object.priskribo|markdown|linebreaks }}</p>
+        </article>
 
-    <h2>
-        <a href="{% url 'arangxo_detail' object.arangxo.pk %}">
-            {% firstof object.arangxo.mallonga_nomo object.arangxo.nomo %}
-        </a>
-    </h2>
-
-    <h3>{{ object.temo }}</h3>
-
-    <div id="">
-        <p><strong>{{ object.komenco|date:"d M Y" }}</strong> <span>{{ object.fino|date:"d M Y" }}</span></p>
-        <p>{{ object.urbo }}</p>
-    </div>
-
-    <div id="datumoj">
-        <p>{{ object.created }}</p>
-        <p>{{ object.modified }}</p>
-        <p>{{ object.retejo }}</p>
-        <p>{{ object.retposxto }}</p>
-        <p>{{ object.posxtkodo }}</p>
-        <p>{{ object.lando.name }}</p>
-        <p>ĉ. {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %} partoprenantoj atenditaj</p>
-        <p>{{ object.arangxo.get_publiko_display }}</p>
-        {{ object.priskribo|markdown|linebreaks }}
-    </div>
+        <aside class="arangxo">
+            <h1 class="arangxo-nomo centrita" id="arangxo-nomo">
+                <a href="{% url 'arangxo_detail' object.arangxo.pk %}">
+                    {{ object.arangxo.nomo }}
+                </a>
+            </h1>
+            <p class="arangxo-mallonga-nomo centrita" id="arangxo-mallonga-nomo">
+                <a href="{% url 'arangxo_detail' object.arangxo.pk %}">
+                    — {{ object.arangxo.mallonga_nomo }} —
+                </a>
+            </p>
+            <p>
+                {% blocktrans with publiko=object.arangxo.get_publiko_display trimmed %}
+                    Por {{ publiko }}
+                {% endblocktrans %}
+            </p>
+            <p>
+                {% if object.arangxo.ofteco %}
+                    {% blocktrans with ofteco=object.arangxo.get_ofteco_display trimmed %}
+                        Okazas {{ ofteco }}
+                    {% endblocktrans %}
+                {% endif %}
+            </p>
+            <p>
+                {% if object.arangxo.dauro %}
+                    {% blocktrans with dauro=object.arangxo.dauro count dauro=dauro trimmed %}
+                        Daŭras {{ dauro }} tago
+                    {% plural %}
+                        Daŭras {{ dauro }} tagoj
+                    {% endblocktrans %}
+                {% endif %}
+            </p>
+            <p><i class="fa fa-globe"></i> {{ object.arangxo.retejo }}</p>
+            <p><i class="fa fa-facebook"></i> {{ object.arangxo.facebook }}</p>
+            <p><i class="fa fa-twitter"></i> {{ object.arangxo.twitter }}</p>
+            <p title="ĉ. {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %} partoprenantoj atenditaj">
+                {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %}
+                <i class="fa fa-male"></i>
+            </p>
+        </aside>
+    </section>
 
     <div id="object"
         lat="{{ object.lat|unlocalize }}"
