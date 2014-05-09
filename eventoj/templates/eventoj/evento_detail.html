@@ -57,14 +57,14 @@
             <p>
                 {% if object.arangxo.dauro %}
                     {% blocktrans with dauro=object.arangxo.dauro count dauro=dauro trimmed %}
-                        Daŭras {{ dauro }} tago
+                        Daŭras {{ dauro }} tagon
                     {% plural %}
-                        Daŭras {{ dauro }} tagoj
+                        Daŭras {{ dauro }} tagojn
                     {% endblocktrans %}
                 {% endif %}
             </p>
             <p><i class="fa fa-globe"></i> {{ object.arangxo.retejo }}</p>
-            <p><i class="fa fa-facebook"></i> {{ object.arangxo.facebook }}</p>
+            <p><i class="fa fa-facebook-square"></i> {{ object.arangxo.facebook }}</p>
             <p><i class="fa fa-twitter"></i> {{ object.arangxo.twitter }}</p>
             <p title="ĉ. {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %} partoprenantoj atenditaj">
                 {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %}

@@ -102,25 +102,24 @@ input[type="submit"] {
 
 
 .enhavo {
-    width: 80%;
+    width: 86%;
     max-width: 1350px;
     margin: 2rem auto;
 }
 
 .arangxo {
     display: inline-block;
-    width: 30%;
+    width: 24%;
     background-color: whiteSmoke;
     border-radius: .5rem;
-    padding: 1rem;
+    padding: 1rem 1.4rem;
     vertical-align: top;
-    margin-top: 4rem;
-    margin-left: 2%;
 }
 
 .evento {
     display: inline-block;
     width: 62%;
+    padding-right: 2rem;
 }
 
 .arangxo-nomo {
