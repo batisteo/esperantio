@@ -31,7 +31,7 @@ a {
 a:hover,
 a:active,
 a:focus {
-    color: #cf0;
+    opacity: .8;
 }
 
 em,

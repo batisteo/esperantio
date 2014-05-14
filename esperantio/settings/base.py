@@ -16,7 +16,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 
 AUTH_USER_MODEL = 'uzantoj.Uzanto'
 LOGIN_URL = '/uzanto/konekti/'
-LOGIN_REDIRECT_URL = '/uzanto/'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Application definition
