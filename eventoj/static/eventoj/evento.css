@@ -3,7 +3,7 @@
 
 
 main.plenekrana {
-    height: calc(100% - 70px);
+    height: calc(100% - 72px);
 }
 
 #mapo {
@@ -15,7 +15,7 @@ main.plenekrana {
     cursor: pointer;
 }
 
-.leaflet-marker-icon:hover {
+#mapo-form .leaflet-marker-icon:hover {
     cursor: move;
 }
 
@@ -76,6 +76,8 @@ main.plenekrana {
 .kadro h2 {
     margin-bottom: .6rem;
     color: #5d7e33;
+    font-size: 1.4rem;
+    text-align: center;
 }
 
 .kadro li {

@@ -20,18 +20,87 @@
 
 
 {% block content %}
-    <h2>{{ object.arangxo.nomo }}</h2>
-    <aside id="maldekstra">
-        {% leaflet_map "mapo-form" callback="object_form" %}
-        <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
-    </aside>
-
-    <section>
-        <form action="" method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="{% trans 'Ek!' %}" class="baza-fondo" />
-        </form>
-    </section>
+    <h1 class="arangxo-nomo centrita" >{{ object.arangxo.nomo }}</h1>
+    
+    <form action="" method="post" class="custom">{% csrf_token %}
+    
+        {{ form.non_field_errors }}
+        
+        <section id="kio" class="kadro">
+            <h2>Kio?</h2>
+            <ul>
+                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
+            </ul>
+        </section>
+        
+        <section id="kiam" class="kadro">
+            <h2>Kiam?</h2>
+            <div id="pickmeup-range" data-pmu-format="Y-m-d"></div>
+            {% if form.komenco.errors %}
+                <p class="errorlist">
+                    {% blocktrans trimmed %}
+                        Kiam komencos la renkontiĝo?
+                    {% endblocktrans %}
+                </p>
+            {% endif %}
+            <p class="helptext centrita">{% trans "Klaku sur la kalendaron por elekti komencdaton kaj findaton!" %}</p>
+                {{ form.komenco }}
+                {{ form.fino }}
+        </section>
+        
+        <section id="kia" class="kadro clear-left">
+            <h2>Kia?</h2>
+            <ul>
+                <li>
+                    {{ form.nb_partoprenantoj.errors }}
+                    <label>{{ form.nb_partoprenantoj.label|capfirst }}</label> {{ form.nb_partoprenantoj }}
+                    <i class="helptext">{{ form.nb_partoprenantoj.help_text }}</i>
+                </li>
+                <li>
+                    {{ form.priskribo.errors }}
+                    <label>{{ form.priskribo.label|capfirst }}</label> {{ form.priskribo }}
+                </li>
+            </ul>
+        </section>
+        
+        <section id="kie" class="kadro">
+            <h2>Kie?</h2>
+            {% leaflet_map "mapo-form" callback="object_form" %}
+            <br />
+            {% if form.lat.errors %}
+                <p class="errorlist">
+                    {% blocktrans trimmed %}
+                        Bonvelu klaki sur la mapon por lokigi la eventon!
+                    {% endblocktrans %}
+                </p>
+            {% endif %}
+            <p class="helptext centrita">{% trans "Klaku sur la mapon por elekti lokon!" %}</p>
+            <ul id="loko">
+                <li>
+                    {{ form.adreso.errors }}<label>{{ form.adreso.label|capfirst }}</label> {{ form.adreso }}
+                    <a id="aldonu-adreson" href="#"><i class="fa fa-plus-square"></i> Aldonu adreson</a>
+                </li>
+                <li id="form-adreso2">
+                    {{ form.adreso2.errors }}<label>{{ form.adreso2.label|capfirst }}</label> {{ form.adreso2 }}
+                </li>
+                <li>
+                    {{ form.posxtkodo.errors }}<label>{{ form.posxtkodo.label|capfirst }}</label> {{ form.posxtkodo }}
+                </li>
+                <li>
+                    {{ form.urbo.errors }}<label>{{ form.urbo.label|capfirst }}</label> {{ form.urbo }}
+                    <a href="#" id="urbo-sercxo">{% trans "Montru!" %}</a> <b class="atendilo"></b>
+                    <p id="urbo-ne-trovita" class="atento">{% trans "Ooh, mi ne trovis tiun urbon…" %}</p>
+                </li>
+                <li>
+                    {{ form.lando.errors }}<label>{{ form.lando.label|capfirst }}</label> {{ form.lando }}
+                </li>
+                {{ form.lat }}
+                {{ form.long }}
+            </ul>
+        </section>
+    
+        <input type="submit" value="{% trans 'Aldonu!' %}" class="baza-fondo" />
+    </form>
 
     <div id="object"
         lat="{{ object.lat|unlocalize }}"
@@ -40,4 +109,5 @@
         jaro="{{ object.jaro }}"
         urbo="{{ object.urbo }}">
     </div>
+    
 {% endblock content %}

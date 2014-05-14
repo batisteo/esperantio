@@ -94,7 +94,6 @@ class EventoForm(forms.ModelForm):
             "long",
         )
         widgets = {
-            "nb_partoprenantoj": forms.HiddenInput(),
             "komenco": forms.HiddenInput(),
             "fino": forms.HiddenInput(),
             "lat": forms.HiddenInput(),

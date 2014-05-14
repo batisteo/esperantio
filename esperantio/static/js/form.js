@@ -20,4 +20,10 @@ $(function() {
 
     if (komenco == '') $(".pmu-selected").removeClass("pmu-selected");
 
+    $("#form-adreso2").hide();
+    $("#aldonu-adreson").click(function (e){
+        $("#form-adreso2").slideDown();
+        $(this).hide();
+        e.preventDefault();
+    });
 });
