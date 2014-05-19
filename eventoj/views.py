@@ -40,13 +40,13 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
                         kreanto = self.user,
                         nomo = form.cleaned_data['nomo'],
                         mallonga_nomo = form.cleaned_data['mallonga_nomo'],
-                        nb_partoprenantoj = form.cleaned_data['nb_partoprenantoj'],
+                        min_homoj = form.cleaned_data['min_homoj'],
+                        max_homoj = form.cleaned_data['max homoj'],
                         publiko = form.cleaned_data['publiko'],
                 )
             self.evento = Evento.objects.create(
                     arangxo = self.arangxo,
                     kreanto = self.user,
-                    nb_partoprenantoj = form.cleaned_data['nb_partoprenantoj'],
                     komenco = form.cleaned_data['komenco'],
                     fino = form.cleaned_data['fino'],
                     lat = form.cleaned_data['lat'],

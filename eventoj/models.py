@@ -17,18 +17,30 @@ class Arangxo(TimeStampedModel):
             help_text=_("Mallonga nomo se ekzistas."), max_length=255)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
+    facebook = models.CharField(_("facebook"), max_length=255, blank=True)
+    twitter = models.CharField(_("twitter"), max_length=255, blank=True)
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
         blank=True, null=True)
     publiko = models.PositiveSmallIntegerField(_("publiko"),
                 choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
-    nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
-            help_text="Proksimuma nombro da partoprenantoj.")
+    min_homoj = models.PositiveIntegerField(_("minimuma nombro da partoprenantoj"))
+    max_homoj = models.PositiveIntegerField(_("maksimuma nombro da partoprenantoj"))
     etikedoj = TaggableManager(blank=True)
     ofteco = models.PositiveIntegerField(_("ofteco"), blank=True, null=True,
             help_text="Gxenerala ofteco de la renkontigxo.",
             choices=OFTECO_ELEKTOJ)
     dauro = models.PositiveIntegerField(_("dauxro"), blank=True, null=True,
             help_text="Gxenerala dauxro de la renkontigxo.")
+
+    @property
+    def facebook_url(self):
+        baza_url = "https://www.facebook.com/"
+        return baza_url + self.facebook
+
+    @property
+    def twitter_url(self):
+        baza_url = "https://twitter.com/"
+        return baza_url + self.twitter
 
     class Meta:
         verbose_name = _("arangxo")
@@ -52,8 +64,6 @@ class Evento(TimeStampedModel):
     lando = CountryField()
     lat = models.FloatField(_("latitudo"), null=True, blank=True)
     long = models.FloatField(_("longitudo"), null=True, blank=True)
-    nb_partoprenantoj = models.PositiveIntegerField(_("nombro da partoprenantoj"),
-            blank=True, null=True, help_text="Proksimuma nombro de partoprenantoj.")
     priskribo = models.TextField(_("priskribo"), blank=True, null=True)
 
     @property

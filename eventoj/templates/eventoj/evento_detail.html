@@ -37,10 +37,15 @@
                     {{ object.arangxo.nomo }}
                 </a>
             </h1>
+            
             <p class="arangxo-mallonga-nomo centrita" id="arangxo-mallonga-nomo">
                 <a href="{% url 'arangxo_detail' object.arangxo.pk %}">
                     — {{ object.arangxo.mallonga_nomo }} —
                 </a>
+            </p>
+            <p title="inter {{ object.arangxo.min_homoj }} kaj {{ object.arangxo.max_homoj }} partoprenantoj atenditaj">
+                <i class="fa fa-male"></i>
+                {{ object.arangxo.min_homoj }} – {{ object.arangxo.max_homoj }}
             </p>
             <p>
                 {% blocktrans with publiko=object.arangxo.get_publiko_display trimmed %}
@@ -63,13 +68,27 @@
                     {% endblocktrans %}
                 {% endif %}
             </p>
-            <p><i class="fa fa-globe"></i> {{ object.arangxo.retejo }}</p>
-            <p><i class="fa fa-facebook-square"></i> {{ object.arangxo.facebook }}</p>
-            <p><i class="fa fa-twitter"></i> {{ object.arangxo.twitter }}</p>
-            <p title="ĉ. {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %} partoprenantoj atenditaj">
-                {% firstof object.nb_partoprenantoj object.arangxo.nb_partoprenantoj %}
-                <i class="fa fa-male"></i>
-            </p>
+            {% if object.arangxo.retejo %}
+                <p><i class="fa fa-globe"></i>
+                <a href="{{ object.arangxo.retejo }}" target="_blank">{{ object.arangxo.retejo }}</a>
+                </p>
+            {% endif %}
+            {% if object.arangxo.retposxto %}
+                <p><i class="fa fa-envelope"></i>
+                <a href="mailto:{{ object.arangxo.retposxto }}">{{ object.arangxo.retposxto }}</a>
+                </p>
+            {% endif %}
+            {% if object.arangxo.facebook %}
+                <p><i class="fa fa-facebook-square"></i>
+                <a href="{{ object.arangxo.facebook_url }}" target="_blank">facebook.com/{{ object.arangxo.facebook }}</a>
+                </p>
+            {% endif %}
+            {% if object.arangxo.twitter %}
+                <p>
+                    <i class="fa fa-twitter"></i>
+                    <a href="{{ object.arangxo.twitter_url }}" target="_blank">@{{ object.arangxo.twitter }}</a>
+                </p>
+            {% endif %}
         </aside>
     </section>
 

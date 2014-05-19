@@ -24,12 +24,18 @@ class RenkontigxoForm(forms.Form):
     retejo = forms.URLField(required=False,
             widget=forms.URLInput(attrs={'placeholder': 'http://'}),
             label=_("retejo"))
-    nb_partoprenantoj = forms.IntegerField(
+    min_homoj = forms.IntegerField(
             widget=forms.NumberInput(attrs={
                 'required': '',
                 'pattern': '[0-9]{1,4}',
                 'maxlength': '4'}),
-            label=_("nombro da partoprenantoj"),
+            label=_("partoprenantoj (min)"))
+    max_homoj = forms.IntegerField(
+            widget=forms.NumberInput(attrs={
+                'required': '',
+                'pattern': '[0-9]{1,4}',
+                'maxlength': '4'}),
+            label=_("partoprenantoj (max)"),
             help_text=_("Averagxa aux estimata nombro da partoprenantoj."))
 
     etikedoj = TagField(required=False,
@@ -64,9 +70,12 @@ class ArangxoForm(forms.ModelForm):
             "nomo",
             "mallonga_nomo",
             "publiko",
-            "nb_partoprenantoj",
+            "min_homoj",
+            "max_homoj",
             "retejo",
             "retposxto",
+            "facebook",
+            "twitter",
             "ofteco",
             "dauro",
             "etikedoj",
@@ -87,7 +96,6 @@ class EventoForm(forms.ModelForm):
             "posxtkodo",
             "lando",
             "priskribo",
-            "nb_partoprenantoj",
             "komenco",
             "fino",
             "lat",

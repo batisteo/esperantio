@@ -64,7 +64,11 @@
         <section id="kia" class="kadro clear-left">
             <h2>Kia?</h2>
             <ul>
-                <li>{{ form.nb_partoprenantoj.errors }}<label>{{ form.nb_partoprenantoj.label|capfirst }}</label> {{ form.nb_partoprenantoj }}<i class="helptext">{{ form.nb_partoprenantoj.help_text }}</i></li>
+                <li>
+                    {{ form.min_homoj.errors }} {{ form.max_homoj.errors }}
+                    <label>{% trans "Atendita nombro da partoprenantoj" %}</label> <div class="partoprenantoj">Inter {{ form.min_homoj }} kaj {{ form.max_homoj }} <i class="fa fa-male"></i></div>
+                    <i class="helptext">{% trans "Minimuma kaj maksimuma nombro da partoprenantoj atenditaj" %}</i>
+                </li>
                 <li>{{ form.publiko.errors }}<label>{{ form.publiko.label|capfirst }}</label> {{ form.publiko }}</li>
                 <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}<i class="helptext">{{ form.etikedoj.help_text }}</i></li>
                 <li>{{ form.priskribo.errors }}<label>{{ form.priskribo.label|capfirst }}</label> {{ form.priskribo }}</li>
