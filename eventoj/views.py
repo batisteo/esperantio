@@ -41,7 +41,7 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
                         nomo = form.cleaned_data['nomo'],
                         mallonga_nomo = form.cleaned_data['mallonga_nomo'],
                         min_homoj = form.cleaned_data['min_homoj'],
-                        max_homoj = form.cleaned_data['max homoj'],
+                        max_homoj = form.cleaned_data['max_homoj'],
                         publiko = form.cleaned_data['publiko'],
                 )
             self.evento = Evento.objects.create(
