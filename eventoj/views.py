@@ -1,5 +1,5 @@
 import json
-
+from unidecode import unidecode
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, Http404
 from django.views import generic
@@ -91,6 +91,7 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
                     min_homoj=form.cleaned_data['min_homoj'],
                     max_homoj=form.cleaned_data['max_homoj'],
                     publiko=form.cleaned_data['publiko'],
+                    slug=unidecode(form.cleaned_data['nomo']),
                 )
             self.evento = Evento.objects.create(
                 arangxo=self.arangxo,
@@ -109,7 +110,12 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
             return super(RenkontigxoCreateView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('evento_detail', kwargs={'pk': self.evento.pk})
+        return reverse('evento_detail', kwargs={
+            'slug': self.evento.arangxo.slug,
+            'jaro': self.evento.jaro,
+            'monato': self.evento.monato,
+            'tago': self.evento.tago,
+        })
 
 evento_arangxo_create = RenkontigxoCreateView.as_view()
 
