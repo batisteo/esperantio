@@ -37,4 +37,7 @@ urlpatterns = patterns('eventoj.views',
             view='evento_update',
             name='evento_update',),
 
+    url(r'^evento/json/$',
+            view='evento_json_list',
+            name='evento_json_list',),
 )

@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from datetime import datetime
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
@@ -78,8 +79,20 @@ class Evento(TimeStampedModel):
     def __unicode__(self):
         return self.arangxo.nomo + ' ' + str(self.jaro)
 
+    def get_absolute_url(self):
+        return reverse('evento_detail', kwargs={'pk': self.pk})
+
     def as_dict(self):
-        return {'nomo': self.arangxo.nomo,
+        return {
+                'id': self.pk,
+                'nomo': self.arangxo.nomo,
+                'mallonga_nomo': self.arangxo.mallonga_nomo,
+                'jaro': self.jaro,
+                'komenco': str(self.komenco),
+                'fino': str(self.fino),
+                'temo': self.temo,
                 'lat': self.lat,
                 'long': self.long,
+                'urbo': self.urbo,
+                'url': self.get_absolute_url()
         }

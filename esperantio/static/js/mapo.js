@@ -1,25 +1,53 @@
 
 function object_list(mapo, options) {
+
     function onLocationFound(e) {
         console.log(e);
     };
 
+    function getBoundariesURL (){
+        bounds = mapo.getBounds();
+        bnd = {
+            'n': bounds.getNorthEast().lng,
+            's': bounds.getSouthWest().lng,
+            'e': bounds.getNorthEast().lat,
+            'w': bounds.getSouthWest().lat
+        }
+        return "?n="+bnd['n'] +"&s="+bnd['s'] +"&e="+bnd['e'] +"&w="+bnd['w'];
+    };
+
+    function getData() {
+        markers.clearLayers();
+        url = $('#list-ajax-url').text() + getBoundariesURL();
+        $.getJSON(url, function(data) {
+            for (var i=0; i < data.length; i++){
+                console.log(data[i].nomo);
+                var id = data[i].object_id;
+                var url = data[i].url;
+                var lat = data[i].lat;
+                var long = data[i].long;
+                var nomo = data[i].nomo;
+                var jaro = data[i].jaro;
+                var urbo = data[i].urbo;
+
+                var marker = L.marker([lat, long]);
+                var msg = "<strong><a href='"+ url +"'>"+ nomo +" "+ jaro + "</a></strong><br/>"+ urbo;
+                marker.bindPopup(msg);
+                markers.addLayer(marker);
+            }
+        });
+    };
+
+    var markers = new L.FeatureGroup().addTo(mapo);
+
+    mapo.on('dragend', getData);
+    mapo.on('zoomend', getData);
+
     mapo.on('locationfound', onLocationFound);
     mapo.locate({setView: true, maxZoom: 10});
 
-    $(".object").each(function(){
-        var o = $(this)
-        var id = o.attr('object_id');
-        var url = o.attr('url');
-        var lat = o.attr('lat');
-        var long = o.attr('long');
-        var nomo = o.attr('nomo');
-        var jaro = o.attr('jaro');
-        var urbo = o.attr('urbo');
-        var marker = L.marker([lat, long]).addTo(mapo);
-        var msg = "<strong><a href='"+ url +"'>"+ nomo +" "+ jaro + "</a></strong><br/>"+ urbo;
-        marker.bindPopup(msg);
-    });
+    getData();
+
 };
 
 

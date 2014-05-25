@@ -1,5 +1,7 @@
+import json
+
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.db import transaction
 
@@ -8,6 +10,48 @@ from braces.views import LoginRequiredMixin
 from .forms import (ArangxoForm, EventoCreateForm,  EventoForm,
         RenkontigxoForm)
 from .models import Arangxo, Evento
+
+
+class JSONResponseMixin(object):
+    """
+    A mixin that can be used to render a JSON response.
+    """
+    def render_to_json_response(self, context, **response_kwargs):
+        """
+        Returns a JSON response, transforming 'context' to make the payload.
+        """
+        return HttpResponse(
+            self.convert_context_to_json(context),
+            content_type='application/json',
+            **response_kwargs
+        )
+
+    def convert_context_to_json(self, context):
+        if 'object' in context:
+            context = context['object'].as_dict()
+        if 'object_list' in context:
+            context = [obj.as_dict() for obj in context['object_list']]
+        return json.dumps(context, ensure_ascii=False)
+
+
+class EventoJSONListView(JSONResponseMixin, generic.list.BaseListView):
+    model = Evento
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request = request
+        return super(EventoJSONListView, self).dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        args = self.request.GET
+        n, s, e, w = args['n'], args['s'], args['e'], args['w']
+        qs = Evento.objects.filter(long__lte=n).filter(long__gte=s).filter(
+                lat__gte=w).filter(lat__lte=e)
+        return qs
+
+    def render_to_response(self, context, **response_kwargs):
+        return self.render_to_json_response(context, **response_kwargs)
+
+evento_json_list = EventoJSONListView.as_view()
 
 
 class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
