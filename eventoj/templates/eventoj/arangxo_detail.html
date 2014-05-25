@@ -6,38 +6,38 @@
 {% block content %}
     <aside class="agoj">
         <p>
-            <a href="{% url 'arangxo_update' object.pk %}">{% trans "Redakti" %}</a>
+            <a href="{% url 'arangxo_update' arangxo.slug %}">{% trans "Redakti" %}</a>
         </p>
         <p>
-            <a href="{% url 'evento_create' object.pk %}">{% trans "Aldonu eventon" %}</a>
+            <a href="{% url 'evento_create' arangxo.slug %}">{% trans "Aldonu eventon" %}</a>
         </p>
     </aside>
-    <h2>{{ object.mallonga_nomo }}</h2>
-    <h3>{{ object.nomo }}</h3>
+    <h2>{{ arangxo.mallonga_nomo }}</h2>
+    <h3>{{ arangxo.nomo }}</h3>
     
     
     <div id="datumoj">
-        <p>{{ object.min_homoj }} — {{ object.max_homoj }}</p>
-        <p>{{ object.get_publiko_display }}</p>
-        <p>{{ object.retejo|urlize }}</p>
-        <p>{{ object.retposxto|urlize }}</p>
+        <p>{{ arangxo.min_homoj }} — {{ arangxo.max_homoj }}</p>
+        <p>{{ arangxo.get_publiko_display }}</p>
+        <p>{{ arangxo.retejo|urlize }}</p>
+        <p>{{ arangxo.retposxto|urlize }}</p>
         <p>
-            {% for organizo in object.organizo_set.all %}
+            {% for organizo in arangxo.organizo_set.all %}
                 <a href="{% url 'organizo_detail' organizo.pk %}">organizo.nomo</a>{% if not forloop.last %},{% endif %}
             {% endfor %}
         </p>
-        <p>{% firstof object.ofteco '-' %}</p>
-        <p>{% firstof object.dauro '-' %}</p>
+        <p>{% firstof arangxo.ofteco '-' %}</p>
+        <p>{% firstof arangxo.dauro '-' %}</p>
         <p>
-            {% for etikedo in object.etikedoj.all %}
+            {% for etikedo in arangxo.etikedoj.all %}
                 {{ etikedo }}{% if not forloop.last %},{% endif %}
             {% endfor %}
         </p>
     </div>
 
     <ul>
-        {% for evento in object.evento_set.all %}
-            <li><a href="{% url 'evento_detail' evento.pk %}">{{ evento.urbo }}, {{ evento.komenco }} — {{ evento.fino }}</a></li>
+        {% for evento in arangxo.evento_set.all %}
+            <li><a href="{% url 'evento_detail' evento.arangxo.slug evento.jaro evento.monato evento.tago %}">{{ evento.urbo }}, {{ evento.komenco }} — {{ evento.fino }}</a></li>
         {% endfor %}
     </ul>
 

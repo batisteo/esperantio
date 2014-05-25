@@ -6,7 +6,9 @@ django-toolbox==0.1
 django-countries==2.1.2
 django-markdown==0.5.4
 django-gravatar2==1.1.4
-django-leaflet=0.13.1
+django-leaflet==0.13.1
+django-autoslug==1.7.2
+unidecode==0.04.16
 
 -e git+https://github.com/django-debug-toolbar/django-debug-toolbar#egg=debug_toolbar
 -e git+https://github.com/alex/django-taggit.git#egg=django-taggit

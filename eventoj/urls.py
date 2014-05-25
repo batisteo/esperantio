@@ -9,35 +9,31 @@ urlpatterns = patterns('eventoj.views',
             view='arangxo_create',
             name='arangxo_create',),
 
-    url(r'^arangxo/(?P<pk>\d+)/$',
-            view='arangxo_detail',
-            name='arangxo_detail',),
-
-    url(r'^arangxo/(?P<pk>\d+)/redakti/$',
+    url(r'^(?P<slug>[\w-]+)/redakti/$',
             view='arangxo_update',
             name='arangxo_update',),
-
-    url(r'^evento/$',
-            view='evento_list',
-            name='evento_list',),
 
     url(r'^evento/aldoni/$',
             view='evento_arangxo_create',
             name='evento_arangxo_create',),
 
-    url(r'^arangxo/(?P<pk>\d+)/evento/aldoni/$',
+    url(r'^(?P<slug>[\w-]+)/evento/aldoni/$',
             view='evento_create',
             name='evento_create',),
 
-    url(r'^evento/(?P<pk>\d+)/$',
+    url(r'^(?P<slug>[\w-]+)/(?P<jaro>\d{4})(?:/(?P<monato>\d+))?(?:/(?P<tago>\d+))?/$',
             view='evento_detail',
             name='evento_detail',),
 
-    url(r'^evento/(?P<pk>\d+)/redakti/$',
+    url(r'^(?P<slug>[\w-]+)/(?P<jaro>\d{4})(?:/(?P<monato>\d+))?(?:/(?P<tago>\d+))?/redakti/$',
             view='evento_update',
             name='evento_update',),
 
     url(r'^evento/json/$',
             view='evento_json_list',
             name='evento_json_list',),
+
+    url(r'^(?P<slug>[\w-]+)/$',
+            view='arangxo_detail',
+            name='arangxo_detail',),
 )

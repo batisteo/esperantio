@@ -110,6 +110,11 @@ class EventoForm(forms.ModelForm):
 
 
 class EventoCreateForm(EventoForm):
+    def __init__(self, *args, **kwargs):
+        arangxo_slug = kwargs.pop('arangxo')
+        self.arangxo = m.Arangxo.objects.get(slug=arangxo_slug)
+        self.kreanto = self.arangxo.kreanto
+        super(EventoCreateForm, self).__init__(*args, **kwargs)
 
     def save(self, commit=True):
         evento = super(EventoCreateForm, self).save(commit=False)

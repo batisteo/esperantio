@@ -14,90 +14,90 @@
 
 {% block content %}
     <aside class="agoj">
-        <p><a href="{% url 'evento_update' object.pk %}">{% trans "Redakti" %}</a></p>
+        <p><a href="{% url 'evento_update' evento.arangxo.slug evento.jaro evento.monato evento.tago %}">{% trans "Redakti" %}</a></p>
     </aside>
 
     {% leaflet_map "mapo" callback="window.object_detail" %}
     <section class="enhavo">
         <article class="evento">
             <p class="komenco-fino">
-                <i class="komenco">{{ object.komenco|date:"l d F Y"|lower }}</i>
-                <i class="fino">{{ object.fino|date:"l d F Y"|lower }}</i>
+                <i class="komenco">{{ evento.komenco|date:"l d F Y"|lower }}</i>
+                <i class="fino">{{ evento.fino|date:"l d F Y"|lower }}</i>
             </p>
-            <p class="centrita dika">{{ object.urbo }}, {{ object.lando.name }}</p>
+            <p class="centrita dika">{{ evento.urbo }}, {{ evento.lando.name }}</p>
             <h2 class="evento-temo centrita" id="evento-temo">
-                {{ object.temo }}
+                {{ evento.temo }}
             </h2>
-            <p>{{ object.priskribo|markdown|linebreaks }}</p>
+            <p>{{ evento.priskribo|markdown|linebreaks }}</p>
         </article>
 
         <aside class="arangxo">
             <h1 class="arangxo-nomo centrita" id="arangxo-nomo">
-                <a href="{% url 'arangxo_detail' object.arangxo.pk %}">
-                    {{ object.arangxo.nomo }}
+                <a href="{% url 'arangxo_detail' evento.arangxo.slug %}">
+                    {{ evento.arangxo.nomo }}
                 </a>
             </h1>
             
             <p class="arangxo-mallonga-nomo centrita" id="arangxo-mallonga-nomo">
-                <a href="{% url 'arangxo_detail' object.arangxo.pk %}">
-                    — {{ object.arangxo.mallonga_nomo }} —
+                <a href="{% url 'arangxo_detail' evento.arangxo.slug %}">
+                    — {{ evento.arangxo.mallonga_nomo }} —
                 </a>
             </p>
-            <p title="inter {{ object.arangxo.min_homoj }} kaj {{ object.arangxo.max_homoj }} partoprenantoj atenditaj">
+            <p title="inter {{ evento.arangxo.min_homoj }} kaj {{ evento.arangxo.max_homoj }} partoprenantoj atenditaj">
                 <i class="fa fa-male"></i>
-                {{ object.arangxo.min_homoj }} – {{ object.arangxo.max_homoj }}
+                {{ evento.arangxo.min_homoj }} – {{ evento.arangxo.max_homoj }}
             </p>
             <p>
-                {% blocktrans with publiko=object.arangxo.get_publiko_display trimmed %}
+                {% blocktrans with publiko=evento.arangxo.get_publiko_display trimmed %}
                     Por {{ publiko }}
                 {% endblocktrans %}
             </p>
             <p>
-                {% if object.arangxo.ofteco %}
-                    {% blocktrans with ofteco=object.arangxo.get_ofteco_display trimmed %}
+                {% if evento.arangxo.ofteco %}
+                    {% blocktrans with ofteco=evento.arangxo.get_ofteco_display trimmed %}
                         Okazas {{ ofteco }}
                     {% endblocktrans %}
                 {% endif %}
             </p>
             <p>
-                {% if object.arangxo.dauro %}
-                    {% blocktrans with dauro=object.arangxo.dauro count dauro=dauro trimmed %}
+                {% if evento.arangxo.dauro %}
+                    {% blocktrans with dauro=evento.arangxo.dauro count dauro=dauro trimmed %}
                         Daŭras {{ dauro }} tagon
                     {% plural %}
                         Daŭras {{ dauro }} tagojn
                     {% endblocktrans %}
                 {% endif %}
             </p>
-            {% if object.arangxo.retejo %}
+            {% if evento.arangxo.retejo %}
                 <p><i class="fa fa-globe"></i>
-                <a href="{{ object.arangxo.retejo }}" target="_blank">{{ object.arangxo.retejo }}</a>
+                <a href="{{ evento.arangxo.retejo }}" target="_blank">{{ evento.arangxo.retejo }}</a>
                 </p>
             {% endif %}
-            {% if object.arangxo.retposxto %}
+            {% if evento.arangxo.retposxto %}
                 <p><i class="fa fa-envelope"></i>
-                <a href="mailto:{{ object.arangxo.retposxto }}">{{ object.arangxo.retposxto }}</a>
+                <a href="mailto:{{ evento.arangxo.retposxto }}">{{ evento.arangxo.retposxto }}</a>
                 </p>
             {% endif %}
-            {% if object.arangxo.facebook %}
+            {% if evento.arangxo.facebook %}
                 <p><i class="fa fa-facebook-square"></i>
-                <a href="{{ object.arangxo.facebook_url }}" target="_blank">facebook.com/{{ object.arangxo.facebook }}</a>
+                <a href="{{ evento.arangxo.facebook_url }}" target="_blank">facebook.com/{{ evento.arangxo.facebook }}</a>
                 </p>
             {% endif %}
-            {% if object.arangxo.twitter %}
+            {% if evento.arangxo.twitter %}
                 <p>
                     <i class="fa fa-twitter"></i>
-                    <a href="{{ object.arangxo.twitter_url }}" target="_blank">@{{ object.arangxo.twitter }}</a>
+                    <a href="{{ evento.arangxo.twitter_url }}" target="_blank">@{{ evento.arangxo.twitter }}</a>
                 </p>
             {% endif %}
         </aside>
     </section>
 
     <div id="object"
-        lat="{{ object.lat|unlocalize }}"
-        long="{{ object.long|unlocalize }}"
-        nomo="{{ object.arangxo.nomo }}"
-        jaro="{{ object.jaro }}"
-        urbo="{{ object.urbo }}">
+        lat="{{ evento.lat|unlocalize }}"
+        long="{{ evento.long|unlocalize }}"
+        nomo="{{ evento.arangxo.nomo }}"
+        jaro="{{ evento.jaro }}"
+        urbo="{{ evento.urbo }}">
     </div>
 {% endblock content %}
 

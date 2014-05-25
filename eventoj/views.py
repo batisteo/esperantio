@@ -1,14 +1,15 @@
 import json
 
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, Http404
 from django.views import generic
 from django.db import transaction
+from django.shortcuts import redirect
 
 from braces.views import LoginRequiredMixin
 
 from .forms import (ArangxoForm, EventoCreateForm,  EventoForm,
-        RenkontigxoForm)
+                    RenkontigxoForm)
 from .models import Arangxo, Evento
 
 
@@ -39,13 +40,14 @@ class EventoJSONListView(JSONResponseMixin, generic.list.BaseListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.request = request
-        return super(EventoJSONListView, self).dispatch(request, *args, **kwargs)
+        return super(EventoJSONListView, self).dispatch(request,
+                                                        *args, **kwargs)
 
     def get_queryset(self):
         args = self.request.GET
         n, s, e, w = args['n'], args['s'], args['e'], args['w']
         qs = Evento.objects.filter(long__lte=n).filter(long__gte=s).filter(
-                lat__gte=w).filter(lat__lte=e)
+            lat__gte=w).filter(lat__lte=e)
         return qs
 
     def render_to_response(self, context, **response_kwargs):
@@ -61,7 +63,8 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
     def dispatch(self, request, *args, **kwargs):
         self.user = request.user
         print self.user
-        return super(RenkontigxoCreateView, self).dispatch(request, *args, **kwargs)
+        return super(RenkontigxoCreateView, self).dispatch(request,
+                                                           *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(RenkontigxoCreateView, self).get_context_data(**kwargs)
@@ -73,7 +76,8 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
             nomo = form.cleaned_data['nomo']
             mallonga_nomo = form.cleaned_data['mallonga_nomo']
             arangxo_nomo = Arangxo.objects.filter(nomo__iexact=nomo)
-            arangxo_mallonga_nomo = Arangxo.objects.filter(mallonga_nomo__iexact=mallonga_nomo)
+            arangxo_mallonga_nomo = Arangxo.objects.filter(
+                mallonga_nomo__iexact=mallonga_nomo)
             print arangxo_nomo, arangxo_mallonga_nomo
             if arangxo_nomo:
                 self.arangxo = arangxo_nomo[0]
@@ -81,25 +85,25 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
                 self.arangxo = arangxo_mallonga_nomo[0]
             else:
                 self.arangxo = Arangxo.objects.create(
-                        kreanto = self.user,
-                        nomo = form.cleaned_data['nomo'],
-                        mallonga_nomo = form.cleaned_data['mallonga_nomo'],
-                        min_homoj = form.cleaned_data['min_homoj'],
-                        max_homoj = form.cleaned_data['max_homoj'],
-                        publiko = form.cleaned_data['publiko'],
+                    kreanto=self.user,
+                    nomo=form.cleaned_data['nomo'],
+                    mallonga_nomo=form.cleaned_data['mallonga_nomo'],
+                    min_homoj=form.cleaned_data['min_homoj'],
+                    max_homoj=form.cleaned_data['max_homoj'],
+                    publiko=form.cleaned_data['publiko'],
                 )
             self.evento = Evento.objects.create(
-                    arangxo = self.arangxo,
-                    kreanto = self.user,
-                    komenco = form.cleaned_data['komenco'],
-                    fino = form.cleaned_data['fino'],
-                    lat = form.cleaned_data['lat'],
-                    long = form.cleaned_data['long'],
-                    temo = form.cleaned_data['temo'],
-                    urbo = form.cleaned_data['urbo'],
-                    posxtkodo = form.cleaned_data['posxtkodo'],
-                    lando = form.cleaned_data['lando'],
-                    priskribo = form.cleaned_data['priskribo'],
+                arangxo=self.arangxo,
+                kreanto=self.user,
+                komenco=form.cleaned_data['komenco'],
+                fino=form.cleaned_data['fino'],
+                lat=form.cleaned_data['lat'],
+                long=form.cleaned_data['long'],
+                temo=form.cleaned_data['temo'],
+                urbo=form.cleaned_data['urbo'],
+                posxtkodo=form.cleaned_data['posxtkodo'],
+                lando=form.cleaned_data['lando'],
+                priskribo=form.cleaned_data['priskribo'],
             )
             self.arangxo.etikedoj.add(*form.cleaned_data['etikedoj'])
             return super(RenkontigxoCreateView, self).form_valid(form)
@@ -151,6 +155,31 @@ evento_list = EventoListView.as_view()
 class EventoDetailView(generic.DetailView):
     model = Evento
 
+    def dispatch(self, request, *args, **kwargs):
+        self.slug = kwargs.pop('slug')
+        self.jaro = kwargs.pop('jaro')
+        self.monato = kwargs.pop('monato')
+        self.tago = kwargs.pop('tago')
+        if self.get_object() is None:
+            return redirect('arangxo_detail', slug=self.slug)
+        return super(EventoDetailView, self).dispatch(request, *args, **kwargs)
+
+    def get_object(self):
+        queryset = Evento.objects.filter(arangxo__slug=self.slug)
+        if self.jaro:
+            queryset = queryset.filter(komenco__year=self.jaro)
+        if self.monato:
+            queryset = queryset.filter(komenco__month=self.monato)
+        if self.tago:
+            queryset = queryset.filter(komenco__day=self.tago)
+
+        if queryset.count() == 1:
+            return queryset[0]
+        elif queryset.count() == 0:
+            raise Http404
+        else:
+            return None
+
 evento_detail = EventoDetailView.as_view()
 
 
@@ -159,17 +188,22 @@ class EventoCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = EventoCreateForm
 
     def dispatch(self, request, *args, **kwargs):
-        self.pk = kwargs['pk']
+        self.slug = kwargs['slug']
         self.user = request.user
         return super(EventoCreateView, self).dispatch(request, *args, **kwargs)
 
     def get_form_kwargs(self, *args, **kwargs):
         kwargs = super(EventoCreateView, self).get_form_kwargs(*args, **kwargs)
-        kwargs['arangxo'] = self.pk
+        kwargs['arangxo'] = self.slug
         return kwargs
 
     def get_success_url(self):
-        return reverse('evento_detail', args=[self.object.pk])
+        return reverse('evento_detail', kwargs={
+            'slug': self.object.arangxo.slug,
+            'jaro': self.object.jaro,
+            'monato': self.object.monato,
+            'tago': self.object.tago,
+        })
 
 evento_create = EventoCreateView.as_view()
 
@@ -182,4 +216,3 @@ class EventoUpdateView(LoginRequiredMixin, generic.UpdateView):
         return reverse('evento_detail', args=[self.object.id])
 
 evento_update = EventoUpdateView.as_view()
-

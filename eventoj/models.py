@@ -3,6 +3,8 @@ from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
+from autoslug.fields import AutoSlugField
 from taggit.managers import TaggableManager
 
 from django_countries.fields import CountryField
@@ -16,6 +18,8 @@ class Arangxo(TimeStampedModel):
     nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
     mallonga_nomo = models.CharField(_("mallonga nomo"), blank=True,
             help_text=_("Mallonga nomo se ekzistas."), max_length=255)
+    slug = AutoSlugField(_("ligila nomo"), populate_from="nomo",
+            unique=True, always_update=True)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     facebook = models.CharField(_("facebook"), max_length=255, blank=True)
@@ -70,6 +74,14 @@ class Evento(TimeStampedModel):
     @property
     def jaro(self):
         return self.komenco.year
+
+    @property
+    def monato(self):
+        return self.komenco.month
+
+    @property
+    def tago(self):
+        return self.komenco.day
     
 
     class Meta:
@@ -80,7 +92,12 @@ class Evento(TimeStampedModel):
         return self.arangxo.nomo + ' ' + str(self.jaro)
 
     def get_absolute_url(self):
-        return reverse('evento_detail', kwargs={'pk': self.pk})
+        return reverse('evento_detail', kwargs={
+            'slug': self.arangxo.slug,
+            'jaro': self.komenco.year,
+            'monato': self.komenco.month,
+            'tago': self.komenco.day,
+        })
 
     def as_dict(self):
         return {
