@@ -111,10 +111,10 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
 
     def get_success_url(self):
         return reverse('evento_detail', kwargs={
-            'slug': self.evento.arangxo.slug,
-            'jaro': self.evento.jaro,
-            'monato': self.evento.monato,
-            'tago': self.evento.tago,
+            'slug': self.object.arangxo.slug,
+            'jaro': self.object.jaro,
+            'monato': self.object.monato,
+            'tago': self.object.tago,
         })
 
 evento_arangxo_create = RenkontigxoCreateView.as_view()
@@ -218,7 +218,37 @@ class EventoUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Evento
     form_class = EventoForm
 
+    def dispatch(self, request, *args, **kwargs):
+        self.slug = kwargs.pop('slug')
+        self.jaro = kwargs.pop('jaro')
+        self.monato = kwargs.pop('monato')
+        self.tago = kwargs.pop('tago')
+        if self.get_object() is None:
+            return redirect('arangxo_detail', slug=self.slug)
+        return super(EventoUpdateView, self).dispatch(request, *args, **kwargs)
+
+    def get_object(self):
+        queryset = Evento.objects.filter(arangxo__slug=self.slug)
+        if self.jaro:
+            queryset = queryset.filter(komenco__year=self.jaro)
+        if self.monato:
+            queryset = queryset.filter(komenco__month=self.monato)
+        if self.tago:
+            queryset = queryset.filter(komenco__day=self.tago)
+
+        if queryset.count() == 1:
+            return queryset[0]
+        elif queryset.count() == 0:
+            raise Http404
+        else:
+            return None
+
     def get_success_url(self):
-        return reverse('evento_detail', args=[self.object.id])
+        return reverse('evento_detail', kwargs={
+            'slug': self.object.arangxo.slug,
+            'jaro': self.object.jaro,
+            'monato': self.object.monato,
+            'tago': self.object.tago,
+        })
 
 evento_update = EventoUpdateView.as_view()

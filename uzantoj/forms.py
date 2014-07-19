@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import authenticate
+from django.core.mail import send_mail
 
 from .models import Uzanto
 
@@ -66,6 +67,11 @@ class UzantoCreateForm(forms.ModelForm):
             u = authenticate(salutnomo=uzanto.salutnomo, password=pasvorto)
             uzanto.backend = u.backend
             uzanto.save()
+            send_mail(_("Bonvenon en Esperant.io!"),
+                _("Vi suksese registrigxis sur esperant.io!"),
+                "bonvenon@esperant.io",
+                [self.cleaned_data['retposxto']],
+                fail_silently=False)
         return uzanto
 
 
