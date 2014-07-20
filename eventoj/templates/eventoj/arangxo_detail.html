@@ -1,43 +1,48 @@
 {% extends 'eventoj/base_evento.html' %}
 {% load staticfiles %}
 {% load i18n %}
-{% load firstof from future %}
+
 
 {% block content %}
     <aside class="agoj">
         <p>
-            <a href="{% url 'arangxo_update' arangxo.slug %}">{% trans "Redakti" %}</a>
+            <a href="{% url 'arangxo_update' arangxo.slug %}"><i class="fa fa-edit"></i> {% trans "Redakti" %}</a>
         </p>
         <p>
-            <a href="{% url 'evento_create' arangxo.slug %}">{% trans "Aldonu eventon" %}</a>
+            <a href="{% url 'evento_create' arangxo.slug %}"><i class="fa fa-plus"></i> {% trans "Aldonu eventon" %}</a>
         </p>
     </aside>
-    <h2>{{ arangxo.mallonga_nomo }}</h2>
-    <h3>{{ arangxo.nomo }}</h3>
+    <h1>{{ arangxo.mallonga_nomo }}</h1>
+    {% if arangxo.nomo|lower != arangxo.mallonga_nomo|lower %}
+        <h2>{{ arangxo.nomo }}</h2>
+    {% endif %}
     
     
     <div id="datumoj">
-        <p>{{ arangxo.min_homoj }} — {{ arangxo.max_homoj }}</p>
-        <p>{{ arangxo.get_publiko_display }}</p>
-        <p>{{ arangxo.retejo|urlize }}</p>
-        <p>{{ arangxo.retposxto|urlize }}</p>
-        <p>
-            {% for organizo in arangxo.organizo_set.all %}
-                <a href="{% url 'organizo_detail' organizo.pk %}">organizo.nomo</a>{% if not forloop.last %},{% endif %}
-            {% endfor %}
-        </p>
-        <p>{% firstof arangxo.ofteco '-' %}</p>
-        <p>{% firstof arangxo.dauro '-' %}</p>
-        <p>
-            {% for etikedo in arangxo.etikedoj.all %}
-                {{ etikedo }}{% if not forloop.last %},{% endif %}
-            {% endfor %}
-        </p>
+        <p title="{% trans 'nombro da partoprenantoj' %}"> <i class="fa fa-male"></i>  {{ arangxo.min_homoj }} – {{ arangxo.max_homoj }}</p>
+        <p title="{% trans 'publiko' %}"><i class="fa fa-group"></i> {{ arangxo.get_publiko_dislay }}</p>
+        <p title="{% trans 'ofteco' %}"><i class="fa fa-calendar"></i> {{ arangxo.get_ofteco_display|default_if_none:"" }}</p>
+        <p title="{% trans 'dauxro' %}"><i class="fa fa-clock-o"></i> {{ arangxo.dauro|default_if_none:"" }}{% if arangxo.dauro %} tagoj{% endif %}</p>
+        <p title="{% trans 'etikedoj' %}"><i class="fa fa-tag"></i> {{ arangxo.etikedoj.all|join:", " }}</p>
+        <p title="{% trans 'retejo' %}"><i class="fa fa-globe"></i> {{ arangxo.retejo|urlize }}</p>
+        <p title="{% trans 'retposxto' %}"><i class="fa fa-envelope"></i> {{ arangxo.retposxto|urlize }}</p>
+        <p title="{% trans 'facebook' %}"><i class="fa fa-facebook-square"></i> {{ arangxo.facebook_url|urlize }}</p>
+        <p title="{% trans 'twitter' %}"><i class="fa fa-twitter"></i> {{ arangxo.twitter_url|urlize }}</p>
     </div>
 
-    <ul>
-        {% for evento in arangxo.evento_set.all %}
-            <li><a href="{% url 'evento_detail' evento.arangxo.slug evento.jaro evento.monato evento.tago %}">{{ evento.urbo }}, {{ evento.komenco }} — {{ evento.fino }}</a></li>
+    <ul class="evento-list">
+        {% for evento in arangxo.eventoj.all %}
+            <a href="{% url 'evento_detail' evento.arangxo.slug evento.jaro evento.monato evento.tago %}"><li>
+                {% if arangxo.ofteco >= arangxo.OFTECO_ELEKTOJ.JARE %}
+                    {{ evento.komenco|date:"Y" }}
+                {% elif arangxo.ofteco >= arangxo.OFTECO_ELEKTOJ.MONATE %}
+                    {{ evento.komenco|date:"F Y" }}
+                {% else %}
+                    {{ evento.komenco|date:"d\a \d\e F Y" }}
+                {% endif %}
+                —
+                {{ evento.urbo }}
+            </li></a>
         {% endfor %}
     </ul>
 

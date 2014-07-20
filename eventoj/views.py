@@ -137,7 +137,7 @@ class ArangxoCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = ArangxoForm
 
     def get_success_url(self):
-        return reverse('arangxo_detail', args=[self.object.id])
+        return reverse('arangxo_detail', args=[self.object.slug])
 
 arangxo_create = ArangxoCreateView.as_view()
 
@@ -147,7 +147,7 @@ class ArangxoUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = ArangxoForm
 
     def get_success_url(self):
-        return reverse('arangxo_detail', args=[self.object.id])
+        return reverse('arangxo_detail', args=[self.object.slug])
 
 arangxo_update = ArangxoUpdateView.as_view()
 

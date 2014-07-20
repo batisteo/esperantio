@@ -28,9 +28,9 @@ a {
     color: #5d7e33;
 }
 
-a:hover,
-a:active,
-a:focus {
+main a:hover,
+main a:active,
+main a:focus {
     opacity: .8;
 }
 
@@ -49,6 +49,18 @@ strong,
 
 .baza-fondo {
     background-color: #5d7e33;
+}
+
+main h1 {
+    margin-top: 2rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+main h2 {
+    margin-top: 1.4rem;
+    font-size: 1.4rem;
+    text-align: center;
 }
 
 header {
@@ -328,7 +340,7 @@ form input:not([type=submit]):not([type=file]) {
 }
 
 form input[type="number"] {
-    width: 2rem;
+    width: 3em !important;
 }
 
 form input[type="submit"] {
@@ -381,6 +393,16 @@ select {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.wrapper {
+    width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper form p {
+    margin-bottom: 1em;
 }
 
 .registrado {

@@ -7,7 +7,8 @@ from django.forms.widgets import HiddenInput, Textarea
 from django_countries import countries
 from taggit.forms import TagField
 from . import models as m
-from .elektoj import PUBLIKO_ELEKTOJ
+from .choices import PublikoElektoj
+
 
 class RenkontigxoForm(forms.Form):
     nomo = forms.CharField(
@@ -20,7 +21,7 @@ class RenkontigxoForm(forms.Form):
             required=False,
             label=_("mallonga nomo"))
     publiko = forms.ChoiceField(required=False,
-            label=_("publiko"), choices=PUBLIKO_ELEKTOJ)
+            label=_("publiko"), choices=PublikoElektoj.choices)
     retejo = forms.URLField(required=False,
             widget=forms.URLInput(attrs={'placeholder': 'http://'}),
             label=_("retejo"))
@@ -66,7 +67,6 @@ class ArangxoForm(forms.ModelForm):
     class Meta:
         model = m.Arangxo
         fields = (
-            "organizo",
             "nomo",
             "mallonga_nomo",
             "publiko",

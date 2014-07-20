@@ -36,6 +36,7 @@ main.plenekrana {
 
 .agoj p {
     text-align: right;
+    margin-bottom: 1.4em;
 }
 
 .agoj p a,
@@ -95,6 +96,7 @@ main.plenekrana {
 }
 
 input[type="submit"] {
+    margin-top: 1rem;
     clear: both;
 }
 
@@ -118,6 +120,10 @@ input[type="submit"] {
     vertical-align: top;
 }
 
+.arangxo p {
+    margin-bottom: .4em;
+}
+
 .evento {
     display: inline-block;
     width: 62%;
@@ -127,6 +133,26 @@ input[type="submit"] {
 .arangxo-nomo {
     font-size: 1.7em;
     margin: 1rem auto;
+}
+
+.evento-list {
+    margin: 2rem auto;
+    width: 90%;
+}
+
+#datumoj {
+    margin: 2rem auto;
+    width: 90%;
+}
+
+#datumoj p {
+    margin-bottom: .6em;
+}
+
+.evento-list li {
+    background: #eee;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
 }
 
 .evento-temo {

@@ -3,10 +3,13 @@
 {% load static %}
 
 {% block content %}
-
-    <form action="" method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{% trans 'Ek!' %}" class="baza-fondo" />
-    </form>
-
+    <div class="wrapper">
+        <h1>Ĝeneralaj agordoj de {{ arangxo.nomo }}</h1>
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="{% trans 'Ek!' %}" class="baza-fondo" />
+        </form>
+    </div>
 {% endblock content %}

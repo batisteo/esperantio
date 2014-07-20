@@ -10,10 +10,14 @@ from taggit.managers import TaggableManager
 from django_countries.fields import CountryField
 from django_extensions.db.models import TimeStampedModel
 
-from .elektoj import PUBLIKO_ELEKTOJ, OFTECO_ELEKTOJ
+from .choices import PublikoElektoj, OftecoElektoj
+from .constants import BASE_FACEBOOK_URL, BASE_TWITTER_URL
 
 
 class Arangxo(TimeStampedModel):
+    PUBLIKO_ELEKTOJ = PublikoElektoj
+    OFTECO_ELEKTOJ = OftecoElektoj
+
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
     mallonga_nomo = models.CharField(_("mallonga nomo"), blank=True,
@@ -22,30 +26,30 @@ class Arangxo(TimeStampedModel):
             unique=True, always_update=True)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
-    facebook = models.CharField(_("facebook"), max_length=255, blank=True)
-    twitter = models.CharField(_("twitter"), max_length=255, blank=True)
+    facebook = models.CharField(_("facebook identigilo"), max_length=255, blank=True,
+            help_text=BASE_FACEBOOK_URL+"[...]")
+    twitter = models.CharField(_("twitter identigilo"), max_length=255, blank=True,
+            help_text=BASE_TWITTER_URL+"[...]")
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
         blank=True, null=True)
     publiko = models.PositiveSmallIntegerField(_("publiko"),
-                choices=PUBLIKO_ELEKTOJ, max_length=1, null=True, default=0)
+            choices=PUBLIKO_ELEKTOJ.choices, max_length=1, null=True, default=0)
     min_homoj = models.PositiveIntegerField(_("minimuma nombro da partoprenantoj"))
     max_homoj = models.PositiveIntegerField(_("maksimuma nombro da partoprenantoj"))
     etikedoj = TaggableManager(blank=True)
     ofteco = models.PositiveIntegerField(_("ofteco"), blank=True, null=True,
             help_text="Gxenerala ofteco de la renkontigxo.",
-            choices=OFTECO_ELEKTOJ)
+            choices=OFTECO_ELEKTOJ.choices)
     dauro = models.PositiveIntegerField(_("dauxro"), blank=True, null=True,
-            help_text="Gxenerala dauxro de la renkontigxo.")
+            help_text="Gxenerala dauxro de la renkontigxo, en tagoj.")
 
     @property
     def facebook_url(self):
-        baza_url = "https://www.facebook.com/"
-        return baza_url + self.facebook
+        return BASE_FACEBOOK_URL + self.facebook if self.facebook else ''
 
     @property
     def twitter_url(self):
-        baza_url = "https://twitter.com/"
-        return baza_url + self.twitter
+        return BASE_TWITTER_URL + self.twitter if self.twitter else ''
 
     class Meta:
         verbose_name = _("arangxo")
@@ -58,7 +62,8 @@ class Arangxo(TimeStampedModel):
 
 class Evento(TimeStampedModel):
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
-    arangxo = models.ForeignKey("eventoj.Arangxo", verbose_name=_("Arangxo"))
+    arangxo = models.ForeignKey("eventoj.Arangxo", verbose_name=_("Arangxo"),
+            related_name="eventoj")
     komenco = models.DateTimeField(_("komenco"))
     fino = models.DateTimeField(_("fino"), blank=True)
     temo = models.CharField(_("temo"), max_length=255, blank=True)
