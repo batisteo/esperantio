@@ -18,6 +18,9 @@ AUTH_USER_MODEL = 'uzantoj.Uzanto'
 LOGIN_URL = '/uzanto/konekti/'
 LOGIN_REDIRECT_URL = '/'
 
+ADMINS = (
+    ('Baptiste Darthenay', 'bonvenon@esperant.io'),
+)
 
 # Application definition
 
