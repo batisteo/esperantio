@@ -3,6 +3,7 @@ from django.contrib.auth import login
 
 from braces.views import LoginRequiredMixin
 
+from esperantio.settings import base as settings
 from .models import Uzanto
 from .forms import CustomUserChangeForm, UzantoCreateForm
 
@@ -29,6 +30,7 @@ uzanto_update = UzantoUpdateView.as_view()
 class UzantoCreateView(generic.CreateView):
     model = Uzanto
     form_class = UzantoCreateForm
+    success_url = settings.LOGIN_REDIRECT_URL
     
     def get(self, request, *args, **kwargs):
         self.request = request

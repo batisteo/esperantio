@@ -18,6 +18,8 @@ AUTH_USER_MODEL = 'uzantoj.Uzanto'
 LOGIN_URL = '/uzanto/konekti/'
 LOGIN_REDIRECT_URL = '/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ADMINS = (
     ('Baptiste Darthenay', 'bonvenon@esperant.io'),
 )
