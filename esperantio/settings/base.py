@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'django_countries',
     'braces',
     'taggit',
-    'toolbox',
     'leaflet',
     'uzantoj',
     'eventoj',
