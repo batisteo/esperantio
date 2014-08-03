@@ -111,10 +111,10 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
 
     def get_success_url(self):
         return reverse('evento_detail', kwargs={
-            'slug': self.object.arangxo.slug,
-            'jaro': self.object.jaro,
-            'monato': self.object.monato,
-            'tago': self.object.tago,
+            'slug': self.arangxo.slug,
+            'jaro': self.evento.jaro,
+            'monato': self.evento.monato,
+            'tago': self.evento.tago,
         })
 
 evento_arangxo_create = RenkontigxoCreateView.as_view()
