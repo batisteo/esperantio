@@ -106,7 +106,7 @@ function object_form(mapo, options) {
                 if ('city' in d)          {var urbo = d['city'];}
 
                 $("[id$='urbo']").val(urbo);
-                $("[id$='posxtkodo']").val(d['postcode']);
+                $("[id$='posxtkodo']").val(d['postcode'].split(";")[0]);
                 $("[id$='lando']").val(d['country_code'].toUpperCase());
                 
                 $("#loko").show();
