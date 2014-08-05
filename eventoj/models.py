@@ -22,8 +22,7 @@ class Arangxo(TimeStampedModel):
     nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
     mallonga_nomo = models.CharField(_("mallonga nomo"), blank=True,
             help_text=_("Mallonga nomo se ekzistas."), max_length=255)
-    slug = AutoSlugField(_("ligila nomo"), populate_from="nomo",
-            unique=True, always_update=True)
+    slug = AutoSlugField(_("ligila nomo"), populate_from="get_shorter_name", unique=True)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     facebook = models.CharField(_("facebook identigilo"), max_length=255, blank=True,
@@ -57,6 +56,9 @@ class Arangxo(TimeStampedModel):
 
     def __unicode__(self):
         return self.nomo
+
+    def get_shorter_name(self):
+        return self.mallonga_nomo if self.mallonga_nomo else self.nomo
 
 
 

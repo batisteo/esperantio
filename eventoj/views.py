@@ -62,7 +62,6 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
 
     def dispatch(self, request, *args, **kwargs):
         self.user = request.user
-        print self.user
         return super(RenkontigxoCreateView, self).dispatch(request,
                                                            *args, **kwargs)
 
@@ -78,7 +77,6 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
             arangxo_nomo = Arangxo.objects.filter(nomo__iexact=nomo)
             arangxo_mallonga_nomo = Arangxo.objects.filter(
                 mallonga_nomo__iexact=mallonga_nomo)
-            print arangxo_nomo, arangxo_mallonga_nomo
             if arangxo_nomo:
                 self.arangxo = arangxo_nomo[0]
             elif arangxo_mallonga_nomo:
@@ -91,7 +89,6 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
                     min_homoj=form.cleaned_data['min_homoj'],
                     max_homoj=form.cleaned_data['max_homoj'],
                     publiko=form.cleaned_data['publiko'],
-                    slug=unidecode(form.cleaned_data['nomo']),
                 )
             self.evento = Evento.objects.create(
                 arangxo=self.arangxo,
