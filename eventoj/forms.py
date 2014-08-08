@@ -20,7 +20,8 @@ class RenkontigxoForm(forms.Form):
     mallonga_nomo = forms.CharField(
             widget=forms.TextInput(attrs={'list': 'mallonga_nomo_list'}),
             required=False,
-            label=_("mallonga nomo"))
+            label=_("mallonga nomo"),
+            help_text=_("Se tauxgas. Ekzemple: UK, IJK, FESTO, IJS, JES..."))
     kioma = forms.CharField(required=False,
             label=_("kioma evento"))
     temo = forms.CharField(required=False,

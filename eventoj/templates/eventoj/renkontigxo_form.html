@@ -41,6 +41,7 @@
                             <option value="{{ arangxo.mallonga_nomo }}">
                         {% endfor %}
                     </datalist>
+                    <i class="helptext">{{ form.mallonga_nomo.help_text }}</i>
                 </li>
                 <li>{{ form.kioma.errors }}<label>{{ form.kioma.label|capfirst }}</label> {{ form.kioma }}-a</li>
                 <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>

@@ -37,15 +37,20 @@
                     {% if evento.kioma %}
                         {{ evento.kioma }}-a
                     {% endif %}
-                    {{ evento.arangxo.nomo }}
+                    
+                    {% if evento.arangxo.mallonga_nomo %}
+                        {{ evento.arangxo.mallonga_nomo }}
+                    {% else %}
+                        {{ evento.arangxo.nomo }}
+                    {% endif %}
                 </a>
             </h1>
-            
-            <p class="arangxo-mallonga-nomo centrita" id="arangxo-mallonga-nomo">
-                <a href="{% url 'arangxo_detail' evento.arangxo.slug %}">
-                    — {{ evento.arangxo.mallonga_nomo }} —
-                </a>
-            </p>
+
+            {% if evento.arangxo.mallonga_nomo %}
+                <p class="centrita">
+                    — {{ evento.arangxo.nomo }} —
+                </p>
+            {% endif %}
             <p title="inter {{ evento.arangxo.min_homoj }} kaj {{ evento.arangxo.max_homoj }} partoprenantoj atenditaj">
                 <i class="fa fa-male"></i>
                 {{ evento.arangxo.min_homoj }} – {{ evento.arangxo.max_homoj }}
@@ -92,6 +97,9 @@
                     <a href="{{ evento.arangxo.twitter_url }}" target="_blank">@{{ evento.arangxo.twitter }}</a>
                 </p>
             {% endif %}
+
+            <br />
+            <p><a href="{% url 'arangxo_update' evento.arangxo.slug %}"><i class="fa fa-edit"></i> {% trans "Aldonu detalojn" %}</a></p>
         </aside>
     </section>
 
