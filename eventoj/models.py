@@ -19,7 +19,7 @@ class Arangxo(TimeStampedModel):
     OFTECO_ELEKTOJ = OftecoElektoj
 
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
-    nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True)
+    nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True,)
     mallonga_nomo = models.CharField(_("mallonga nomo"), blank=True,
             help_text=_("Mallonga nomo se ekzistas."), max_length=255)
     slug = AutoSlugField(_("ligila nomo"), populate_from="get_shorter_name", unique=True)
@@ -58,6 +58,8 @@ class Arangxo(TimeStampedModel):
         return self.nomo
 
     def get_shorter_name(self):
+        """Returns the shorter name for the slug field.
+        """
         return self.mallonga_nomo if self.mallonga_nomo else self.nomo
 
 
@@ -66,6 +68,8 @@ class Evento(TimeStampedModel):
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     arangxo = models.ForeignKey("eventoj.Arangxo", verbose_name=_("Arangxo"),
             related_name="eventoj")
+    kioma = models.CharField(_("kioma"), max_length=10, blank=True,
+            help_text=_("42-a"))
     komenco = models.DateTimeField(_("komenco"))
     fino = models.DateTimeField(_("fino"), blank=True)
     temo = models.CharField(_("temo"), max_length=255, blank=True)
@@ -107,13 +111,15 @@ class Evento(TimeStampedModel):
         })
 
     def as_dict(self):
+        kioma = self.kioma + '-a' if self.kioma else '';
         return {
                 'id': self.pk,
                 'nomo': self.arangxo.nomo,
                 'mallonga_nomo': self.arangxo.mallonga_nomo,
                 'jaro': self.jaro,
-                'komenco': str(self.komenco),
-                'fino': str(self.fino),
+                'kioma': kioma,
+                'komenco': self.komenco.strftime('%Y-%m-%d'),
+                'fino': self.fino.strftime('%Y-%m-%d'),
                 'temo': self.temo,
                 'lat': self.lat,
                 'long': self.long,

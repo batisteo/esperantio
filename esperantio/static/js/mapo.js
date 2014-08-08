@@ -21,17 +21,18 @@ function object_list(mapo, options) {
         url = $('#list-ajax-url').text() + getBoundariesURL();
         $.getJSON(url, function(data) {
             for (var i=0; i < data.length; i++){
-                console.log(data[i].nomo);
                 var id = data[i].object_id;
                 var url = data[i].url;
+                var kioma = data[i].kioma;
                 var lat = data[i].lat;
                 var long = data[i].long;
                 var nomo = data[i].nomo;
+                var komenco = data[i].komenco;
                 var jaro = data[i].jaro;
                 var urbo = data[i].urbo;
 
                 var marker = L.marker([lat, long]);
-                var msg = "<strong><a href='"+ url +"'>"+ nomo +" "+ jaro + "</a></strong><br/>"+ urbo;
+                var msg = "<strong><a href='"+ url +"'>"+ kioma +" "+ nomo +" "+ "</a></strong><br/>"+ urbo +"<br/>"+ komenco;
                 marker.bindPopup(msg);
                 markers.addLayer(marker);
             }
@@ -61,7 +62,7 @@ function object_detail(mapo, options) {
     var urbo = o.attr('urbo');
     mapo.setView([lat, long], 13);
     var marker = L.marker([lat, long]).addTo(mapo);
-    var msg = "<strong>" + nomo + " " + jaro + "</strong><br/>" + urbo;
+    var msg = "<strong>" + nomo +" "+ "</strong><br/>" + urbo;
     marker.bindPopup(msg).openPopup();
 };
 

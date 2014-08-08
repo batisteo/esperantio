@@ -29,7 +29,10 @@
         <section id="kio" class="kadro">
             <h2>Kio?</h2>
             <ul>
-                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
+                <li>{{ form.kioma.errors }}<label>{{ form.kioma.label|capfirst }}</label> {{ form.kioma }}-a</li>
+                <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}
+                <i class="helptext">{{ form.temo.help_text }}</i>
+                </li>
             </ul>
         </section>
         

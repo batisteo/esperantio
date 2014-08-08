@@ -33,6 +33,7 @@
                             <option value="{{ arangxo.nomo }}">
                         {% endfor %}
                     </datalist>
+                    <i class="helptext">{{ form.nomo.help_text }}</i>
                 </li>
                 <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label|capfirst }}</label> {{ form.mallonga_nomo }}
                     <datalist id="nomo_list">
@@ -41,6 +42,7 @@
                         {% endfor %}
                     </datalist>
                 </li>
+                <li>{{ form.kioma.errors }}<label>{{ form.kioma.label|capfirst }}</label> {{ form.kioma }}-a</li>
                 <li>{{ form.temo.errors }}<label>{{ form.temo.label|capfirst }}</label> {{ form.temo }}</li>
                 <li>{{ form.retejo.errors }}<label>{{ form.retejo.label|capfirst }}</label> {{ form.retejo }}</li>
             </ul>
@@ -67,7 +69,7 @@
                 <li>
                     {{ form.min_homoj.errors }} {{ form.max_homoj.errors }}
                     <label>{% trans "Atendita nombro da partoprenantoj" %}</label> <div class="partoprenantoj">Inter {{ form.min_homoj }} kaj {{ form.max_homoj }} <i class="fa fa-male"></i></div>
-                    <i class="helptext">{% trans "Minimuma kaj maksimuma nombro da partoprenantoj atenditaj" %}</i>
+                    <i class="helptext">{{ form.max_homoj.help_text }}</i>
                 </li>
                 <li>{{ form.publiko.errors }}<label>{{ form.publiko.label|capfirst }}</label> {{ form.publiko }}</li>
                 <li>{{ form.etikedoj.errors }}<label>{{ form.etikedoj.label|capfirst }}</label> {{ form.etikedoj }}<i class="helptext">{{ form.etikedoj.help_text }}</i></li>

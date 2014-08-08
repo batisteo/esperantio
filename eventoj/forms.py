@@ -15,35 +15,40 @@ class RenkontigxoForm(forms.Form):
             widget=forms.TextInput(attrs={
                 'required': '',
                 'list': 'nomo_list'}),
-            label=_("nomo"))
+            label=_("nomo de la arangxo"),
+            help_text=_("Gxenerala nomo de la arangxo, sen numero nek dato."))
     mallonga_nomo = forms.CharField(
             widget=forms.TextInput(attrs={'list': 'mallonga_nomo_list'}),
             required=False,
             label=_("mallonga nomo"))
-    publiko = forms.ChoiceField(required=False,
-            label=_("publiko"), choices=PublikoElektoj.choices)
+    kioma = forms.CharField(required=False,
+            label=_("kioma evento"))
+    temo = forms.CharField(required=False,
+            label=_("temo"),
+            help_text=_("Ekzemple: 'Genra egaleco', aux nomo de la prelego en klubo."))
     retejo = forms.URLField(required=False,
             widget=forms.URLInput(attrs={'placeholder': 'http://'}),
             label=_("retejo"))
+
     min_homoj = forms.IntegerField(
             widget=forms.NumberInput(attrs={
                 'required': '',
                 'pattern': '[0-9]{1,4}',
-                'maxlength': '4'}),
-            label=_("partoprenantoj (min)"))
+                'maxlength': '4'}))
     max_homoj = forms.IntegerField(
             widget=forms.NumberInput(attrs={
                 'required': '',
                 'pattern': '[0-9]{1,4}',
                 'maxlength': '4'}),
-            label=_("partoprenantoj (max)"),
-            help_text=_("Averagxa aux estimata nombro da partoprenantoj."))
-
+            help_text=_("Minimuma kaj maksimuma nombro da partoprenantoj atenditaj"))
+    publiko = forms.ChoiceField(required=False,
+            label=_("publiko"), choices=PublikoElektoj.choices)
     etikedoj = TagField(required=False,
             label=_("etikedoj"),
             help_text=_("Ekzemple: prelegoj, ekskursoj, koncertoj"))
-    temo = forms.CharField(required=False,
-            label=_("temo"))
+    priskribo = forms.CharField(required=False, widget=Textarea,
+            label=_("priskribo"))
+
     urbo = forms.CharField(
             label=_("urbo"))
     posxtkodo = forms.CharField(required=False, widget=HiddenInput,
@@ -51,8 +56,6 @@ class RenkontigxoForm(forms.Form):
     lando = forms.ChoiceField(widget=forms.Select(attrs={'required': ''}),
             choices=countries,
             label=_("lando"))
-    priskribo = forms.CharField(required=False, widget=Textarea,
-            label=_("priskribo"))
     komenco = forms.DateTimeField(widget=HiddenInput,
             label=_("komenco"))
     fino = forms.DateTimeField(required=False, widget=HiddenInput,
@@ -89,6 +92,7 @@ class EventoForm(forms.ModelForm):
     class Meta:
         model = m.Evento
         fields = (
+            "kioma",
             "temo",
             "adreso",
             "adreso2",

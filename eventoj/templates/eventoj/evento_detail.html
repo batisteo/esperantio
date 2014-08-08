@@ -34,6 +34,9 @@
         <aside class="arangxo">
             <h1 class="arangxo-nomo centrita" id="arangxo-nomo">
                 <a href="{% url 'arangxo_detail' evento.arangxo.slug %}">
+                    {% if evento.kioma %}
+                        {{ evento.kioma }}-a
+                    {% endif %}
                     {{ evento.arangxo.nomo }}
                 </a>
             </h1>
@@ -95,7 +98,7 @@
     <div id="object"
         lat="{{ evento.lat|unlocalize }}"
         long="{{ evento.long|unlocalize }}"
-        nomo="{{ evento.arangxo.nomo }}"
+        nomo="{% if evento.kioma %}{{ evento.kioma }}-a {% endif %}{{ evento.arangxo.nomo }}"
         jaro="{{ evento.jaro }}"
         urbo="{{ evento.urbo }}">
     </div>

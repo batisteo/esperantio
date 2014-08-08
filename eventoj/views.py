@@ -93,6 +93,7 @@ class RenkontigxoCreateView(LoginRequiredMixin, generic.FormView):
             self.evento = Evento.objects.create(
                 arangxo=self.arangxo,
                 kreanto=self.user,
+                kioma=form.cleaned_data['kioma'],
                 komenco=form.cleaned_data['komenco'],
                 fino=form.cleaned_data['fino'],
                 lat=form.cleaned_data['lat'],

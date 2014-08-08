@@ -100,10 +100,8 @@ input[type="submit"] {
     clear: both;
 }
 
-#id_mallonga_nomo {
-    width: 5rem;
-}
-
+#id_mallonga_nomo { width: 5rem; }
+#id_kioma { width: 1.5rem; display: inline; }
 
 .enhavo {
     width: 86%;
@@ -173,4 +171,5 @@ input[type="submit"] {
 form .partoprenantoj input[type="number"] {
     display: inline;
     width: 3rem;
+    margin: 0 .5rem;
 }
