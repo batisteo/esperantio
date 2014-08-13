@@ -14,5 +14,6 @@ django-taggit==0.12
 django-debug-toolbar==1.2.1
 django-markitup==2.2.1
 django-flatpages-x==0.1.2
+django-markdown-deux==1.0.4
 
 -e git+https://github.com/SmileyChris/django-countries.git#egg=django-countries
