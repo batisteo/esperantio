@@ -35,10 +35,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'django_markdown',
     'django_extensions',
     'django_gravatar',
     'django_countries',
+    'flatpages_x',
+    'markitup',
+    'markdown_deux',
     'braces',
     'taggit',
     'leaflet',
@@ -85,3 +87,7 @@ LEAFLET_CONFIG = {
 
 GRAVATAR_SECURE = True
 GRAVATAR_DEFAULT_IMAGE = "mm"
+
+MARKITUP_SET = 'markitup/sets/markdown'
+MARKITUP_SKIN = 'markitup/skins/simple'
+MARKITUP_FILTER = ('markdown2.markdown', {'safe_mode': True})

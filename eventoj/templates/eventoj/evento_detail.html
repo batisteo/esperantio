@@ -1,9 +1,10 @@
 {% extends 'eventoj/base_evento.html' %}
-{% load staticfiles %}
+{% load static %}
 {% load i18n l10n %}
 {% load firstof from future %}
 {% load leaflet_tags %}
-{% load django_markdown %}
+{% load markdown_deux_tags %}
+
 
 {% block extra-js %}
     {{ block.super }}
@@ -28,7 +29,9 @@
             <h2 class="evento-temo centrita" id="evento-temo">
                 {{ evento.temo }}
             </h2>
-            <p>{{ evento.priskribo|markdown|linebreaks }}</p>
+            <div class="markdown">
+                {{ evento.priskribo|markdown }}
+            </div>
         </article>
 
         <aside class="arangxo">

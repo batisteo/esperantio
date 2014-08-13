@@ -1,3 +1,5 @@
+/*  Fonts: 13 17 23 30 41 55 73  */
+
 html {
     height: 100%;
 }
@@ -9,7 +11,7 @@ html, body {
 
 body {
     font-family: Biolinum, sans-serif;
-    font-size: 18x;
+    font-size: 18px;
     position: relative;
     min-height: 100%;
     color: #222;
@@ -23,15 +25,50 @@ body.registrado {
     min-height: inherit;
 }
 
+main p {
+    line-height: 140%;
+    margin-bottom: 1em;
+}
+
 a {
     text-decoration: none;
     color: #5d7e33;
 }
 
+main h1 {
+    margin-top: 2em;
+    margin-bottom: 1.4em;
+    font-size: 41px;
+    text-align: center;
+}
+
+main h2 {
+    margin-top: 1.4em;
+    margin-bottom: 1em;
+    font-size: 30px;
+    text-align: center;
+}
+
+main h3 {
+    margin-top: 1.4em;
+    margin-bottom: 1em;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+main h4 {
+    margin-top: 1.4em;
+    margin-bottom: 1em;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
 main a:hover,
 main a:active,
 main a:focus {
     opacity: .8;
+    text-decoration: underline;
 }
 
 em,
@@ -49,18 +86,6 @@ strong,
 
 .baza-fondo {
     background-color: #5d7e33;
-}
-
-main h1 {
-    margin-top: 2rem;
-    font-size: 2rem;
-    text-align: center;
-}
-
-main h2 {
-    margin-top: 1.4rem;
-    font-size: 1.4rem;
-    text-align: center;
 }
 
 header {

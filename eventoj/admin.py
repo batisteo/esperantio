@@ -1,5 +1,8 @@
 from django.contrib import admin
-from eventoj.models import Arangxo, Evento
+
+from markitup.widgets import AdminMarkItUpWidget
+
+from .models import Arangxo, Evento
 
 
 @admin.register(Arangxo)
@@ -10,4 +13,11 @@ class ArangxoAdmin(admin.ModelAdmin):
 @admin.register(Evento)
 class EventoAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'temo', 'komenco', 'fino', 'urbo', 'lando', 'kreanto')
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'content':
+            kwargs['widget'] = AdminMarkItUpWidget()
+        return super(EventoAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
+
 
