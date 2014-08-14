@@ -12,16 +12,26 @@
             <a href="{% url 'evento_create' arangxo.slug %}"><i class="fa fa-plus"></i> {% trans "Aldonu eventon" %}</a>
         </p>
     </aside>
-    <h1>{{ arangxo.mallonga_nomo }}</h1>
-    {% if arangxo.nomo|lower != arangxo.mallonga_nomo|lower %}
-        <h2>{{ arangxo.nomo }}</h2>
+
+    <h1>
+        {% if arangxo.mallonga_nomo %}
+            {{ arangxo.mallonga_nomo }}
+        {% else %}
+            {{ arangxo.nomo }}
+        {% endif %}
+    </h1>
+    
+    {% if arangxo.mallonga_nomo %}
+        {% if arangxo.nomo|lower != arangxo.mallonga_nomo|lower %}
+            <h2>{{ arangxo.nomo }}</h2>
+        {% endif %}
     {% endif %}
     
     
     <div id="datumoj">
         <p title="{% trans 'nombro da partoprenantoj' %}"> <i class="fa fa-male"></i>  {{ arangxo.min_homoj }} – {{ arangxo.max_homoj }}</p>
-        <p title="{% trans 'publiko' %}"><i class="fa fa-group"></i> {{ arangxo.get_publiko_dislay }}</p>
-        <p title="{% trans 'ofteco' %}"><i class="fa fa-calendar"></i> {{ arangxo.get_ofteco_display|default_if_none:"" }}</p>
+        <p title="{% trans 'publiko' %}"><i class="fa fa-group"></i> {{ arangxo.get_publiko_display|capfirst }}</p>
+        <p title="{% trans 'ofteco' %}"><i class="fa fa-calendar"></i> {{ arangxo.get_ofteco_display|default_if_none:""|capfirst }}</p>
         <p title="{% trans 'dauxro' %}"><i class="fa fa-clock-o"></i> {{ arangxo.dauro|default_if_none:"" }}{% if arangxo.dauro %} tagoj{% endif %}</p>
         <p title="{% trans 'etikedoj' %}"><i class="fa fa-tag"></i> {{ arangxo.etikedoj.all|join:", " }}</p>
         <p title="{% trans 'retejo' %}"><i class="fa fa-globe"></i> {{ arangxo.retejo|urlize }}</p>
