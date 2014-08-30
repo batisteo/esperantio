@@ -120,6 +120,10 @@ header {
     content: '.';
 }
 
+.logo .beta {
+    color: #cf0;
+}
+
 .registrado .logo {
     text-align: center;
     position: relative;
@@ -368,6 +372,7 @@ form input[type="number"] {
     width: 3em !important;
 }
 
+.butono,
 form input[type="submit"] {
     color: white;
     font-weight: bold;
