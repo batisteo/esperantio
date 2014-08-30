@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Esperantio\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 21:47+0000\n"
-"PO-Revision-Date: 2014-08-08 23:48+0100\n"
+"POT-Creation-Date: 2014-08-30 23:14+0200\n"
+"PO-Revision-Date: 2014-08-30 23:17+0100\n"
 "Last-Translator: Baptiste Darthenay <taggit.batisteo@recursor.net>\n"
 "Language-Team: EO <esperantio.batisteo@recursor.net>\n"
 "Language: eo\n"
@@ -83,93 +83,105 @@ msgstr "jare"
 msgid "malofte"
 msgstr "malofte"
 
-#: forms.py:18
-msgid "nomo de la arangxo"
-msgstr "nomo de la aranĝo"
+#: forms.py:16
+msgid "Jam ekzistas arangxo kun tiu nomo. Elektu alian."
+msgstr "Jam ekzistas aranĝo kun tiu nomo. Elektu alian."
 
-#: forms.py:19
-msgid "Gxenerala nomo de la arangxo, sen numero nek dato."
-msgstr "Ĝenerala nomo de la aranĝo, sen numero nek dato."
+#: forms.py:21
+msgid "Jam ekzistas arangxo kun tiu mallonga nomo. Elektu alian."
+msgstr "Jam ekzistas aranĝo kun tiu mallonga nomo. Elektu alian."
 
-#: forms.py:23 models.py:23
+#: forms.py:30 models.py:22
+msgid "nomo de la renkontigxo"
+msgstr "nomo de la renkontiĝo"
+
+#: forms.py:31
+msgid "Gxenerala nomo de la renkontigxo, sen numero nek dato."
+msgstr "Ĝenerala nomo de la renkontigxo, sen numero nek dato."
+
+#: forms.py:37 forms.py:52 models.py:23
 msgid "mallonga nomo"
 msgstr "mallonga nomo"
 
-#: forms.py:24
+#: forms.py:38 forms.py:54
 msgid "Se tauxgas. Ekzemple: UK, IJK, FESTO, IJS, JES..."
 msgstr "Se taŭgas. Ekzemple: UK, IJK, FESTO, IJS, JES…"
 
-#: forms.py:26
+#: forms.py:46
+msgid "nomo de la arangxo"
+msgstr "nomo de la aranĝo"
+
+#: forms.py:48
+msgid "Gxenerala nomo de la arangxo, sen numero nek dato."
+msgstr "Ĝenerala nomo de la aranĝo, sen numero nek dato."
+
+#: forms.py:56
 msgid "kioma evento"
 msgstr "kioma evento"
 
-#: forms.py:28 models.py:75
+#: forms.py:58 models.py:75
 msgid "temo"
 msgstr "temo"
 
-#: forms.py:29
+#: forms.py:59
 msgid "Ekzemple: 'Genra egaleco', aux nomo de la prelego en klubo."
 msgstr "Ekzemple: 'Genra egaleco', aŭ nomo de la prelego en klubo."
 
-#: forms.py:32 models.py:26 templates/eventoj/arangxo_detail.html:27
+#: forms.py:62 models.py:26 templates/eventoj/arangxo_detail.html:37
 msgid "retejo"
 msgstr "retejo"
 
-#: forms.py:44
+#: forms.py:74
 msgid "Minimuma kaj maksimuma nombro da partoprenantoj atenditaj"
 msgstr ""
 
-#: forms.py:46 models.py:34 templates/eventoj/arangxo_detail.html:23
+#: forms.py:76 models.py:34 templates/eventoj/arangxo_detail.html:33
 msgid "publiko"
 msgstr "publiko"
 
-#: forms.py:48 templates/eventoj/arangxo_detail.html:26
+#: forms.py:78 templates/eventoj/arangxo_detail.html:36
 msgid "etikedoj"
 msgstr ""
 
-#: forms.py:49
+#: forms.py:79
 msgid "Ekzemple: prelegoj, ekskursoj, koncertoj"
 msgstr ""
 
-#: forms.py:51 models.py:83
+#: forms.py:81 models.py:83
 msgid "priskribo"
 msgstr "priskribo"
 
-#: forms.py:54 models.py:78
+#: forms.py:84 models.py:78
 msgid "urbo"
 msgstr "urbo"
 
-#: forms.py:56 models.py:79
+#: forms.py:86 models.py:79
 msgid "posxtkodo"
 msgstr "poŝtkodo"
 
-#: forms.py:59
+#: forms.py:89
 msgid "lando"
 msgstr "lando"
 
-#: forms.py:61 models.py:73
+#: forms.py:91 models.py:73
 msgid "komenco"
 msgstr "komenco"
 
-#: forms.py:63 models.py:74
+#: forms.py:93 models.py:74
 msgid "fino"
 msgstr "fino"
 
-#: forms.py:65
+#: forms.py:95
 msgid "lat"
 msgstr ""
 
-#: forms.py:67
+#: forms.py:97
 msgid "long"
 msgstr "long"
 
 #: models.py:21 models.py:68
 msgid "Kreanto"
 msgstr "Kreanto"
-
-#: models.py:22
-msgid "nomo de la renkontigxo"
-msgstr "nomo de la renkontiĝo"
 
 #: models.py:24
 msgid "Mallonga nomo se ekzistas."
@@ -179,7 +191,7 @@ msgstr "Mallonga nomo se ekzistas."
 msgid "ligila nomo"
 msgstr "ligila nomo"
 
-#: models.py:27 templates/eventoj/arangxo_detail.html:28
+#: models.py:27 templates/eventoj/arangxo_detail.html:38
 msgid "retposxto"
 msgstr "retpoŝto"
 
@@ -196,22 +208,18 @@ msgid "organizo"
 msgstr "organizo"
 
 #: models.py:36
-#, fuzzy
-#| msgid "nombro da partoprenantoj"
 msgid "minimuma nombro da partoprenantoj"
-msgstr "nombro da partoprenantoj"
+msgstr "minimuma nombro da partoprenantoj"
 
 #: models.py:37
-#, fuzzy
-#| msgid "nombro da partoprenantoj"
 msgid "maksimuma nombro da partoprenantoj"
-msgstr "nombro da partoprenantoj"
+msgstr "maksimuma nombro da partoprenantoj"
 
-#: models.py:39 templates/eventoj/arangxo_detail.html:24
+#: models.py:39 templates/eventoj/arangxo_detail.html:34
 msgid "ofteco"
 msgstr "ofteco"
 
-#: models.py:42 templates/eventoj/arangxo_detail.html:25
+#: models.py:42 templates/eventoj/arangxo_detail.html:35
 msgid "dauxro"
 msgstr "daŭro"
 
@@ -260,7 +268,7 @@ msgid "eventoj"
 msgstr "eventoj"
 
 #: templates/eventoj/arangxo_detail.html:9
-#: templates/eventoj/evento_detail.html:17
+#: templates/eventoj/evento_detail.html:18
 msgid "Redakti"
 msgstr "Redakti"
 
@@ -268,83 +276,95 @@ msgstr "Redakti"
 msgid "Aldonu eventon"
 msgstr "Aldonu eventon"
 
-#: templates/eventoj/arangxo_detail.html:22
+#: templates/eventoj/arangxo_detail.html:32
 msgid "nombro da partoprenantoj"
 msgstr "nombro da partoprenantoj"
 
-#: templates/eventoj/arangxo_detail.html:29
+#: templates/eventoj/arangxo_detail.html:39
 msgid "facebook"
 msgstr ""
 
-#: templates/eventoj/arangxo_detail.html:30
+#: templates/eventoj/arangxo_detail.html:40
 msgid "twitter"
 msgstr ""
 
 #: templates/eventoj/arangxo_form.html:12
 #, fuzzy
-#| msgid "ek!"
 msgid "Ek!"
 msgstr "ek!"
 
 #: templates/eventoj/evento_arangxo_form.html:45
 #: templates/eventoj/evento_form.html:100
-#: templates/eventoj/renkontigxo_form.html:108
+#: templates/eventoj/renkontigxo_form.html:98
 msgid "Aldonu!"
 msgstr "Aldonu!"
 
-#: templates/eventoj/evento_detail.html:59
-#, fuzzy, python-format
-#| msgid "publiko"
-msgid "Por %(publiko)s"
-msgstr "publiko"
-
-#: templates/eventoj/evento_detail.html:65
+#: templates/eventoj/evento_detail.html:62
 #, python-format
-msgid "Okazas %(ofteco)s"
+msgid ""
+"\n"
+"                    Por %(publiko)s\n"
+"                "
 msgstr ""
 
-#: templates/eventoj/evento_detail.html:72
+#: templates/eventoj/evento_detail.html:68
 #, python-format
-msgid "Daŭras %(dauro)s tagon"
-msgid_plural "Daŭras %(dauro)s tagojn"
+msgid ""
+"\n"
+"                        Okazas %(ofteco)s\n"
+"                    "
+msgstr ""
+
+#: templates/eventoj/evento_detail.html:75
+#, python-format
+msgid ""
+"\n"
+"                        Daŭras %(dauro)s tagon\n"
+"                    "
+msgid_plural ""
+"\n"
+"                        Daŭras %(dauro)s tagojn\n"
+"                    "
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/eventoj/evento_detail.html:102
-#, fuzzy
-#| msgid "Aldonu eventon"
+#: templates/eventoj/evento_detail.html:105
 msgid "Aldonu detalojn"
-msgstr "Aldonu eventon"
+msgstr "Aldonu detalojn"
 
 #: templates/eventoj/evento_form.html:44
-#: templates/eventoj/renkontigxo_form.html:57
-#, fuzzy
-#| msgid "nomo de la renkontigxo"
-msgid "Kiam komencos la renkontiĝo?"
-msgstr "nomo de la renkontiĝo"
+#: templates/eventoj/renkontigxo_form.html:47
+msgid ""
+"\n"
+"                        Kiam komencos la renkontiĝo?\n"
+"                    "
+msgstr ""
 
 #: templates/eventoj/evento_form.html:49
-#: templates/eventoj/renkontigxo_form.html:62
+#: templates/eventoj/renkontigxo_form.html:52
 msgid "Klaku sur la kalendaron por elekti komencdaton kaj findaton!"
 msgstr ""
 
 #: templates/eventoj/evento_form.html:70
-#: templates/eventoj/renkontigxo_form.html:87
-msgid "Bonvelu klaki sur la mapon por lokigi la eventon!"
+#: templates/eventoj/renkontigxo_form.html:77
+msgid ""
+"\n"
+"                        Bonvelu klaki sur la mapon por lokigi la eventon!\n"
+"                    "
 msgstr ""
 
 #: templates/eventoj/evento_form.html:75
-#: templates/eventoj/renkontigxo_form.html:92
+#: templates/eventoj/renkontigxo_form.html:82
 msgid "Klaku sur la mapon por elekti lokon!"
 msgstr ""
 
 #: templates/eventoj/evento_form.html:89
-#: templates/eventoj/renkontigxo_form.html:96
+#: templates/eventoj/renkontigxo_form.html:86
 msgid "Montru!"
 msgstr ""
 
 #: templates/eventoj/evento_form.html:90
-#: templates/eventoj/renkontigxo_form.html:97
+#: templates/eventoj/renkontigxo_form.html:87
 msgid "Ooh, mi ne trovis tiun urbon…"
 msgstr ""
 
@@ -352,47 +372,10 @@ msgstr ""
 msgid "Aldonu renkontigxon"
 msgstr "Aldonu renkontiĝon"
 
-#: templates/eventoj/renkontigxo_form.html:72
-#, fuzzy
-#| msgid "nombro da partoprenantoj"
+#: templates/eventoj/renkontigxo_form.html:62
 msgid "Atendita nombro da partoprenantoj"
-msgstr "nombro da partoprenantoj"
+msgstr "Atendita nombro da partoprenantoj"
 
-#~ msgid "ek"
-#~ msgstr "ek"
-
-#~ msgid "nomo"
-#~ msgstr "nomo"
-
-#~ msgid "adreso kont."
-#~ msgstr "adreso kont."
-
-#~ msgid "mondo"
-#~ msgstr "mondo"
-
-#~ msgid "kontinento"
-#~ msgstr "kontinento"
-
-#~ msgid "regiono"
-#~ msgstr "regiono"
-
-#~ msgid "gxenerala"
-#~ msgstr "ĝenerala"
-
-#~ msgid "studada"
-#~ msgstr "studada"
-
-#~ msgid "kultura"
-#~ msgstr "kultura"
-
-#~ msgid "fervojista"
-#~ msgstr "fervojista"
-
-#~ msgid "maljunuloj"
-#~ msgstr "maljunuloj"
-
-#~ msgid "skalo"
-#~ msgstr "skalo"
-
-#~ msgid "Eventoj"
-#~ msgstr "Eventoj"
+#: templates/eventoj/renkontigxo_nomo_form.html:6
+msgid "Nova renkontigxo"
+msgstr "Nova renkontiĝo"
