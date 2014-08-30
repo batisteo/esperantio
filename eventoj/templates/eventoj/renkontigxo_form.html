@@ -28,19 +28,9 @@
             <h2>Kio?</h2>
             <ul>
                 <li>{{ form.nomo.errors }}<label>{{ form.nomo.label|capfirst }}</label> {{ form.nomo }}
-                    <datalist id="nomo_list">
-                        {% for arangxo in object_list %}
-                            <option value="{{ arangxo.nomo }}">
-                        {% endfor %}
-                    </datalist>
                     <i class="helptext">{{ form.nomo.help_text }}</i>
                 </li>
                 <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label|capfirst }}</label> {{ form.mallonga_nomo }}
-                    <datalist id="nomo_list">
-                        {% for arangxo in object_list %}
-                            <option value="{{ arangxo.mallonga_nomo }}">
-                        {% endfor %}
-                    </datalist>
                     <i class="helptext">{{ form.mallonga_nomo.help_text }}</i>
                 </li>
                 <li>{{ form.kioma.errors }}<label>{{ form.kioma.label|capfirst }}</label> {{ form.kioma }}-a</li>

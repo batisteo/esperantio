@@ -3,6 +3,7 @@ from datetime import date, datetime
 from django.utils.translation import ugettext_lazy as _
 from django import forms
 from django.forms.widgets import HiddenInput, Textarea
+from django.core.exceptions import ValidationError
 
 from django_countries import countries
 from taggit.forms import TagField
@@ -10,17 +11,46 @@ from . import models as m
 from .choices import PublikoElektoj
 
 
+def validate_arangxo_nomo(value):
+    if m.Arangxo.objects.filter(nomo__iexact=value):
+        raise ValidationError(_("Jam ekzistas arangxo kun tiu nomo. Elektu alian."))
+
+
+def validate_arangxo_mallonga_nomo(value):
+    if m.Arangxo.objects.filter(mallonga_nomo__iexact=value):
+        raise ValidationError(_("Jam ekzistas arangxo kun tiu mallonga nomo. Elektu alian."))
+
+
+class RenkontigxoNomoForm(forms.Form):
+    nomo = forms.CharField(
+            widget=forms.TextInput(attrs={
+                'required': '',
+                'list': 'nomo-list',
+                'autocomplete': 'off'}),
+            label=_("nomo de la renkontigxo"),
+            help_text=_("Gxenerala nomo de la renkontigxo, sen numero nek dato."))
+    mallonga_nomo = forms.CharField(
+            widget=forms.TextInput(attrs={
+                'list': 'mallonga-nomo-list',
+                'autocomplete': 'off'}),
+            required=False,
+            label=_("mallonga nomo"),
+            help_text=_("Se tauxgas. Ekzemple: UK, IJK, FESTO, IJS, JES..."))
+
+
 class RenkontigxoForm(forms.Form):
     nomo = forms.CharField(
             widget=forms.TextInput(attrs={
                 'required': '',
-                'list': 'nomo_list'}),
+                'autocomplete': 'off'}),
             label=_("nomo de la arangxo"),
+            validators=[validate_arangxo_nomo],
             help_text=_("Gxenerala nomo de la arangxo, sen numero nek dato."))
     mallonga_nomo = forms.CharField(
-            widget=forms.TextInput(attrs={'list': 'mallonga_nomo_list'}),
+            widget=forms.TextInput(attrs={'autocomplete': 'off'}),
             required=False,
             label=_("mallonga nomo"),
+            validators=[validate_arangxo_mallonga_nomo],
             help_text=_("Se tauxgas. Ekzemple: UK, IJK, FESTO, IJS, JES..."))
     kioma = forms.CharField(required=False,
             label=_("kioma evento"))

@@ -1,0 +1,30 @@
+{% extends 'eventoj/base_evento.html' %}
+{% load i18n %}
+
+{% block content %}
+    <section class="registrado">
+        <h1>{% trans "Nova renkontigxo" %}</h1>
+        <form action="" method="post" class="ensaluti">{% csrf_token %}
+                <ul>
+                    <li>{{ form.nomo.errors }}<label>{{ form.nomo.label|capfirst }}</label> {{ form.nomo }}
+                        <datalist id="nomo-list">
+                            {% for arangxo in object_list %}
+                                <option value="{{ arangxo.nomo }}">
+                            {% endfor %}
+                        </datalist>
+                        <i class="helptext">{{ form.nomo.help_text }}</i>
+                    </li>
+                    <li>{{ form.mallonga_nomo.errors }}<label>{{ form.mallonga_nomo.label|capfirst }}</label> {{ form.mallonga_nomo }}
+                        <datalist id="mallonga-nomo-list">
+                            {% for arangxo in object_list %}
+                                <option value="{{ arangxo.mallonga_nomo }}">
+                            {% endfor %}
+                        </datalist>
+                        <i class="helptext">{{ form.mallonga_nomo.help_text }}</i>
+                    </li>
+                </ul>
+        
+            <input type="submit" class="baza-fondo" value="Sekva" />
+        </form>
+    </section>
+{% endblock content %}

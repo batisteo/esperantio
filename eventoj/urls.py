@@ -13,9 +13,17 @@ urlpatterns = patterns('eventoj.views',
             view='arangxo_update',
             name='arangxo_update',),
 
-    url(r'^evento/aldoni/$',
-            view='evento_arangxo_create',
-            name='evento_arangxo_create',),
+    url(r'^renkontigxo/aldoni/nomo/$',
+            view='renkontigxo_nomo_create',
+            name='renkontigxo_nomo_create',),
+
+    url(r'^renkontigxo/aldoni/nomo/cxunova/$',
+            view='cxu_nova_arangxo',
+            name='cxu_nova_arangxo',),
+
+    url(r'^renkontigxo/aldoni/$',
+            view='renkontigxo_create',
+            name='renkontigxo_create',),
 
     url(r'^(?P<slug>[\w-]+)/evento/aldoni/$',
             view='evento_create',

@@ -1,0 +1,12 @@
+{% extends 'eventoj/base_evento.html' %}
+
+{% block content %}
+    <section class="registrado">
+        <h1>Ĉu vi deziras aldoni novan eventon al ekzista aranĝo?</h1>
+        {% for arangxo in arangxo_list %}
+            <p><a href="{% url 'evento_create' arangxo.slug %}">Ĉu nova {{ arangxo }}?</a></p>
+        {% endfor %}
+
+        <p><strong><a href="{% url 'renkontigxo_create' %}?{{ request.META.QUERY_STRING }}">Ne, estas nova aranĝo!</a></strong></p>
+    </section>
+{% endblock content %}
