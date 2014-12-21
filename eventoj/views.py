@@ -1,6 +1,8 @@
 import json
 from urllib import urlencode
 from unidecode import unidecode
+
+from django.utils.timezone import now
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, Http404
 from django.views import generic
@@ -60,6 +62,7 @@ class EventoJSONListView(JSONResponseMixin, generic.list.BaseListView):
         n, s, e, w = args.get('n', ''), args.get('s', ''), args.get('e', ''), args.get('w', '')
         qs = Evento.objects.filter(long__lte=n).filter(long__gte=s).filter(
             lat__gte=w).filter(lat__lte=e)
+        qs = qs.filter(fino__gte=now())
         return qs
 
     def render_to_response(self, context, **response_kwargs):
