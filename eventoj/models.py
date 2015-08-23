@@ -76,7 +76,7 @@ class Evento(TimeStampedModel):
     adreso = models.CharField(_("adreso"), max_length=255, blank=True)
     adreso2 = models.CharField(_("adreso 2"), max_length=255, blank=True)
     urbo = models.CharField(_("urbo"), max_length=255, blank=True)
-    posxtkodo = models.CharField(_("posxtkodo"), max_length=10, blank=True)
+    posxtkodo = models.CharField(_("posxtkodo"), max_length=30, blank=True)
     lando = CountryField()
     lat = models.FloatField(_("latitudo"), null=True, blank=True)
     long = models.FloatField(_("longitudo"), null=True, blank=True)
