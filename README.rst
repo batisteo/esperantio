@@ -15,3 +15,8 @@ Por instali la projekto vi bezonas dĵango 1.6 aŭ poste kaj mekurialon::
     hg clone https://batisteo@bitbucket.org/batisteo/esperantio
 
     pip install -r requirements.txt
+
+
+sudo apt install:
+
+nginx libpq-dev python-dev supervisor mercurial git python-pip
