@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -21,24 +20,24 @@ class Arangxo(TimeStampedModel):
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     nomo = models.CharField(_("nomo de la renkontigxo"), max_length=255, unique=True,)
     mallonga_nomo = models.CharField(_("mallonga nomo"), blank=True,
-            help_text=_("Mallonga nomo se ekzistas."), max_length=255)
+        help_text=_("Mallonga nomo se ekzistas."), max_length=255)
     slug = AutoSlugField(_("ligila nomo"), populate_from="get_shorter_name", unique=True)
     retejo = models.URLField(_("retejo"), blank=True)
     retposxto = models.EmailField(_("retposxto"), blank=True)
     facebook = models.CharField(_("facebook identigilo"), max_length=255, blank=True,
-            help_text=BASE_FACEBOOK_URL+"[...]")
+        help_text=BASE_FACEBOOK_URL + "[...]")
     twitter = models.CharField(_("twitter identigilo"), max_length=255, blank=True,
-            help_text=BASE_TWITTER_URL+"[...]")
+        help_text=BASE_TWITTER_URL + "[...]")
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
         blank=True, null=True)
     publiko = models.PositiveSmallIntegerField(_("publiko"),
-            choices=PUBLIKO_ELEKTOJ.choices, max_length=1, null=True, default=0)
+        choices=PUBLIKO_ELEKTOJ.choices, max_length=1, null=True, default=0)
     min_homoj = models.PositiveIntegerField(_("minimuma nombro da partoprenantoj"))
     max_homoj = models.PositiveIntegerField(_("maksimuma nombro da partoprenantoj"))
     etikedoj = TaggableManager(blank=True)
     ofteco = models.PositiveIntegerField(_("ofteco"), blank=True, null=True,
-            help_text="Gxenerala ofteco de la renkontigxo.",
-            choices=OFTECO_ELEKTOJ.choices)
+        help_text="Gxenerala ofteco de la renkontigxo.",
+        choices=OFTECO_ELEKTOJ.choices)
     dauro = models.PositiveIntegerField(_("dauxro"), blank=True, null=True,
             help_text="Gxenerala dauxro de la renkontigxo, en tagoj.")
 
@@ -63,13 +62,12 @@ class Arangxo(TimeStampedModel):
         return self.mallonga_nomo if self.mallonga_nomo else self.nomo
 
 
-
 class Evento(TimeStampedModel):
     kreanto = models.ForeignKey("uzantoj.Uzanto", verbose_name=_("Kreanto"))
     arangxo = models.ForeignKey("eventoj.Arangxo", verbose_name=_("Arangxo"),
-            related_name="eventoj")
+        related_name="eventoj")
     kioma = models.CharField(_("kioma"), max_length=10, blank=True,
-            help_text=_("42-a"))
+        help_text=_("42-a"))
     komenco = models.DateTimeField(_("komenco"))
     fino = models.DateTimeField(_("fino"), blank=True)
     temo = models.CharField(_("temo"), max_length=255, blank=True)
@@ -82,6 +80,10 @@ class Evento(TimeStampedModel):
     long = models.FloatField(_("longitudo"), null=True, blank=True)
     priskribo = models.TextField(_("priskribo"), blank=True, null=True)
 
+    class Meta:
+        verbose_name = _("evento")
+        verbose_name_plural = _("eventoj")
+
     @property
     def jaro(self):
         return self.komenco.year
@@ -93,11 +95,6 @@ class Evento(TimeStampedModel):
     @property
     def tago(self):
         return self.komenco.day
-    
-
-    class Meta:
-        verbose_name = _("evento")
-        verbose_name_plural = _("eventoj")
 
     def __unicode__(self):
         return self.arangxo.nomo + ' ' + str(self.jaro)
@@ -111,18 +108,18 @@ class Evento(TimeStampedModel):
         })
 
     def as_dict(self):
-        kioma = self.kioma + '-a' if self.kioma else '';
+        kioma = self.kioma + '-a' if self.kioma else ''
         return {
-                'id': self.pk,
-                'nomo': self.arangxo.nomo,
-                'mallonga_nomo': self.arangxo.mallonga_nomo,
-                'jaro': self.jaro,
-                'kioma': kioma,
-                'komenco': self.komenco.strftime('%Y-%m-%d'),
-                'fino': self.fino.strftime('%Y-%m-%d'),
-                'temo': self.temo,
-                'lat': self.lat,
-                'long': self.long,
-                'urbo': self.urbo,
-                'url': self.get_absolute_url()
+            'id': self.pk,
+            'nomo': self.arangxo.nomo,
+            'mallonga_nomo': self.arangxo.mallonga_nomo,
+            'jaro': self.jaro,
+            'kioma': kioma,
+            'komenco': self.komenco.strftime('%Y-%m-%d'),
+            'fino': self.fino.strftime('%Y-%m-%d'),
+            'temo': self.temo,
+            'lat': self.lat,
+            'long': self.long,
+            'urbo': self.urbo,
+            'url': self.get_absolute_url()
         }
