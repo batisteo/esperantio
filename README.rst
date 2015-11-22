@@ -19,4 +19,4 @@ Por instali la projekto vi bezonas dĵango 1.6 aŭ poste kaj mekurialon::
 
 sudo apt install:
 
-nginx libpq-dev python-dev supervisor mercurial git python-pip
+nginx libpq-dev python-dev supervisor mercurial git python-pip postgresql

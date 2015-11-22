@@ -1,13 +1,10 @@
-#use global syntax
 syntax:glob
-env/
+
 *~
 *.pyc
 *.db
 *.sqlite3
-*.geany
+env/
 .bash*
-config_local.py
-config_staging.py
-config_production.py
+hidden.py
 public/static

@@ -1,24 +1,35 @@
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+# Build paths inside the project like this: path.join(BASE_DIR, ...)
+from os import path
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_DIR = path.dirname(path.dirname(path.abspath(__file__)))
+BASE_DIR = path.dirname(PROJECT_DIR)
 
 SITE_ID = 1
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'), )
 
-MEDIA_URL = '/media/'
+# Static files (CSS, JavaScript, Images)
+
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+TEMPLATE_DIRS = (path.join(PROJECT_DIR, 'templates'), )
+STATICFILES_DIRS = [path.join(PROJECT_DIR, 'static')]
+STATIC_ROOT = path.join(BASE_DIR, 'public/static')
+MEDIA_ROOT = path.join(BASE_DIR, 'public/media')
 
 
 AUTH_USER_MODEL = 'uzantoj.Uzanto'
 LOGIN_URL = '/uzanto/konekti/'
 LOGIN_REDIRECT_URL = '/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'esperantio',
+    }
+}
 
 ADMINS = (
     ('Baptiste Darthenay', 'bonvenon@esperant.io'),
