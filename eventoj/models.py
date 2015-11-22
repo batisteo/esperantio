@@ -31,7 +31,7 @@ class Arangxo(TimeStampedModel):
     organizo = models.ForeignKey('organizoj.Organizo', verbose_name=_("organizo"),
         blank=True, null=True)
     publiko = models.PositiveSmallIntegerField(_("publiko"),
-        choices=PUBLIKO_ELEKTOJ.choices, max_length=1, null=True, default=0)
+        choices=PUBLIKO_ELEKTOJ.choices, null=True, default=0)
     min_homoj = models.PositiveIntegerField(_("minimuma nombro da partoprenantoj"))
     max_homoj = models.PositiveIntegerField(_("maksimuma nombro da partoprenantoj"))
     etikedoj = TaggableManager(blank=True)

@@ -14,7 +14,7 @@ class Organizo(TimeStampedModel):
     twitter = models.CharField(_("twitter"), max_length=255, blank=True)
     vera_nomo_bezonata = models.BooleanField(_("vera nomo bezonata"), default=False)
     skalo = models.PositiveSmallIntegerField(_("skalo"),
-                choices=SKALO_ELEKTOJ, max_length=1, null=True, default=0)
+                choices=SKALO_ELEKTOJ, null=True, default=0)
 
     adreso = models.CharField(_("adreso"), max_length=255, blank=True)
     adreso2 = models.CharField(_("adreso kont."), max_length=255, blank=True)
