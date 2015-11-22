@@ -138,6 +138,7 @@ header {
     color: #5d7e33;
     font-size: 2.5em;
 }
+.container,
 .registrado section {
     width: 26rem;
     margin: 0 auto;
