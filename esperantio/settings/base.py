@@ -49,7 +49,6 @@ INSTALLED_APPS = (
     'django_extensions',
     'django_gravatar',
     'django_countries',
-    'flatpages_x',
     'markitup',
     'markdown_deux',
     'braces',
