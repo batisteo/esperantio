@@ -1,6 +1,5 @@
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
 from os import path
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 
 PROJECT_DIR = path.dirname(path.dirname(path.abspath(__file__)))
@@ -13,11 +12,27 @@ SITE_ID = 1
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-TEMPLATE_DIRS = (path.join(PROJECT_DIR, 'templates'), )
 STATICFILES_DIRS = [path.join(PROJECT_DIR, 'static')]
 STATIC_ROOT = path.join(BASE_DIR, 'public/static')
 MEDIA_ROOT = path.join(BASE_DIR, 'public/media')
 
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [path.join(PROJECT_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 AUTH_USER_MODEL = 'uzantoj.Uzanto'
 LOGIN_URL = '/uzanto/konekti/'
@@ -69,9 +84,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 )
 
-TEMPLATE_CONTEXT_PROCESSORS += (
-    'django.core.context_processors.request',
-)
 
 ROOT_URLCONF = 'esperantio.urls'
 

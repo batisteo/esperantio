@@ -8,25 +8,28 @@
 
 {% block main %}
     <main>
-        <section class="registrado">
+        <section>
                 <h1 class="logo" id="logo">
                     <a href="{% url 'hejmo' %}">esperant<span>io</span></a>
                 </h1>
-            <form action="" method="post">
+            <form id="registrado-form" action="" method="post">
                 {% csrf_token %}
-                <p>
+
+                {{ form.non_field_errors }}
+
+                <p>{{ form.salutnomo.errors }}
                     <input id="id_salutnomo" type="text" name="salutnomo" maxlength="30"
                            placeholder="{% trans 'salutnomo' %}" required autofocus></input>
                 </p>
-                <p>
+                <p>{{ form.pasvorto1.errors }}
                     <input id="id_pasvorto1" type="password" name="pasvorto1"
                            placeholder="{% trans 'pasvorto' %}" required></input>
                 </p>
-                <p>
+                <p>{{ form.pasvorto2.errors }}
                     <input id="id_pasvorto2" type="password" name="pasvorto2"
                            placeholder="{% trans 'pasvorto denove' %}" required></input>
                 </p>
-                <p>
+                <p>{{ form.retposxto.errors }}
                     <input id="id_retposxto" type="email" name="retposxto" maxlength="254"
                            placeholder="{% trans 'retposxto' %}" required></input>
                 </p>

@@ -14,7 +14,11 @@
         <form
             action="{% block form_action %}{% endblock form_action %}"
             method="{% block form_method %}post{% endblock form_method %}"
+            id="registrado-form"
             class="ensaluti" />
+
+            {{ form.non_field_errors }}
+
             <p>
                 <input id="id_username" type="text" name="username" maxlength="254"
                        placeholder="{% trans 'salutnomo' %}" required autofocus></input>
@@ -24,13 +28,13 @@
                        placeholder="{% trans 'pasvorto' %}" required ></input>
             </p>
             <input type="hidden" name="next" value="{{ next }}" />
-        
+
         <input type="submit" class="baza-fondo"
             value="{% block form_submit_text %}{% trans 'Konekti!' %}{% endblock %}" />
-        
+
         {% csrf_token %}
         </form>
-        
+
         <p class="nova-uzanto">
             <a href="{% url 'uzanto_create' %}">{% trans "Nova sur esperant.io?" %}</a>
         </p>
