@@ -1,5 +1,5 @@
 import json
-from urllib import urlencode
+from urllib.parse import urlencode
 from unidecode import unidecode
 
 from django.utils.timezone import now
