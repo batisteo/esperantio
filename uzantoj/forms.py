@@ -68,8 +68,8 @@ class UzantoCreateForm(forms.ModelForm):
             uzanto.backend = u.backend
             uzanto.save()
             send_mail(
-                unicode(_("Bonvenon en Esperant.io!")),
-                unicode(_("Vi suksese registrigxis sur esperant.io!")),
+                str(_("Bonvenon en Esperant.io!")),
+                str(_("Vi suksese registrigxis sur esperant.io!")),
                 "bonvenon@esperant.io",
                 [self.cleaned_data['retposxto']],
                 fail_silently=True)
