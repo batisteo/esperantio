@@ -49,13 +49,23 @@ class JSONResponseMixin(object):
         return json.dumps(context, ensure_ascii=False)
 
 
+class EventoJunularaListView(generic.ListView):
+    model = Evento
+    template_name = 'eventoj/junulara_list.html'
+
+    def get_queryset(self):
+        queryset = super(EventoJunularaListView, self).get_queryset()
+        return queryset.filter(arangxo__publiko=3).order_by('-komenco')
+
+evento_junulara_list = EventoJunularaListView.as_view()
+
+
 class EventoJSONListView(JSONResponseMixin, generic.list.BaseListView):
     model = Evento
 
     def dispatch(self, request, *args, **kwargs):
         self.request = request
-        return super(EventoJSONListView, self).dispatch(request,
-                                                        *args, **kwargs)
+        return super(EventoJSONListView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         args = self.request.GET

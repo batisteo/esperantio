@@ -3,7 +3,8 @@ from django.conf.urls import url
 from eventoj.views import (
     arangxo_detail, arangxo_list, arangxo_create, arangxo_update,
     cxu_nova_arangxo,
-    evento_create, evento_detail, evento_update, evento_json_list,
+    evento_create, evento_detail, evento_update,
+    evento_junulara_list, evento_json_list,
     renkontigxo_nomo_create, renkontigxo_create,
 )
 
@@ -13,6 +14,9 @@ urlpatterns = [
 
     url(r'^arangxo/aldoni/$',
         arangxo_create, name='arangxo_create',),
+
+    url(r'^eventoj/junularo/$',
+        evento_junulara_list, name="junularo",),
 
     url(r'^(?P<slug>[\w-]+)/redakti/$',
         arangxo_update, name='arangxo_update',),

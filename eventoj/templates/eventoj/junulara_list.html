@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Junularaj eventoj</h1>
+
+{% regroup evento_list by komenco|date:"Y" as eventoj %}
+
+<ul class="container">
+  {% for jaro in eventoj %}
+
+    <h2>{{ jaro.grouper}}</h2>
+
+    {% for evento in jaro.list %}
+      <li>
+        <p>
+          <a href="{{ evento.get_absolute_url }}">
+            <strong>
+              {% if evento.kioma %} {{ evento.kioma }}-a {% endif %}
+              {{ evento.arangxo.nomo }}
+              ({{ evento.arangxo.get_shorter_name }})
+            </strong>
+          </a>
+          <br>
+          {{ evento.komenco|date:"d-\a \d\e F" }} — {{ evento.fino|date:"d-\a \d\e F" }}
+          <br>
+          {{ evento.urbo }}, {{ evento.lando.name }}
+          <br>
+          <a href="{{ evento.arangxo.retejo }}" target="_blank">
+            {{ evento.arangxo.retejo }}
+          </a>
+          <br>
+          <a href="{{ evento.arangxo.facebook_url }}" target="_blank">
+            {{ evento.arangxo.facebook_url }}
+          </a>
+          <br>
+        </p>
+      </li>
+    {% endfor %}
+  {% endfor %}
+</ul>
+{% endblock content %}
