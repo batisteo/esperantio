@@ -1,6 +1,5 @@
 import json
 from urllib.parse import urlencode
-from unidecode import unidecode
 
 from django.utils.timezone import now
 from django.core.urlresolvers import reverse
@@ -65,14 +64,22 @@ class EventoJSONListView(JSONResponseMixin, generic.list.BaseListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.request = request
-        return super(EventoJSONListView, self).dispatch(request, *args, **kwargs)
+        _publiko = request.GET.get('publiko', '')
+        try:
+            self.publiko = int(_publiko) if 0 <= int(_publiko) < 5 else None
+        except ValueError:
+            _publiko = request.GET.get('publiko', '').upper()
+            self.publiko = getattr(Arangxo.PUBLIKO_ELEKTOJ, _publiko, None)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         args = self.request.GET
         n, s, e, w = args.get('n', ''), args.get('s', ''), args.get('e', ''), args.get('w', '')
-        qs = Evento.objects.filter(long__lte=n).filter(long__gte=s).filter(
-            lat__gte=w).filter(lat__lte=e)
+        qs = Evento.objects.filter(long__lte=n, long__gte=s,
+                                   lat__gte=w, lat__lte=e)
         qs = qs.filter(fino__gte=now())
+        if self.publiko is not None:
+            qs = qs.filter(arangxo__publiko=self.publiko)
         return qs
 
     def render_to_response(self, context, **response_kwargs):

@@ -7,18 +7,19 @@ var object_list = function(mapo, options) {
 
     var getBoundariesURL = function(){
         bounds = mapo.getBounds();
-        bnd = {
+        return {
             'n': bounds.getNorthEast().lng,
             's': bounds.getSouthWest().lng,
             'e': bounds.getNorthEast().lat,
             'w': bounds.getSouthWest().lat
         };
-        return "?n="+ bnd.n +"&s="+ bnd.s +"&e="+ bnd.e +"&w="+ bnd.w;
     };
 
     var getData = function() {
         markers.clearLayers();
-        url = $('#list-ajax-url').text() + getBoundariesURL();
+        var url = new URI($('#list-ajax-url').text());
+        url.addQuery(getBoundariesURL());
+        url.addQuery(new URI().query(true));  // adds current page querystring
         $.getJSON(url, function(data) {
             for (var i=0; i < data.length; i++){
                 var id = data[i].object_id;
