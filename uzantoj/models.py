@@ -2,7 +2,6 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 from django.db import models
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
-from django.utils.http import urlquote
 from django.utils import timezone
 
 from django_countries.fields import CountryField
@@ -69,7 +68,7 @@ class Uzanto(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("uzanto")
         verbose_name_plural = _("uzantoj")
-    
+
     @property
     def nomo(self):
         return self.get_full_name()
