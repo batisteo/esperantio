@@ -53,7 +53,7 @@ class Arangxo(TimeStampedModel):
         verbose_name = _("arangxo")
         verbose_name_plural = _("arangxoj")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nomo
 
     def get_shorter_name(self):
@@ -96,7 +96,7 @@ class Evento(TimeStampedModel):
     def tago(self):
         return self.komenco.day
 
-    def __unicode__(self):
+    def __str__(self):
         return self.arangxo.nomo + ' ' + str(self.jaro)
 
     def get_absolute_url(self):

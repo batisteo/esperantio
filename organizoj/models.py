@@ -28,5 +28,5 @@ class Organizo(TimeStampedModel):
         verbose_name = _("organizo")
         verbose_name_plural = _("organizoj")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nomo

@@ -12,7 +12,7 @@ class ArangxoAdmin(admin.ModelAdmin):
 
 @admin.register(Evento)
 class EventoAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'temo', 'komenco', 'fino', 'urbo', 'lando', 'kreanto')
+    list_display = ('__str__', 'temo', 'komenco', 'fino', 'urbo', 'lando', 'kreanto')
 
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == 'content':
