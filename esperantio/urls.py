@@ -6,7 +6,6 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^helpo/$', flatpage, {'url': '/helpo/'}, name='helpo'),
     url(r'^kontribui/$', flatpage, {'url': '/kontribui/'}, name='kontribui'),
-    url(r'^api/$', flatpage, {'url': '/api/'}, name='api'),
     url(r'^kontakto/$', flatpage, {'url': '/kontakto/'}, name='kontakto'),
     url(r'^pri-ni/$', flatpage, {'url': '/pri-ni/'}, name='pri-ni'),
 ]

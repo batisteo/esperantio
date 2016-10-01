@@ -9,11 +9,23 @@ from django.db import transaction
 from django.db.models import Q
 from django.shortcuts import redirect
 
+from rest_framework import viewsets
 from braces.views import LoginRequiredMixin
 
 from .forms import (ArangxoForm, EventoCreateForm,  EventoForm,
                     RenkontigxoNomoForm, RenkontigxoForm)
 from .models import Arangxo, Evento
+from .serializers import EventoSerializer, ArangxoSerializer
+
+
+class EventoViewSet(viewsets.ModelViewSet):
+    queryset = Evento.objects.all()
+    serializer_class = EventoSerializer
+
+
+class ArangxoViewSet(viewsets.ModelViewSet):
+    queryset = Arangxo.objects.all()
+    serializer_class = ArangxoSerializer
 
 
 def get_arangxoj(nomo, mallonga_nomo=''):

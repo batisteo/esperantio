@@ -1,4 +1,6 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+
+from rest_framework import routers
 
 from eventoj.views import (
     arangxo_detail, arangxo_list, arangxo_create, arangxo_update,
@@ -6,9 +8,17 @@ from eventoj.views import (
     evento_create, evento_detail, evento_update,
     evento_junulara_list, evento_json_list,
     renkontigxo_nomo_create, renkontigxo_create,
+    EventoViewSet, ArangxoViewSet
 )
 
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'eventoj', EventoViewSet)
+router.register(r'arangxoj', ArangxoViewSet)
+
 urlpatterns = [
+    url(r'^api/', include(router.urls), name='api'),
+    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+
     url(r'^arangxo/$',
         arangxo_list, name='arangxo_list',),
 
