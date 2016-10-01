@@ -96,7 +96,7 @@ var object_form = function(mapo, options) {
     };
 
     var setAddressFields = function(latlng) {
-        var baseURL = 'http://nominatim.openstreetmap.org/reverse?format=json&accept-language=eo';
+        var baseURL = 'https://nominatim.openstreetmap.org/reverse?format=json&accept-language=eo';
         $.getJSON(baseURL+'&lat='+latlng.lat+'&lon='+latlng.lng,
             function(data){
                 var d = data.address;
@@ -126,7 +126,7 @@ var object_form = function(mapo, options) {
 
     var setCityOnMap = function(city, country) {
         $(".atendilo").show();
-        var baseURL = 'http://nominatim.openstreetmap.org/search?format=json&q=';
+        var baseURL = 'https://nominatim.openstreetmap.org/search?format=json&q=';
         $.getJSON(baseURL+city+', '+country)
         .done(function(data){
             if (data.length > 0) {
